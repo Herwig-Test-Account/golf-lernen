@@ -1,10 +1,10 @@
-baseURL = "https://circly-ai-test.pages.dev"
+baseURL = "https://golf-lernen-test.pages.dev"
 locale = "de"
-title = "Circly-AI-Test"
+title = "Golf Lernen"
 
 [params]
   author = "Herwig"
-  description = "Supply Chain Intelligence. Aus der Praxis, für die Praxis."
+  description = "Golf für Einsteiger – locker erklärt, Schritt für Schritt."
 
 [markup.goldmark.renderer]
   unsafe = true

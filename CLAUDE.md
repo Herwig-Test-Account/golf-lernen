@@ -1,4 +1,4 @@
-# Circly-AI-Test — Blog-Kontext für Claude Code
+# Golf Lernen — Blog-Kontext für Claude Code
 
 ## ⚠ SICHERHEIT HAT VORRANG — ZUERST LESEN
 
@@ -19,16 +19,16 @@ Kernregeln (Details in SECURITY.md):
   statt raten. Keine Kartenhäuser.
 
 ## Über diesen Blog
-- Name: Circly-AI-Test
-- Thema: Supply Chain Management, Disposition, Bestandsplanung
-- Zielgruppe: SCM-Leiter und Einkaufsleiter im deutschsprachigen Mittelstand
-- Ton: sachlich, direkt, keine Floskeln, keine Marketing-Sprache
+- Name: Golf Lernen
+- Thema: Golf für Einsteiger (Technik, Regeln & Etikette, Ausrüstung, Platzreife)
+- Zielgruppe: gemischte Einsteiger – von absoluten Anfängern bis zu ersten Runden auf dem Platz
+- Ton: locker, motivierend, ermutigend, Du-Form. Fachbegriffe immer kurz erklären
 - Sprache: Deutsch
 
 ## Technischer Stack
 - Static Site Generator: Hugo
 - Deployment: Cloudflare Pages (automatisch bei git push)
-- Repository: https://github.com/Herwig-Test-Account/mein-blog
+- Repository: https://github.com/Herwig-Test-Account/golf-lernen
 - Lokale Vorschau: hugo server -D → http://localhost:1313
 
 ## Dateistruktur
@@ -46,10 +46,10 @@ description: "Kurze Beschreibung unter 160 Zeichen für SEO."
 ---
 
 ## Artikel-Stil
-- Struktur: Einleitung → H2-Abschnitte → konkrete Prueffragen → Fazit
+- Struktur: lockere Einleitung → klar gegliederte H2-Abschnitte → praktische Tipps → motivierendes Fazit
 - Laenge: 800-1200 Woerter
 - Keine Umlaute im Dateinamen (ae statt ä, oe statt ö, ue statt ü)
-- Prüffragen am Ende jedes Abschnitts fett markieren
+- Golfbegriffe immer kurz und einsteigergerecht erklären
 
 ## Publish-Workflow
 1. Artikel schreiben: Datei in /content/posts/ erstellen
