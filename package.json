@@ -1,5 +1,5 @@
 {
-  "name": "mein-blog",
+  "name": "golf-lernen",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,16 +10,16 @@
 },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Herwig-Test-Account/mein-blog.git"
+    "url": "git+https://github.com/Herwig-Test-Account/golf-lernen.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Herwig-Test-Account/mein-blog/issues"
+    "url": "https://github.com/Herwig-Test-Account/golf-lernen/issues"
   },
-  "homepage": "https://github.com/Herwig-Test-Account/mein-blog#readme",
+  "homepage": "https://github.com/Herwig-Test-Account/golf-lernen#readme",
   "dependencies": {
     "tinacms": "^3.9.1"
   },
