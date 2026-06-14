@@ -173,3 +173,21 @@ tatsächlich kommerziell mit Kunden- oder Personendaten live geht.
 6. Ist Test von Produktion getrennt (noindex korrekt)?
 7. Steht im Diff versehentlich ein Schlüssel?
 8. Braucht es ein externes Audit / rechtliche Prüfung, bevor das live geht?
+
+---
+
+## 10. Bekannte offene Punkte (Stand dokumentiert)
+
+### npm-Schwachstellen im Entwicklungs-Tooling — Stand 2026-06-12
+- `npm audit` meldet 11 Schwachstellen (10 high, 1 low) in
+  Entwicklungswerkzeugen: `@tinacms/cli`, `esbuild`, `vite`, `lodash`,
+  `@graphql-codegen/*`.
+- Einordnung: Betrifft ausschliesslich Build-/Dev-Werkzeuge, NICHT die
+  ausgelieferte Live-Website (diese ist statisches HTML ohne diese Pakete).
+  Das esbuild-Risiko greift nur bei lokal laufendem Dev-Server.
+- Entscheidung: `npm audit fix --force` wurde bewusst NICHT ausgefuehrt,
+  da es ein Downgrade auf @tinacms/cli@0.60.5 (Breaking Change, veraltet)
+  erzwingen und das funktionierende Setup zerstoeren wuerde.
+- Offene Massnahme vor Produktiv-Go-live (golf-lernen.at): kontrolliertes
+  VORWAERTS-Update des Tina-Toolings pruefen und Schwachstellen sauber
+  schliessen. Gehoert in die Audit-Phase vor Produktion (Abschnitt 8).
