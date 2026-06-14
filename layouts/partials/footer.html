@@ -1,18 +1,39 @@
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="site-logo">{{ .Site.Title }}</a>
-        <p>Golf für Einsteiger.<br>Locker erklärt, Schritt für Schritt.</p>
-      </div>
-      <div class="footer-links">
-        <strong>Mehr</strong>
-        <a href="/posts">Artikel</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© {{ now.Year }} {{ .Site.Title }}. Alle Rechte vorbehalten.</span>
-      <span class="footer-note">⚠ Diese Seite ist nicht für Suchmaschinen indexiert.</span>
-    </div>
+<footer>
+  <div class="footer-brand">
+    <a href="/" class="nav-logo" aria-label="golf-lernen.at – Startseite">
+      <svg height="36" viewBox="0 0 210 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="12" y1="4" x2="12" y2="35" stroke="#F7F5F0" stroke-width="2.2" stroke-linecap="square"/>
+        <polygon points="12,4 12,22 36,13" fill="#5C8A3C"/>
+        <line x1="5" y1="36" x2="19" y2="36" stroke="#F7F5F0" stroke-width="2.2" stroke-linecap="square"/>
+        <text x="44" y="27" font-family="'DM Serif Display',Georgia,serif" font-size="22" fill="#F7F5F0" letter-spacing="-0.5">golf</text>
+        <text x="86" y="27" font-family="'DM Serif Display',Georgia,serif" font-size="22" fill="#8fbf5c" letter-spacing="-0.5">-</text>
+        <text x="96" y="27" font-family="'DM Serif Display',Georgia,serif" font-size="22" font-style="italic" fill="#F7F5F0" letter-spacing="-0.5">lernen</text>
+        <text x="172" y="27" font-family="'DM Serif Display',Georgia,serif" font-size="22" fill="#8fbf5c">.</text>
+        <text x="179" y="30" font-family="'DM Sans',system-ui,sans-serif" font-size="11" font-weight="600" fill="#8fbf5c" letter-spacing="0.06em">at</text>
+        <line x1="44" y1="33" x2="200" y2="33" stroke="#8fbf5c" stroke-width="1.2" stroke-linecap="square"/>
+      </svg>
+    </a>
+    <p>Das umfassende Info-Portal für Golf-Einsteiger in Österreich. Grundlagen, Locations und Magazin – alles an einem Ort.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Inhalte</h4>
+    <ul>
+      <li><a href="/grundlagen/">Grundlagen</a></li>
+      <li><a href="/locations/">Locations</a></li>
+      <li><a href="/magazin/">Magazin</a></li>
+      <li><a href="/glossar/">Glossar</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Über uns</h4>
+    <ul>
+      <li><a href="/impressum/">Impressum</a></li>
+      <li><a href="/datenschutz/">Datenschutz</a></li>
+      <li><a href="/kontakt/">Kontakt</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© {{ .Site.Title }} {{ now.Year }}</span>
+    <span>Mit ♥ für Golf-Einsteiger in Österreich</span>
   </div>
 </footer>

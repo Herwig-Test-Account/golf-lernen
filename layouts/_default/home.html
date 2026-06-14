@@ -1,29 +1,148 @@
 {{ define "main" }}
-<section class="hero">
-  <div class="container">
-<span class="hero-eyebrow">Golf für Einsteiger</span>
-    <h1>Golf lernen.<br>Ganz entspannt.</h1>
-    <p class="hero-sub">Von den ersten Schlägen bis zur Platzreife – locker erklärt, Schritt für Schritt. Ohne Fachchinesisch, ohne Druck.</p>
-    <a href="/posts" class="btn-primary">Alle Artikel lesen</a>
-  </div>
-</section>
 
-<section class="posts-section">
-  <div class="container">
-    <h2 class="section-title">Zuletzt erschienen</h2>
-    <div class="post-list">
-      {{ range first 10 (where .Site.RegularPages "Type" "posts") }}
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-date">{{ .Date.Format "02.01.2006" }}</span>
-          {{ with .Params.tags }}<span class="post-tag">{{ index . 0 }}</span>{{ end }}
-        </div>
-        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        <p class="post-description">{{ .Description }}</p>
-        <a href="{{ .Permalink }}" class="post-link">Artikel lesen →</a>
-      </article>
-      {{ end }}
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Das Einsteigerportal für Österreich</p>
+    <h1 class="hero-title">Golf lernen –<br><em>leicht gemacht.</em></h1>
+    <p class="hero-sub">Von der Platzreife bis zum ersten Turnier: alle Grundlagen verständlich erklärt und passende Golfplätze in ganz Österreich finden.</p>
+    <div class="hero-actions">
+      <a href="/grundlagen/" class="btn-primary">Grundlagen entdecken</a>
+      <a href="/locations/" class="btn-secondary">Golfplatz finden</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">9</span>
+        <span class="hero-meta-label">Bundesländer</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">100+</span>
+        <span class="hero-meta-label">Golf-Locations</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">50+</span>
+        <span class="hero-meta-label">Ratgeber-Artikel</span>
+      </div>
     </div>
   </div>
-</section>
+  <div class="hero-right">
+    <div class="hero-quotes">
+      <div class="quote-card">
+        <p>„Golf hilft mir beim Stressabbau und macht den Kopf frei."</p>
+        <cite>Agnes, 47</cite>
+      </div>
+      <div class="quote-card">
+        <p>„Den kleinen Ball richtig zu treffen macht süchtig."</p>
+        <cite>Andreas, 33</cite>
+      </div>
+      <div class="quote-card">
+        <p>„Golf ist wirklich ein Sport für jung und alt. Mein Enkerl geht gern mit mir."</p>
+        <cite>Fritz, 68</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- GRUNDLAGEN -->
+  <section id="grundlagen">
+    <p class="section-label">Erste Schritte im Golfsport</p>
+    <h2 class="section-title">Die Golf-Grundlagen</h2>
+    <p class="section-intro">Als Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – kompakt und verständlich erklärt.</p>
+    <div class="grundlagen-grid">
+      <a href="/grundlagen/" class="g-card reveal">
+        <div class="g-card-icon">⛳</div>
+        <h3>Golfplatz & Platzreife</h3>
+        <p>Wie Sie sich auf dem Golfplatz zurechtfinden – Fairway, Bunker, Par und die ÖGV-Platzreife erklärt.</p>
+        <span class="card-link">Mehr erfahren →</span>
+      </a>
+      <a href="/grundlagen/" class="g-card reveal reveal-delay-1">
+        <div class="g-card-icon">🏌️</div>
+        <h3>Golfschwung & Ausrüstung</h3>
+        <p>Die richtige Technik für Anfänger und wie Sie passende Ausrüstung finden, ohne zu viel auszugeben.</p>
+        <span class="card-link">Mehr erfahren →</span>
+      </a>
+      <a href="/grundlagen/" class="g-card reveal reveal-delay-2">
+        <div class="g-card-icon">📋</div>
+        <h3>Regeln & Handicap</h3>
+        <p>Die wichtigsten Golfregeln, die Golf-Etikette und wie das Handicap-System wirklich funktioniert.</p>
+        <span class="card-link">Mehr erfahren →</span>
+      </a>
+      <a href="/golf-kosten/" class="g-card reveal reveal-delay-3">
+        <div class="g-card-icon">💶</div>
+        <h3>Was kostet Golf?</h3>
+        <p>Ausrüstung, Greenfee und Mitgliedschaft: mit welchen Kosten Sie beim Golfspielen rechnen müssen.</p>
+        <span class="card-link">Mehr erfahren →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations" class="locations-section">
+    <p class="section-label">Golfplätze in Österreich</p>
+    <h2 class="section-title">Golf Locations finden</h2>
+    <p class="section-intro">Golfhotel, Einsteigerplatz oder Übungsmöglichkeit in Ihrer Nähe – hier werden Sie fündig.</p>
+    <div class="bundeslaender-grid">
+      <a href="/bundesland/burgenland/" class="bl-chip">Burgenland</a>
+      <a href="/bundesland/kaernten/" class="bl-chip">Kärnten</a>
+      <a href="/bundesland/niederoesterreich/" class="bl-chip">Niederösterreich</a>
+      <a href="/bundesland/oberoesterreich/" class="bl-chip">Oberösterreich</a>
+      <a href="/bundesland/steiermark/" class="bl-chip">Steiermark</a>
+      <a href="/bundesland/salzburg/" class="bl-chip">Salzburg</a>
+      <a href="/bundesland/tirol/" class="bl-chip">Tirol</a>
+      <a href="/bundesland/vorarlberg/" class="bl-chip">Vorarlberg</a>
+      <a href="/bundesland/wien/" class="bl-chip">Wien</a>
+    </div>
+    <p class="cat-heading">Nach Kategorie filtern</p>
+    <div class="cat-chips">
+      <a href="/golf-kategorien/golfhotel-fuer-anfaenger/" class="cat-chip">Golfhotel für Anfänger</a>
+      <a href="/golf-kategorien/keine-oegv-platzreife-noetig/" class="cat-chip">Keine ÖGV-Platzreife nötig</a>
+      <a href="/golf-kategorien/keine-platzerlaubnis-pe-noetig/" class="cat-chip">Keine Platzerlaubnis nötig</a>
+      <a href="/golf-kategorien/oeffentliche-anlage/" class="cat-chip">Öffentliche Anlage</a>
+      <a href="/golf-kategorien/oegv-platzreife-noetig/" class="cat-chip">ÖGV-Platzreife nötig</a>
+      <a href="/golf-kategorien/platzerlaubnis-pe-noetig/" class="cat-chip">Platzerlaubnis nötig</a>
+    </div>
+  </section>
+
+  <!-- MAGAZIN: zeigt echte neueste Artikel, mit Fallback auf Beispiele -->
+  <section id="magazin">
+    <p class="section-label">Tipps & Wissen</p>
+    <h2 class="section-title">Das Golf-Magazin</h2>
+    <p class="section-intro">Hilfreiche Beiträge und aktuelle Themen für angehende Golferinnen und Golfer in Österreich.</p>
+    <div class="magazin-grid">
+      {{ $posts := where .Site.RegularPages "Type" "posts" }}
+      {{ if $posts }}
+        {{ range first 3 $posts }}
+        <a href="{{ .Permalink }}" class="mag-card reveal">
+          <div class="mag-card-thumb">⛳</div>
+          <div class="mag-card-body">
+            <p class="mag-date">{{ .Date.Format "2. January 2006" }}</p>
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Description }}</p>
+            <span class="card-link">Mehr erfahren →</span>
+          </div>
+        </a>
+        {{ end }}
+      {{ else }}
+        <a href="#" class="mag-card reveal">
+          <div class="mag-card-thumb">🏆</div>
+          <div class="mag-card-body">
+            <p class="mag-date">Beispiel</p>
+            <h3>Hier erscheinen bald echte Artikel</h3>
+            <p>Sobald die ersten Beiträge angelegt sind, zeigt dieser Bereich automatisch die neuesten Magazin-Artikel.</p>
+            <span class="card-link">Mehr erfahren →</span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <p class="cta-text">Bereit für Ihren ersten Schwung? <em>Finden Sie jetzt den passenden Golfkurs in Ihrer Nähe.</em></p>
+    <a href="/platzreife/" class="btn-white">Platzreifekurs finden</a>
+  </section>
+
+</main>
 {{ end }}
