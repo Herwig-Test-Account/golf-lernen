@@ -1,30 +1,92 @@
 {{ define "main" }}
-<div class="article-wrapper">
-  <div class="container">
+<link rel="stylesheet" href="/css/article.css">
 
-    <div class="article-breadcrumb">
-      <a href="/">Start</a> / <a href="/posts">Wissen</a> / <span>{{ .Title }}</span>
-    </div>
-
-    <header class="article-header">
-      <div class="article-meta">
-        <span class="post-date">{{ .Date.Format "02.01.2006" }}</span>
-        {{ with .Params.tags }}
-          {{ range . }}<span class="post-tag">{{ . }}</span>{{ end }}
-        {{ end }}
-      </div>
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}
-    </header>
-
-    <div class="article-body">
-      {{ .Content }}
-    </div>
-
-    <div class="article-footer">
-      <a href="/posts" class="back-link">← Zurück zur Übersicht</a>
-    </div>
-
+<!-- ARTICLE HERO -->
+<header class="article-hero">
+  <ul class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/magazin/">Magazin</a></li>
+    <li>{{ .Title }}</li>
+  </ul>
+  {{ with .Params.rubrik }}<p class="article-tag-label">{{ . }}</p>{{ end }}
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="article-hero-lead">{{ . }}</p>{{ end }}
+  <div class="article-meta">
+    {{ with .Params.author }}
+    <span class="meta-author">
+      <span class="author-avatar">{{ substr . 0 1 }}</span>
+      {{ . }}
+    </span>
+    <span class="meta-dot"></span>
+    {{ end }}
+    <span>{{ .Date.Format "2. January 2006" }}</span>
+    {{ with .ReadingTime }}<span class="meta-dot"></span><span>{{ . }} Min. Lesezeit</span>{{ end }}
   </div>
+</header>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar">
+    {{ with .TableOfContents }}
+      {{ if gt (len .) 50 }}
+      <p class="toc-heading">Inhalt</p>
+      <div class="toc-list">{{ . }}</div>
+      <div class="toc-divider"></div>
+      {{ end }}
+    {{ end }}
+    <div class="toc-cta">
+      <p>Bereit für den ersten Schwung?</p>
+      <a href="/platzreife/">Platzreifekurs finden →</a>
+    </div>
+  </aside>
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+    {{ with .Params.image }}
+    <div class="article-hero-img">
+      <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+    </div>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ with .Params.tags }}
+    <div class="article-tags">
+      <span class="tags-label">Tags:</span>
+      {{ range . }}<a href="/tags/{{ . | urlize }}/" class="tag-chip">{{ . }}</a>{{ end }}
+    </div>
+    {{ end }}
+
+    <div class="article-share-bottom">
+      <span class="share-bottom-label">Beitrag teilen:</span>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" class="share-btn-outline" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/?text={{ .Permalink }}" class="share-btn-outline" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://twitter.com/share?url={{ .Permalink }}" class="share-btn-outline" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+  </article>
 </div>
+
+<!-- RELATED POSTS: neueste andere Artikel -->
+{{ $related := first 3 (where (where .Site.RegularPages "Type" "posts") "Permalink" "!=" .Permalink) }}
+{{ if $related }}
+<section class="related-section">
+  <p class="section-label">Ähnliche Beiträge</p>
+  <h2 class="related-title">Weiterlesen</h2>
+  <div class="related-grid">
+    {{ range $related }}
+    <a href="{{ .Permalink }}" class="related-card">
+      <div class="related-thumb">
+        {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+      </div>
+      <div class="related-body">
+        {{ with .Params.rubrik }}<span class="related-tag">{{ . }}</span>{{ end }}
+        <h3>{{ .Title }}</h3>
+        <span class="related-link">Mehr erfahren →</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
 {{ end }}
