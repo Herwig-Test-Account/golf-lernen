@@ -111,11 +111,13 @@
     <h2 class="section-title">Das Golf-Magazin</h2>
     <p class="section-intro">Hilfreiche Beiträge und aktuelle Themen für angehende Golferinnen und Golfer in Österreich.</p>
     <div class="magazin-grid">
-      {{ $posts := where .Site.RegularPages "Type" "posts" }}
+      {{ $posts := where .Site.RegularPages "Type" "magazin" }}
       {{ if $posts }}
         {{ range first 3 $posts }}
         <a href="{{ .Permalink }}" class="mag-card reveal">
-          <div class="mag-card-thumb">⛳</div>
+          <div class="mag-card-thumb">
+            {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ else }}⛳{{ end }}
+          </div>
           <div class="mag-card-body">
             <p class="mag-date">{{ .Date.Format "2. January 2006" }}</p>
             <h3>{{ .Title }}</h3>

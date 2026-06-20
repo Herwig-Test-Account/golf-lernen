@@ -1,0 +1,158 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/glossar.css">
+
+{{/* Alle Glossar-Einträge alphabetisch, nach Anfangsbuchstabe gruppiert */}}
+{{ $entries := sort .RegularPages "Title" }}
+{{ $groups := dict }}
+{{ range $entries }}
+  {{ $L := upper (substr .Title 0 1) }}
+  {{ $cur := index $groups $L | default slice }}
+  {{ $groups = merge $groups (dict $L ($cur | append .)) }}
+{{ end }}
+{{ $alphabet := split "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" " " }}
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li aria-current="page">Glossar</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Golf-Wörterbuch</p>
+  <h1>Golf-Begriffe <em>einfach erklärt</em></h1>
+  <p class="page-hero-lead">{{ .Description | default "Stöbern Sie in unserem umfangreichen Golf-Glossar und lernen Sie die wichtigsten Begriffe und Spezialausdrücke des Golf-Jargons kennen." }}</p>
+  <div class="hero-example">
+    <span class="hero-example-icon">💬</span>
+    <p>„Auf Loch 7 den Drive mit dem Holz 3 verhaut, das Fairway verfehlt und mit dem Ball im Rough gelandet." – Verstehen Sie nur Bahnhof? Hier finden Sie alle Erklärungen.</p>
+  </div>
+</header>
+
+<!-- SEARCH + ALPHABET BAR -->
+<div class="search-bar" role="search">
+  <div class="search-wrap">
+    <span class="search-icon" aria-hidden="true">🔍</span>
+    <input type="search" id="glossar-search" class="search-input" placeholder="Begriff suchen …" aria-label="Golf-Begriff suchen">
+    <button class="search-clear" id="search-clear" aria-label="Suche leeren">×</button>
+  </div>
+  <span class="search-count" id="search-count" aria-live="polite"></span>
+  <nav class="alpha-nav" aria-label="Alphabetische Navigation">
+    {{ range $i, $letter := $alphabet }}
+      {{ $items := index $groups $letter }}
+      <a href="#letter-{{ $letter }}" class="alpha-btn{{ if not $items }} empty{{ end }}" data-letter="{{ $letter }}">{{ $letter }}</a>
+    {{ end }}
+  </nav>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="glossar-sidebar" aria-label="Buchstaben-Navigation">
+    <p class="sidebar-heading">Buchstaben</p>
+    <nav class="sidebar-alpha">
+      {{ range $i, $letter := $alphabet }}
+        {{ with index $groups $letter }}
+        <a href="#letter-{{ $letter }}" data-sidebar="{{ $letter }}">{{ $letter }} <span class="entry-count">{{ len . }}</span></a>
+        {{ end }}
+      {{ end }}
+    </nav>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-heading" style="margin-top:0">Tipp</p>
+    <p style="font-size:13px;color:var(--text-muted);line-height:1.5;padding-right:8px;">Nutzen Sie die Suche oben um Begriffe direkt zu finden.</p>
+  </aside>
+
+  <!-- GLOSSAR CONTENT -->
+  <main class="glossar-content" id="glossar-main">
+
+    <div class="no-results" id="no-results">
+      <strong>Kein Treffer</strong>
+      <p>Für Ihre Suche wurden keine Einträge gefunden.</p>
+    </div>
+
+    {{ range $i, $letter := $alphabet }}
+      {{ with index $groups $letter }}
+      <div class="letter-section" id="letter-{{ $letter }}" data-letter="{{ $letter }}">
+        <div class="letter-header">
+          <div class="letter-badge">{{ $letter }}</div>
+          <span class="letter-meta">{{ len . }} {{ cond (eq (len .) 1) "Begriff" "Begriffe" }}</span>
+        </div>
+        <div class="entry-list">
+          {{ range . }}
+          <div class="glossar-entry" data-term="{{ .Params.synonyme | default (lower .Title) }}">
+            <div class="entry-term">{{ .Title }}{{ with .Params.term_alt }}<span class="term-alt">{{ . }}</span>{{ end }}</div>
+            <div class="entry-body">
+              {{ .Content }}
+              {{ range .Params.links }}<a href="{{ .url }}" class="entry-link">{{ .text }}</a>{{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    {{ end }}
+
+  </main>
+</div>
+
+<script>
+  // ── LIVE SEARCH ──
+  const searchInput = document.getElementById('glossar-search');
+  const clearBtn    = document.getElementById('search-clear');
+  const countEl     = document.getElementById('search-count');
+  const noResults   = document.getElementById('no-results');
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    clearBtn.style.display = q ? 'block' : 'none';
+    if (!q) { resetSearch(); return; }
+
+    let totalVisible = 0;
+    document.querySelectorAll('.letter-section').forEach(section => {
+      let sectionVisible = 0;
+      section.querySelectorAll('.glossar-entry').forEach(entry => {
+        const term = entry.dataset.term || '';
+        const text = entry.textContent.toLowerCase();
+        const match = term.includes(q) || text.includes(q);
+        entry.classList.toggle('hidden', !match);
+        if (match) sectionVisible++;
+      });
+      section.classList.toggle('hidden', sectionVisible === 0);
+      totalVisible += sectionVisible;
+    });
+
+    countEl.textContent = totalVisible > 0 ? `${totalVisible} Treffer` : '';
+    noResults.style.display = totalVisible === 0 ? 'block' : 'none';
+  });
+
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    resetSearch();
+    searchInput.focus();
+  });
+
+  function resetSearch() {
+    document.querySelectorAll('.letter-section, .glossar-entry').forEach(el => el.classList.remove('hidden'));
+    countEl.textContent = '';
+    noResults.style.display = 'none';
+  }
+
+  // ── ACTIVE LETTER (sidebar + alpha nav) ──
+  const sections = document.querySelectorAll('.letter-section');
+  const sidebarLinks = document.querySelectorAll('.sidebar-alpha a');
+  const alphaBtns = document.querySelectorAll('.alpha-btn');
+
+  const letterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const letter = e.target.dataset.letter;
+        sidebarLinks.forEach(l => l.classList.toggle('active', l.dataset.sidebar === letter));
+        alphaBtns.forEach(b => b.classList.toggle('active', b.dataset.letter === letter));
+      }
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => letterObs.observe(s));
+</script>
+{{ end }}

@@ -9,7 +9,7 @@
 
 const OWNER = "Herwig-Test-Account";
 const REPO = "golf-lernen";
-const POSTS_DIR = "content/posts";
+const POSTS_DIR = "content/magazin";
 const MAX_TITLE = 200;
 const MAX_CONTENT = 100000; // ~100 KB Schutzgrenze
 

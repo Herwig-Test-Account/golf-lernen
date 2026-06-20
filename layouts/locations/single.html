@@ -1,0 +1,157 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/locations.css">
+
+<!-- HERO -->
+<div class="location-hero">
+  {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}">{{ end }}
+  <div class="hero-overlay"></div>
+  <div class="hero-share">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" class="share-btn" target="_blank" rel="noopener" aria-label="Auf Facebook teilen">f</a>
+    <a href="https://wa.me/?text={{ .Permalink }}" class="share-btn" target="_blank" rel="noopener" aria-label="Per WhatsApp teilen">w</a>
+    <a href="https://twitter.com/share?url={{ .Permalink }}" class="share-btn" target="_blank" rel="noopener" aria-label="Auf X teilen">𝕏</a>
+  </div>
+  <div class="hero-content">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="/">Startseite</a></li>
+        <li><a href="/locations/">Locations</a></li>
+        <li aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    {{ with .Params.bundesland }}<p class="hero-state">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.untertitel }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
+    <div class="hero-rating">
+      <div class="stars" aria-label="Noch keine Bewertungen">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <span class="rating-label">Noch keine Bewertungen</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+  <div class="main-col">
+
+    {{ with .Params.kategorien }}
+    <div class="cat-badges">
+      {{ range . }}<span class="cat-badge">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+
+    <div class="location-desc">{{ .Content }}</div>
+
+    <p class="details-heading">Platzdetails</p>
+    <div class="details-grid">
+      {{ with .Params.lochzahl }}<div class="detail-item"><span class="detail-label">Lochzahl</span><span class="detail-value">{{ . }} Loch</span></div>{{ end }}
+      {{ with .Params.greenfee_ab }}<div class="detail-item"><span class="detail-label">Greenfee</span><span class="detail-value">ab {{ . }} € pro Erw.</span></div>{{ end }}
+      {{ with .Params.schwierigkeit }}<div class="detail-item"><span class="detail-label">Schwierigkeitsgrad</span><span class="detail-value">{{ . }}</span></div>{{ end }}
+      {{ with .Params.leihausruestung }}<div class="detail-item"><span class="detail-label">Leihausrüstung</span><span class="detail-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></div>{{ end }}
+      {{ with .Params.uebungsplatz }}<div class="detail-item"><span class="detail-label">Übungsplatz</span><span class="detail-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></div>{{ end }}
+      {{ with .Params.driving_range }}<div class="detail-item"><span class="detail-label">Driving Range</span><span class="detail-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></div>{{ end }}
+      {{ with .Params.restaurant }}<div class="detail-item"><span class="detail-label">Restaurant</span><span class="detail-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></div>{{ end }}
+      {{ with .Params.hunde }}<div class="detail-item"><span class="detail-label">Hunde erlaubt</span><span class="detail-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></div>{{ end }}
+    </div>
+
+    <!-- Bewertungen: statischer Platzhalter (Funktion folgt in Phase C) -->
+    <div class="ratings-section">
+      <h2 class="section-title">Bewertungen</h2>
+      <div class="ratings-empty">
+        <strong>Noch keine Bewertungen vorhanden.</strong>
+        <p>Seien Sie der Erste, der eine Bewertung für {{ .Title }} abgibt!</p>
+      </div>
+      <div class="review-form">
+        <h3>Ihre Bewertung abgeben</h3>
+        <div class="form-field">
+          <label class="form-label">Ihre Bewertung</label>
+          <div class="star-picker" role="group" aria-label="Sterne vergeben">
+            <span class="star-pick">★</span><span class="star-pick">★</span><span class="star-pick">★</span><span class="star-pick">★</span><span class="star-pick">★</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="review-title">Titel Ihrer Bewertung</label>
+          <input type="text" id="review-title" class="form-input" placeholder="Kurzfazit in einem Satz …" disabled>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="review-text">Ihre Bewertung</label>
+          <textarea id="review-text" class="form-input form-textarea" rows="5" placeholder="Bewertungen sind bald möglich …" disabled></textarea>
+        </div>
+        <p class="form-consent" style="color:var(--text-muted);font-size:13px;">Die Bewertungsfunktion wird in Kürze freigeschaltet.</p>
+        <button class="btn-primary" type="button" disabled style="opacity:.5;cursor:not-allowed;">Bewertung abschicken</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    {{ with .Params.website }}
+    <div class="website-cta">
+      <p>Website besuchen</p>
+      <a href="{{ . }}" target="_blank" rel="noopener" class="btn-outline">{{ . | replaceRE "https?://(www\\.)?" "" | replaceRE "/.*$" "" }} ↗</a>
+    </div>
+    {{ end }}
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-head">Kontakt & Adresse</div>
+      <div class="sidebar-card-body">
+        <ul class="contact-list">
+          {{ with .Params.adresse }}<li class="contact-item"><span class="contact-icon">📍</span><p>{{ . }}</p></li>{{ end }}
+          {{ with .Params.website }}<li class="contact-item"><span class="contact-icon">🌐</span><a href="{{ . }}" target="_blank" rel="noopener">{{ . | replaceRE "https?://(www\\.)?" "" | replaceRE "/.*$" "" }}</a></li>{{ end }}
+          {{ with .Params.email }}<li class="contact-item"><span class="contact-icon">✉️</span><a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+          {{ with .Params.telefon }}<li class="contact-item"><span class="contact-icon">📞</span><a href="tel:{{ . | replaceRE "[^0-9+]" "" }}">{{ . }}</a></li>{{ end }}
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-head">Auf einen Blick</div>
+      <div class="sidebar-card-body">
+        <ul class="quick-facts">
+          {{ with .Params.greenfee_ab }}<li class="quick-fact"><span class="qf-label">Greenfee</span><span class="qf-value price">ab {{ . }} €</span></li>{{ end }}
+          {{ with .Params.lochzahl }}<li class="quick-fact"><span class="qf-label">Lochzahl</span><span class="qf-value">{{ . }} Loch</span></li>{{ end }}
+          {{ with .Params.schwierigkeit }}<li class="quick-fact"><span class="qf-label">Schwierigkeit</span><span class="qf-value">{{ . }}</span></li>{{ end }}
+          {{ with .Params.driving_range }}<li class="quick-fact"><span class="qf-label">Driving Range</span><span class="qf-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></li>{{ end }}
+          {{ with .Params.restaurant }}<li class="quick-fact"><span class="qf-label">Restaurant</span><span class="qf-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></li>{{ end }}
+          {{ with .Params.hunde }}<li class="quick-fact"><span class="qf-label">Hunde erlaubt</span><span class="qf-value{{ if eq . "Ja" }} yes{{ end }}">{{ if eq . "Ja" }}✓ {{ end }}{{ . }}</span></li>{{ end }}
+        </ul>
+      </div>
+    </div>
+
+    {{ with .Params.adresse }}
+    <div class="map-placeholder">
+      <span class="map-icon">🗺️</span>
+      <p>{{ . }}</p>
+      <a href="https://maps.google.com/?{{ querify "q" . }}" target="_blank" rel="noopener">In Google Maps öffnen ↗</a>
+    </div>
+    {{ end }}
+  </aside>
+</div>
+
+<!-- ÄHNLICHE LOCATIONS: gleiches Bundesland -->
+{{ $bl := .Params.bundesland }}
+{{ $related := first 3 (where (where .Site.RegularPages "Type" "locations") "Params.bundesland" $bl) }}
+{{ $related = where $related "Permalink" "!=" .Permalink }}
+{{ if $related }}
+<section class="related-section">
+  <p class="section-label">In der Nähe</p>
+  <h2 class="related-title">Ähnliche Locations</h2>
+  <div class="related-grid">
+    {{ range $related }}
+    <a href="{{ .Permalink }}" class="related-card">
+      <div class="related-thumb">{{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ end }}</div>
+      <div class="related-body">
+        {{ with .Params.bundesland }}<p class="related-state">{{ . }}</p>{{ end }}
+        <h3>{{ .Title }}</h3>
+        <div class="related-meta">
+          {{ with .Params.greenfee_ab }}<span class="related-price">ab {{ . }} €</span>{{ end }}
+          {{ with .Params.lochzahl }}<span class="related-holes">{{ . }} Loch</span>{{ end }}
+        </div>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

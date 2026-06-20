@@ -1,24 +1,97 @@
 {{ define "main" }}
-<div class="list-wrapper">
-  <div class="container">
-    <header class="list-header">
-      <h1>Artikel</h1>
-      <p>Alles für deinen Start ins Golfen – Technik, Regeln, Ausrüstung und der Weg zur Platzreife.</p>
-    </header>
+<link rel="stylesheet" href="/css/magazin.css">
 
-    <div class="post-list">
-      {{ range where .Site.RegularPages "Type" "posts" }}
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-date">{{ .Date.Format "02.01.2006" }}</span>
-          {{ with .Params.tags }}<span class="post-tag">{{ index . 0 }}</span>{{ end }}
-        </div>
-        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        <p class="post-description">{{ .Description }}</p>
-        <a href="{{ .Permalink }}" class="post-link">Artikel lesen →</a>
-      </article>
-      {{ end }}
+{{ $posts := where .Site.RegularPages "Type" "magazin" }}
+{{ $featured := index ($posts.ByDate.Reverse) 0 }}
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li aria-current="page">Magazin</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Tipps, Wissen & Inspiration</p>
+  <h1>Das Golf-<em>Magazin</em></h1>
+  <p class="page-hero-lead">Hilfreiche Beiträge und aktuelle Themen für angehende Golferinnen und Golfer in Österreich.</p>
+</header>
+
+<!-- FEATURED POST: neuester Artikel -->
+{{ with $featured }}
+<div class="featured-wrap">
+  <a href="{{ .Permalink }}" class="featured-post">
+    <div class="featured-thumb">
+      {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}">{{ end }}
+      <span class="featured-new-badge">Neu</span>
     </div>
-  </div>
+    <div class="featured-body">
+      <div class="featured-meta">
+        {{ with .Params.rubrik }}<span class="art-tag">{{ . }}</span>{{ end }}
+        <span class="art-date">{{ .Date.Format "2. January 2006" }}</span>
+      </div>
+      <h2>{{ .Title }}</h2>
+      <p>{{ .Description }}</p>
+      <span class="btn-primary">Mehr erfahren →</span>
+    </div>
+  </a>
 </div>
+{{ end }}
+
+<!-- RUBRIK FILTER: aus realen Rubriken -->
+{{ $rubriken := slice }}
+{{ range $posts }}
+  {{ with .Params.rubrik }}{{ $rubriken = $rubriken | append . }}{{ end }}
+{{ end }}
+{{ $rubriken = $rubriken | uniq | sort }}
+
+<div class="filter-bar" role="navigation" aria-label="Nach Rubrik filtern">
+  <span class="filter-label">Rubrik:</span>
+  <button class="rubrik-chip active" data-rubrik="alle" onclick="setRubrik(this)">Alle</button>
+  {{ range $rubriken }}
+  <button class="rubrik-chip" data-rubrik="{{ . | urlize }}" onclick="setRubrik(this)">{{ . }}</button>
+  {{ end }}
+</div>
+
+<!-- ALLE ARTIKEL als filterbare Karten -->
+<section class="section-wrap">
+  <div class="cards-grid" id="magazin-grid">
+    {{ range $posts.ByDate.Reverse }}
+    <a href="{{ .Permalink }}" class="art-card reveal" data-rubrik="{{ with .Params.rubrik }}{{ . | urlize }}{{ end }}">
+      <div class="art-card-thumb">
+        {{ with .Params.image }}
+        <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+        {{ else }}
+        <div class="art-card-thumb-placeholder">⛳</div>
+        {{ end }}
+      </div>
+      <div class="art-card-body">
+        <div class="art-card-meta">
+          {{ with .Params.rubrik }}<span class="art-tag">{{ . }}</span>{{ end }}
+          <span class="art-date">{{ .Date.Format "2. Jan. 2006" }}</span>
+        </div>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Description }}</p>
+        <span class="art-card-link">Mehr erfahren →</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+  <p id="magazin-empty" style="display:none; text-align:center; color:var(--text-muted); padding:40px 0;">Keine Artikel in dieser Rubrik.</p>
+</section>
+
+<script>
+  function setRubrik(btn) {
+    document.querySelectorAll('.rubrik-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const rubrik = btn.getAttribute('data-rubrik');
+    let sichtbar = 0;
+    document.querySelectorAll('#magazin-grid .art-card').forEach(card => {
+      const match = (rubrik === 'alle') || (card.getAttribute('data-rubrik') === rubrik);
+      card.style.display = match ? '' : 'none';
+      if (match) sichtbar++;
+    });
+    document.getElementById('magazin-empty').style.display = sichtbar === 0 ? 'block' : 'none';
+  }
+</script>
 {{ end }}

@@ -68,7 +68,7 @@
 </div>
 
 <!-- RELATED POSTS: neueste andere Artikel -->
-{{ $related := first 3 (where (where .Site.RegularPages "Type" "posts") "Permalink" "!=" .Permalink) }}
+{{ $related := first 3 (where (where .Site.RegularPages "Type" "magazin") "Permalink" "!=" .Permalink) }}
 {{ if $related }}
 <section class="related-section">
   <p class="section-label">Ähnliche Beiträge</p>

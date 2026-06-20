@@ -1,0 +1,160 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/locations.css">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li aria-current="page">Locations</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Golfplätze in Österreich</p>
+  <h1>Golf <em>Locations</em> finden</h1>
+  <p class="page-hero-lead">Golfhotel, Einsteigerplatz oder Übungsmöglichkeit in Ihrer Nähe – filtern Sie nach Bundesland, Preis und Kategorie.</p>
+</header>
+
+{{ $locations := where .Site.RegularPages "Type" "locations" }}
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="search" aria-label="Locations filtern">
+  <div class="filter-group">
+    <label class="filter-label" for="filter-bundesland">Bundesland</label>
+    <select class="filter-select" id="filter-bundesland" onchange="applyFilters()">
+      <option value="">Alle Bundesländer</option>
+      <option>Burgenland</option><option>Kärnten</option><option>Niederösterreich</option>
+      <option>Oberösterreich</option><option>Salzburg</option><option>Steiermark</option>
+      <option>Tirol</option><option>Vorarlberg</option><option>Wien</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label class="filter-label" for="filter-preis">Preis</label>
+    <select class="filter-select" id="filter-preis" onchange="applyFilters()">
+      <option value="">Alle Preise</option>
+      <option value="guenstig">Günstig (bis 30 €)</option>
+      <option value="mittel">Durchschnittlich (31–50 €)</option>
+      <option value="gehoben">Gehoben (ab 51 €)</option>
+    </select>
+  </div>
+  <button class="filter-reset" onclick="resetFilters()">Filter zurücksetzen ×</button>
+</div>
+
+<!-- RESULTS META -->
+<div class="results-meta">
+  <p class="results-count"><strong id="result-count">{{ len $locations }}</strong> Locations gefunden</p>
+</div>
+
+<!-- LOCATIONS GRID -->
+<main class="locations-wrap">
+  <div class="locations-grid" id="locations-grid">
+    {{ range $locations.ByTitle }}
+    {{ $preisklasse := "mittel" }}
+    {{ with .Params.greenfee_ab }}{{ if le . 30 }}{{ $preisklasse = "guenstig" }}{{ else if ge . 51 }}{{ $preisklasse = "gehoben" }}{{ end }}{{ end }}
+    <a href="{{ .Permalink }}" class="location-card"
+       data-bundesland="{{ .Params.bundesland }}"
+       data-preis="{{ $preisklasse }}">
+      <div class="card-thumb">
+        {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ else }}<div class="card-thumb-placeholder">⛳</div>{{ end }}
+        <div class="card-badges">
+          {{ with .Params.kategorien }}<span class="badge badge-cat">{{ index . 0 }}</span>{{ end }}
+          {{ if eq $preisklasse "guenstig" }}<span class="badge badge-price-low">Günstig</span>{{ else if eq $preisklasse "mittel" }}<span class="badge badge-price-mid">Durchschnittlich</span>{{ end }}
+        </div>
+      </div>
+      <div class="card-body">
+        {{ with .Params.bundesland }}<p class="card-state">{{ . }}</p>{{ end }}
+        <h2>{{ .Title }}</h2>
+        <div class="card-rating">
+          <div class="stars" aria-label="Noch keine Bewertung">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="rating-count">0 Bewertungen</span>
+        </div>
+        <div class="card-meta">
+          {{ with .Params.lochzahl }}<span class="card-meta-item"><span class="card-meta-icon">⛳</span> {{ . }} Loch</span>{{ end }}
+        </div>
+        <div class="card-footer">
+          {{ with .Params.greenfee_ab }}<p class="card-price">ab {{ . }}€ <span>pro Erw.</span></p>{{ end }}
+          <span class="card-link-arrow">Details →</span>
+        </div>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+  <p id="locations-empty" style="display:none; text-align:center; color:var(--text-muted); padding:40px 0;">Keine Locations entsprechen den Filtern.</p>
+
+  <!-- PAGINATION: unterhalb der Teaser -->
+  <div class="pagination" id="pagination"></div>
+</main>
+
+<!-- SEO TEXT -->
+<section class="seo-section">
+  <div class="seo-grid">
+    <div>
+      <h2>Golf-Locations für Einsteiger in Österreich</h2>
+      <p>Ob erster Schnupperkurs oder regelmäßiges Spiel: In ganz Österreich gibt es Golfanlagen, die sich besonders gut für Anfängerinnen und Anfänger eignen. Filtern Sie nach Bundesland, Preis und Kategorie und finden Sie den passenden Platz in Ihrer Nähe.</p>
+    </div>
+    <div>
+      <h3>Worauf Einsteiger achten sollten</h3>
+      <p>Achten Sie auf öffentliche Anlagen, Plätze ohne Platzreife-Pflicht und Standorte mit Leihausrüstung und Driving Range. Diese erleichtern den Start ins Golfspiel erheblich.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const PER_PAGE = 12;
+  let currentPage = 1;
+
+  function getFiltered() {
+    const bl = document.getElementById('filter-bundesland').value;
+    const preis = document.getElementById('filter-preis').value;
+    return Array.from(document.querySelectorAll('#locations-grid .location-card')).filter(card => {
+      const okBl = !bl || card.getAttribute('data-bundesland') === bl;
+      const okPreis = !preis || card.getAttribute('data-preis') === preis;
+      return okBl && okPreis;
+    });
+  }
+
+  function render() {
+    const all = Array.from(document.querySelectorAll('#locations-grid .location-card'));
+    const filtered = getFiltered();
+    all.forEach(c => c.style.display = 'none');
+    const start = (currentPage - 1) * PER_PAGE;
+    filtered.slice(start, start + PER_PAGE).forEach(c => c.style.display = '');
+    document.getElementById('result-count').textContent = filtered.length;
+    document.getElementById('locations-empty').style.display = filtered.length === 0 ? 'block' : 'none';
+    renderPagination(filtered.length);
+  }
+
+  function renderPagination(total) {
+    const pages = Math.ceil(total / PER_PAGE);
+    const box = document.getElementById('pagination');
+    box.innerHTML = '';
+    if (pages <= 1) return;
+    const prev = document.createElement('button');
+    prev.className = 'page-btn arrow'; prev.textContent = '‹';
+    prev.disabled = currentPage === 1;
+    prev.onclick = () => { currentPage--; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+    box.appendChild(prev);
+    for (let i = 1; i <= pages; i++) {
+      const b = document.createElement('button');
+      b.className = 'page-btn' + (i === currentPage ? ' active' : '');
+      b.textContent = i;
+      b.onclick = () => { currentPage = i; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+      box.appendChild(b);
+    }
+    const next = document.createElement('button');
+    next.className = 'page-btn arrow'; next.textContent = '›';
+    next.disabled = currentPage === pages;
+    next.onclick = () => { currentPage++; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+    box.appendChild(next);
+  }
+
+  function applyFilters() { currentPage = 1; render(); }
+  function resetFilters() {
+    document.getElementById('filter-bundesland').value = '';
+    document.getElementById('filter-preis').value = '';
+    currentPage = 1; render();
+  }
+  document.addEventListener('DOMContentLoaded', render);
+</script>
+{{ end }}
