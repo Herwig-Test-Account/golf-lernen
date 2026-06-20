@@ -83,7 +83,6 @@
             <div class="entry-term">{{ .Title }}{{ with .Params.term_alt }}<span class="term-alt">{{ . }}</span>{{ end }}</div>
             <div class="entry-body">
               {{ .Content }}
-              {{ range .Params.links }}<a href="{{ .url }}" class="entry-link">{{ .text }}</a>{{ end }}
             </div>
           </div>
           {{ end }}

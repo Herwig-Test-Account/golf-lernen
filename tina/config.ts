@@ -33,12 +33,6 @@ export default defineConfig({
     { type: "string",  name: "term_alt", label: "Zusatz (z. B. \"EN: Foursome\")" },
     { type: "string",  name: "synonyme", label: "Such-Synonyme (Leerzeichen-getrennt)" },
     { type: "boolean", name: "draft",    label: "Entwurf (nicht öffentlich)" },
-    { type: "object",  name: "links",    label: "Querverweise", list: true,
-      fields: [
-        { type: "string", name: "text", label: "Linktext" },
-        { type: "string", name: "url",  label: "URL" },
-      ],
-    },
     { type: "rich-text", name: "body", label: "Definition", isBody: true },
   ],
 },
