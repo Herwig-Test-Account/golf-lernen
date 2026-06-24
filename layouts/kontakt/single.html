@@ -1,0 +1,157 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/kontakt.css">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li aria-current="page">Kontakt</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Schreiben Sie uns</p>
+  <h1>Wir freuen uns auf <em>Ihre Nachricht</em></h1>
+  <p class="page-hero-lead">Fehlen Inhalte, haben Sie Feedback zu einem Beitrag, oder möchten Sie Ihren Golfplatz eintragen lassen? Wir antworten in Kürze.</p>
+</header>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- FORM COLUMN -->
+  <div class="form-col">
+
+    <div class="reason-tabs" role="group" aria-label="Anliegen wählen">
+      <button class="reason-tab active" onclick="setReason(this,'Allgemeine Frage')">Allgemeine Frage</button>
+      <button class="reason-tab" onclick="setReason(this,'Location eintragen')">Location eintragen</button>
+      <button class="reason-tab" onclick="setReason(this,'Inhaltliches Feedback')">Inhaltliches Feedback</button>
+      <button class="reason-tab" onclick="setReason(this,'Kooperation & Werbung')">Kooperation & Werbung</button>
+    </div>
+
+    <div class="form-success" id="form-success" role="alert">
+      <strong>Nachricht gesendet!</strong>
+      <p>Vielen Dank – wir melden uns in der Regel innerhalb von 2–3 Werktagen bei Ihnen.</p>
+    </div>
+
+    <!--
+      SICHERHEITSHINWEIS: Dieses Formular darf NICHT direkt an eine API oder
+      einen Maildienst im Frontend-JS senden. Die action-URL muss vor Go-Live auf
+      eine serverseitige Cloudflare Pages Function zeigen, die den API-Key als
+      verschlüsseltes Environment Secret hält. Aktuell Prototyp (action="#").
+    -->
+    <form class="contact-form" id="contact-form" action="#" method="POST" novalidate>
+      <input type="hidden" name="reason" id="reason-hidden" value="Allgemeine Frage">
+
+      <!-- Honeypot (Spam-Schutz, für Bots unsichtbar) -->
+      <div style="display:none" aria-hidden="true">
+        <label for="website">Website leer lassen</label>
+        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label" for="vorname">Vorname <span class="required" aria-label="Pflichtfeld">*</span></label>
+          <input type="text" id="vorname" name="vorname" class="form-input" placeholder="Max" autocomplete="given-name" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="nachname">Nachname</label>
+          <input type="text" id="nachname" name="nachname" class="form-input" placeholder="Mustermann" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="email">E-Mail <span class="required" aria-label="Pflichtfeld">*</span></label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="max@beispiel.at" autocomplete="email" required>
+      </div>
+
+      <div class="form-field" id="field-location" style="display:none">
+        <label class="form-label" for="location-name">Name des Golfplatzes / Hotels</label>
+        <input type="text" id="location-name" name="location_name" class="form-input" placeholder="z.B. Golfclub Muster, 1234 Musterort">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="betreff">Betreff</label>
+        <input type="text" id="betreff" name="betreff" class="form-input" placeholder="Kurze Zusammenfassung Ihrer Anfrage">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="nachricht">Nachricht <span class="required" aria-label="Pflichtfeld">*</span></label>
+        <textarea id="nachricht" name="nachricht" class="form-textarea" placeholder="Schreiben Sie uns …" required></textarea>
+      </div>
+
+      <div class="form-field">
+        <div class="form-consent">
+          <label>
+            <input type="checkbox" name="datenschutz" id="datenschutz" required>
+            <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz/">Datenschutzerklärung</a> von golf-lernen.at zu. <span class="required">*</span></span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submit-btn">Nachricht absenden</button>
+    </form>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar-col">
+    <div class="response-info">
+      <span class="response-icon">⏱️</span>
+      <p><strong>Antwortzeit</strong>Wir antworten in der Regel innerhalb von 2–3 Werktagen.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-head">Häufige Anliegen</div>
+      <div class="sidebar-card-body">
+        <div class="reason-list">
+          <div class="reason-item">
+            <div class="reason-icon">📍</div>
+            <div>
+              <h3>Location eintragen</h3>
+              <p>Ihr Lieblingsgolfplatz oder Hotel ist noch nicht gelistet? Schicken Sie uns die Details.</p>
+            </div>
+          </div>
+          <div class="reason-item">
+            <div class="reason-icon">✏️</div>
+            <div>
+              <h3>Inhaltliches Feedback</h3>
+              <p>Haben Sie Fragen oder Anmerkungen zu einem Beitrag? Wir freuen uns über jede Rückmeldung.</p>
+            </div>
+          </div>
+          <div class="reason-item">
+            <div class="reason-icon">🤝</div>
+            <div>
+              <h3>Kooperation & Werbung</h3>
+              <p>Spannendes Angebot für Golfeinsteiger? Wir freuen uns über Ihre Kooperationsanfrage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+  function setReason(btn, label) {
+    document.querySelectorAll('.reason-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('reason-hidden').value = label;
+    document.getElementById('field-location').style.display = label === 'Location eintragen' ? 'flex' : 'none';
+  }
+
+  // Prototyp: zeigt nur den Success-State. KEIN echter Versand, KEIN API-Key im Frontend.
+  // Vor Go-Live: action auf serverseitige Cloudflare Pages Function setzen.
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (document.getElementById('website').value !== '') return; // Honeypot
+    if (!this.checkValidity()) { this.reportValidity(); return; }
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet …';
+    setTimeout(() => {
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }, 800);
+  });
+</script>
+{{ end }}

@@ -1,0 +1,68 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/grundlagen.css">
+
+{{ $articles := where .Site.RegularPages "Type" "grundlagen" }}
+
+<!-- HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="/">Startseite</a></li><li aria-current="page">Grundlagen</li></ol></nav>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="page-tag">Erste Schritte im Golfsport</p>
+      <h1>Die Golf-<em>Grundlagen</em></h1>
+      <p>{{ .Description | default "Als Golf-Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – verständlich und kompakt erklärt." }}</p>
+    </div>
+    <nav class="hero-nav" aria-label="Kapitelübersicht">
+      {{ range $i, $k := .Params.kapitel_liste }}
+      <a href="#{{ $k.id }}" class="hero-nav-item">
+        <span class="hero-nav-num">{{ printf "%02d" (add $i 1) }}</span>
+        <span class="hero-nav-text"><span class="hero-nav-title">{{ $k.title }}</span><span class="hero-nav-desc">{{ $k.nav_desc }}</span></span>
+        <span class="hero-nav-arrow">→</span>
+      </a>
+      {{ end }}
+    </nav>
+  </div>
+</header>
+
+<!-- KAPITEL (datengetrieben aus _index.md + Artikeln) -->
+{{ range $i, $k := .Params.kapitel_liste }}
+<section class="chapter{{ if eq $i 0 }} first{{ end }}{{ if eq (mod $i 2) 1 }} alt{{ end }}" id="{{ $k.id }}">
+  <div class="chapter-header">
+    <div><p class="chapter-label">{{ $k.label }}</p><h2 class="chapter-title">{{ $k.title }}</h2></div>
+    <p class="chapter-desc">{{ $k.desc }}</p>
+  </div>
+  <div class="sub-cards">
+    {{ range $j, $a := (where $articles "Params.kapitel" $k.id).ByWeight }}
+    <a href="{{ $a.Permalink }}" class="sub-card reveal{{ if eq $j 1 }} rd1{{ else if eq $j 2 }} rd2{{ else if ge $j 3 }} rd2{{ end }}">
+      <div class="sub-card-thumb">
+        {{ with $a.Params.image }}<img src="{{ . }}" alt="{{ $a.Title }}" loading="lazy">{{ else }}<div class="sub-card-thumb-placeholder">⛳</div>{{ end }}
+      </div>
+      <div class="sub-card-body">
+        <h3>{{ $a.Title }}</h3>
+        <p>{{ $a.Params.lead | default $a.Params.description }}</p>
+        <span class="sub-card-link">Mehr erfahren →</span>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-text">
+    <p class="cta-label">Bereit loszulegen?</p>
+    <h2>Ihr Golfkurs im Internet</h2>
+    <p>golf-lernen.at ersetzt nicht den ersten echten Golfkurs – aber wir geben Ihnen die beste Ausgangsbasis für Ihre ersten Schritte am Platz.</p>
+  </div>
+  <div class="cta-links">
+    <a href="/locations/" class="btn-cta-white">Golfplätze in Österreich finden</a>
+    <a href="/magazin/" class="btn-cta-ghost">Zum Golf-Magazin</a>
+  </div>
+</div>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)} }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+{{ end }}

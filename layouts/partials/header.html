@@ -12,11 +12,57 @@
       <line x1="44" y1="33" x2="200" y2="33" stroke="#5C8A3C" stroke-width="1.2" stroke-linecap="square"/>
     </svg>
   </a>
-  <ul class="nav-links">
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+
+  <ul class="nav-links" id="nav-menu">
     <li><a href="/grundlagen/">Grundlagen</a></li>
     <li><a href="/locations/">Locations</a></li>
     <li><a href="/magazin/">Magazin</a></li>
     <li><a href="/glossar/">Glossar</a></li>
   </ul>
-  <a href="/platzreife/" class="nav-cta">Platzreife finden</a>
 </nav>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (!toggle || !menu) return;
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menü öffnen');
+    }
+    function openMenu() {
+      menu.classList.add('open');
+      toggle.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Menü schließen');
+    }
+
+    toggle.addEventListener('click', function () {
+      menu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    // Schließen bei Klick auf einen Link
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // Schließen mit Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Schließen bei Klick außerhalb der Navigation
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('open') && !e.target.closest('nav')) closeMenu();
+    });
+  })();
+</script>

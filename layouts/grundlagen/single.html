@@ -1,0 +1,117 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/grundlagen.css">
+
+{{/* 3 Kapitel der Übersicht – Basis für Fortschrittsleiste, Tag-Label, Kapitel-Anker */}}
+{{ $chapters := slice (dict "id" "golfplatz" "label" "Golfplatz & Platzreife") (dict "id" "ausruestung" "label" "Schwung & Ausrüstung") (dict "id" "regeln" "label" "Regeln & Handicap") }}
+{{ $kap := .Params.kapitel }}
+{{ $kapLabel := "" }}{{ range $chapters }}{{ if eq $kap .id }}{{ $kapLabel = .label }}{{ end }}{{ end }}
+
+{{/* alle Grundlagen-Artikel nach weight, für Kapitel-Navigation & prev/next */}}
+{{ $all := sort (where .Site.RegularPages "Type" "grundlagen") "Weight" }}
+{{ $idx := -1 }}{{ range $i, $p := $all }}{{ if eq $p.Permalink $.Permalink }}{{ $idx = $i }}{{ end }}{{ end }}
+{{ $prev := false }}{{ $next := false }}
+{{ if gt $idx 0 }}{{ $prev = index $all (sub $idx 1) }}{{ end }}
+{{ if and (ge $idx 0) (lt $idx (sub (len $all) 1)) }}{{ $next = index $all (add $idx 1) }}{{ end }}
+
+<!-- ARTICLE HERO -->
+<header class="article-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li><a href="/grundlagen/">Grundlagen</a></li>
+      <li aria-current="page">{{ .Title }}</li>
+    </ol>
+  </nav>
+
+  <div class="chapter-progress" aria-label="Kapitelfortschritt">
+    {{ range $i, $c := $chapters }}
+      {{ if $i }}<span class="cp-sep">·</span>{{ end }}
+      <a href="/grundlagen/#{{ $c.id }}" class="cp-item{{ if eq $kap $c.id }} active{{ end }}"><span class="cp-dot{{ if eq $kap $c.id }} active{{ end }}"></span>{{ $c.label }}</a>
+    {{ end }}
+  </div>
+
+  <p class="article-tag-label">Grundlagen{{ with $kapLabel }} · {{ . }}{{ end }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.lead }}<p class="article-hero-lead">{{ . }}</p>{{ end }}
+  <div class="article-meta">
+    <span>Redaktion golf-lernen.at</span>
+    {{ with .Params.lesezeit }}<span class="meta-dot"></span><span>{{ . }}</span>{{ end }}
+    {{ with .Params.stand }}<span class="meta-dot"></span><span>Aktualisiert: {{ . }}</span>{{ end }}
+  </div>
+</header>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar" aria-label="Inhaltsverzeichnis">
+    {{ $toc := .TableOfContents }}
+    {{ if gt (len $toc) 30 }}
+    <p class="toc-heading">Inhalt</p>
+    <div class="toc-list">{{ $toc }}</div>
+    <div class="toc-divider"></div>
+    {{ end }}
+    {{ with $all }}
+    <div class="chapter-nav-box">
+      <p class="chapter-nav-label">Alle Grundlagen</p>
+      <nav class="chapter-nav-links">
+        {{ range $i, $p := . }}
+        <a href="{{ $p.Permalink }}" class="chapter-nav-link{{ if eq $p.Permalink $.Permalink }} current{{ end }}"><span class="cnl-num">{{ printf "%02d" (add $i 1) }}</span>{{ $p.Title }}</a>
+        {{ end }}
+      </nav>
+    </div>
+    {{ end }}
+  </aside>
+
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
+    {{ .Content }}
+
+    {{ with .Params.tags }}
+    <div class="article-tags">
+      <span class="tags-label">Tags:</span>
+      {{ range . }}<a href="#" class="tag-chip">{{ . }}</a>{{ end }}
+    </div>
+    {{ end }}
+
+    {{ if or $prev $next }}
+    <div class="chapter-nav-bottom">
+      {{ with $prev }}<a href="{{ .Permalink }}" class="cnb-item prev"><span class="cnb-dir">← Vorheriges Kapitel</span><span class="cnb-title">{{ .Title }}</span></a>{{ else }}<span></span>{{ end }}
+      {{ with $next }}<a href="{{ .Permalink }}" class="cnb-item next"><span class="cnb-dir">Nächstes Kapitel →</span><span class="cnb-title">{{ .Title }}</span></a>{{ end }}
+    </div>
+    {{ end }}
+  </article>
+</div>
+
+<!-- RELATED -->
+{{ $related := first 3 (where (where .Site.RegularPages "Type" "grundlagen") "Permalink" "!=" .Permalink) }}
+{{ with $related }}
+<section class="related-section">
+  <p class="section-label">Weitere Grundlagen</p>
+  <h2 class="related-title">Das könnte Sie auch interessieren</h2>
+  <div class="related-grid">
+    {{ range . }}
+    <a href="{{ .Permalink }}" class="related-card">
+      <div class="related-thumb"><img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy"></div>
+      <div class="related-body"><span class="related-tag">Grundlagen</span><h3>{{ .Title }}</h3><span class="related-link">Mehr erfahren →</span></div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<script>
+  const secs = document.querySelectorAll('.article-body h2[id]');
+  const tocs = document.querySelectorAll('.toc-list a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        tocs.forEach(l => l.classList.remove('active'));
+        const l = document.querySelector('.toc-list a[href="#'+e.target.id+'"]');
+        if(l) l.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  secs.forEach(s => obs.observe(s));
+</script>
+{{ end }}

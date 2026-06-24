@@ -1,0 +1,8 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/prose.css">
+<main class="prose">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.meta }}<p class="meta">{{ . }}</p>{{ end }}
+  {{ .Content }}
+</main>
+{{ end }}

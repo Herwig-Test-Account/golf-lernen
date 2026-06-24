@@ -1,0 +1,309 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/neuer-eintrag.css">
+
+<!-- HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li><a href="/locations/">Locations</a></li>
+      <li aria-current="page">Neue Location einreichen</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Community</p>
+  <h1>Location nicht gefunden? <em>Jetzt einreichen.</em></h1>
+  <p class="page-hero-lead">Helfen Sie uns, die besten Golf-Locations Österreichs zu sammeln. Füllen Sie das Formular aus – wir kontaktieren die Betreiber und informieren Sie, sobald der Eintrag live geht.</p>
+</header>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- FORM -->
+  <div class="form-col">
+
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" id="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:25%"></div>
+    </div>
+
+    <div class="step-indicator" aria-label="Formularfortschritt">
+      <div class="step active" id="step-ind-1"><div class="step-num">1</div><span class="step-label">Location</span></div>
+      <div class="step-line" id="step-line-1"></div>
+      <div class="step" id="step-ind-2"><div class="step-num">2</div><span class="step-label">Kontakt</span></div>
+      <div class="step-line" id="step-line-2"></div>
+      <div class="step" id="step-ind-3"><div class="step-num">3</div><span class="step-label">Angebot</span></div>
+      <div class="step-line" id="step-line-3"></div>
+      <div class="step" id="step-ind-4"><div class="step-num">4</div><span class="step-label">Absenden</span></div>
+    </div>
+
+    <!--
+      SICHERHEITSHINWEIS: action="#" ist nur für den Prototyp.
+      Vor Go-Live: action auf eine Cloudflare Pages Function setzen.
+      Serverseitige Validierung ALLER Felder. Kein API-Key im Frontend.
+      Honeypot + Cloudflare Turnstile auf CF-Function-Seite empfohlen.
+      Daten gemäß DSGVO Art. 6 – Datenschutzerklärung vor Go-Live rechtlich prüfen.
+    -->
+    <form id="location-form" action="#" method="POST" novalidate>
+
+      <!-- Honeypot -->
+      <div style="display:none" aria-hidden="true">
+        <input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <!-- STEP 1: LOCATION -->
+      <div class="form-section active" id="step-1">
+        <div class="form-section-heading">
+          <p class="section-eyebrow">Schritt 1 von 4</p>
+          <h2 class="section-title">Name & Adresse</h2>
+          <p class="section-desc">Wie heißt die Location und wo befindet sie sich?</p>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="loc-name">Name der Location <span class="req">*</span></label>
+          <input type="text" id="loc-name" name="loc_name" class="form-input" placeholder="z.B. Golfclub Mustertal" required>
+        </div>
+        <div class="form-divider"></div>
+        <div class="form-field">
+          <label class="form-label" for="loc-strasse">Straße & Hausnummer <span class="req">*</span></label>
+          <input type="text" id="loc-strasse" name="loc_strasse" class="form-input" placeholder="Musterstraße 12" required>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="loc-plz">PLZ <span class="req">*</span></label>
+            <input type="text" id="loc-plz" name="loc_plz" class="form-input" placeholder="1234" inputmode="numeric" pattern="[0-9]{4,5}" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="loc-ort">Ort <span class="req">*</span></label>
+            <input type="text" id="loc-ort" name="loc_ort" class="form-input" placeholder="Musterort" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="loc-bundesland">Bundesland <span class="req">*</span></label>
+            <select id="loc-bundesland" name="loc_bundesland" class="form-select" required>
+              <option value="">Bitte auswählen</option>
+              <option>Burgenland</option><option>Kärnten</option><option>Niederösterreich</option>
+              <option>Oberösterreich</option><option>Salzburg</option><option>Steiermark</option>
+              <option>Tirol</option><option>Vorarlberg</option><option>Wien</option>
+              <option value="non-at">Location nicht in Österreich</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="loc-land">Land</label>
+            <select id="loc-land" name="loc_land" class="form-select">
+              <option value="AT" selected>Österreich</option>
+              <option value="DE">Deutschland</option>
+              <option value="CH">Schweiz</option>
+              <option value="OTHER">Anderes Land</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-nav">
+          <span></span>
+          <button type="button" class="btn-next" onclick="goStep(2)">Weiter: Kontaktdaten →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: KONTAKT -->
+      <div class="form-section" id="step-2">
+        <div class="form-section-heading">
+          <p class="section-eyebrow">Schritt 2 von 4</p>
+          <h2 class="section-title">Kontakt der Location</h2>
+          <p class="section-desc">Wie können wir die Betreiber dieser Location erreichen?</p>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="loc-website">Website <span class="req">*</span></label>
+          <input type="url" id="loc-website" name="loc_website" class="form-input" placeholder="https://www.golfclub-beispiel.at" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="loc-email">E-Mail der Location <span class="opt">(optional)</span></label>
+          <input type="email" id="loc-email" name="loc_email" class="form-input" placeholder="office@golfclub-beispiel.at">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="loc-tel">Telefon <span class="opt">(optional)</span></label>
+          <input type="tel" id="loc-tel" name="loc_tel" class="form-input" placeholder="+43 1 234 5678" autocomplete="off">
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back" onclick="goStep(1)">← Zurück</button>
+          <button type="button" class="btn-next" onclick="goStep(3)">Weiter: Angebot →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: ANGEBOT -->
+      <div class="form-section" id="step-3">
+        <div class="form-section-heading">
+          <p class="section-eyebrow">Schritt 3 von 4</p>
+          <h2 class="section-title">Angebot & Ausstattung</h2>
+          <p class="section-desc">Helfen Sie uns, den Eintrag möglichst vollständig zu machen. Alle Felder optional.</p>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="loc-loch">Anzahl der Löcher <span class="opt">(optional)</span></label>
+            <input type="number" id="loc-loch" name="loc_loch" class="form-input" placeholder="z.B. 18" min="1" max="72">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="loc-preis">Mindestpreis pro Erw. (€) <span class="opt">(optional)</span></label>
+            <input type="number" id="loc-preis" name="loc_preis" class="form-input" placeholder="z.B. 25" min="0">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="loc-leih">Ausrüstung leihbar?</label>
+            <select id="loc-leih" name="loc_leih" class="form-select">
+              <option value="">Unbekannt</option><option>Ja</option><option>Ja (ohne Aufpreis)</option><option>Nein</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="loc-schwierigkeit">Schwierigkeitsgrad</label>
+            <select id="loc-schwierigkeit" name="loc_schwierigkeit" class="form-select">
+              <option value="">Unbekannt</option><option>Leicht</option><option>Mittel</option><option>Schwer</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Ausstattung</label>
+          <div class="toggle-grid">
+            <label class="toggle-item"><input type="checkbox" name="feat_uebung" value="1"><span>Übungsplatz</span></label>
+            <label class="toggle-item"><input type="checkbox" name="feat_range" value="1"><span>Driving Range</span></label>
+            <label class="toggle-item"><input type="checkbox" name="feat_restaurant" value="1"><span>Restaurant</span></label>
+            <label class="toggle-item"><input type="checkbox" name="feat_hunde" value="1"><span>Hunde erlaubt</span></label>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Passende Kategorien</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" name="cat[]" value="golfhotel"> Golfhotel für Anfänger</label>
+            <label class="checkbox-label"><input type="checkbox" name="cat[]" value="no-platzreife"> Keine ÖGV-Platzreife nötig</label>
+            <label class="checkbox-label"><input type="checkbox" name="cat[]" value="no-pe"> Keine Platzerlaubnis (PE) nötig</label>
+            <label class="checkbox-label"><input type="checkbox" name="cat[]" value="oeffentlich"> Öffentliche Anlage (keine Clubmitgliedschaft nötig)</label>
+            <label class="checkbox-label"><input type="checkbox" name="cat[]" value="platzreife"> ÖGV-Platzreife nötig</label>
+            <label class="checkbox-label"><input type="checkbox" name="cat[]" value="pe"> Platzerlaubnis (PE) nötig</label>
+          </div>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back" onclick="goStep(2)">← Zurück</button>
+          <button type="button" class="btn-next" onclick="goStep(4)">Weiter: Absenden →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: EINSENDER -->
+      <div class="form-section" id="step-4">
+        <div class="form-section-heading">
+          <p class="section-eyebrow">Schritt 4 von 4</p>
+          <h2 class="section-title">Ihre Angaben</h2>
+          <p class="section-desc">Damit wir Sie informieren können, sobald der Eintrag live ist.</p>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="sub-vorname">Vorname <span class="req">*</span></label>
+            <input type="text" id="sub-vorname" name="sub_vorname" class="form-input" placeholder="Max" autocomplete="given-name" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="sub-nachname">Nachname <span class="opt">(optional)</span></label>
+            <input type="text" id="sub-nachname" name="sub_nachname" class="form-input" placeholder="Mustermann" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="sub-email">Ihre E-Mail <span class="req">*</span></label>
+          <input type="email" id="sub-email" name="sub_email" class="form-input" placeholder="max@beispiel.at" autocomplete="email" required>
+          <p class="form-hint">Wir verwenden Ihre Adresse nur, um Sie über den Status Ihres Eintrags zu informieren.</p>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="sub-betreiber">Arbeiten Sie für diese Location?</label>
+          <select id="sub-betreiber" name="sub_betreiber" class="form-select">
+            <option value="no">Nein</option><option value="yes">Ja</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="sub-hinweis">Weitere Hinweise <span class="opt">(optional)</span></label>
+          <textarea id="sub-hinweis" name="sub_hinweis" class="form-textarea" placeholder="Gibt es noch etwas, das wir wissen sollten?" style="min-height:80px"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="checkbox-label">
+            <input type="checkbox" name="datenschutz" id="datenschutz" required>
+            <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz/" style="color:var(--green-accent);text-decoration:none;border-bottom:1px solid var(--green-lightest)">Datenschutzerklärung</a> von golf-lernen.at zu. <span class="req">*</span></span>
+          </label>
+        </div>
+        <div class="form-nav">
+          <button type="button" class="btn-back" onclick="goStep(3)">← Zurück</button>
+          <button type="submit" class="btn-submit" id="submit-btn">Eintrag einreichen</button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- SUCCESS -->
+    <div class="form-success" id="form-success" role="alert">
+      <div class="success-icon">🏌️</div>
+      <h2>Danke für Ihren Beitrag!</h2>
+      <p>Wir haben Ihre Einreichung erhalten und werden die Betreiber kontaktieren. Sobald der Eintrag auf golf-lernen.at erscheint, informieren wir Sie per E-Mail.</p>
+      <a href="/locations/" class="btn-outline-green">Zu den Locations</a>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar-col">
+    <div class="notice-box">
+      <strong>So funktioniert es</strong>
+      Wir prüfen jeden Eintrag manuell und kontaktieren bei Bedarf die Betreiber. Sie erhalten eine E-Mail, sobald Ihr Eintrag live geht.
+    </div>
+    <div class="info-card">
+      <div class="info-card-head">Was wir benötigen</div>
+      <div class="info-card-body">
+        <ul class="info-list">
+          <li class="info-item"><div class="info-icon">📍</div><p><strong>Name & Adresse</strong>Vollständige Anschrift der Location für die Kartendarstellung.</p></li>
+          <li class="info-item"><div class="info-icon">🌐</div><p><strong>Website der Location</strong>Damit wir Betreiber direkt kontaktieren und Daten verifizieren können.</p></li>
+          <li class="info-item"><div class="info-icon">⛳</div><p><strong>Angebot</strong>Lochzahl, Greenfee und Ausstattung helfen Einsteigern, den richtigen Platz zu finden.</p></li>
+          <li class="info-item"><div class="info-icon">✉️</div><p><strong>Ihre E-Mail</strong>Nur für die Benachrichtigung, wenn der Eintrag live ist. Kein Newsletter.</p></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+  const STEPS = 4;
+  let current = 1;
+
+  function goStep(n) {
+    if (n > current) {
+      const section = document.getElementById('step-' + current);
+      const required = section.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(el => { if (!el.value.trim() && !el.checked) { el.reportValidity(); valid = false; } });
+      if (!valid) return;
+    }
+    document.getElementById('step-' + current).classList.remove('active');
+    document.getElementById('step-ind-' + current).classList.remove('active');
+    if (n > current) document.getElementById('step-ind-' + current).classList.add('done');
+    current = n;
+    document.getElementById('step-' + current).classList.add('active');
+    document.getElementById('step-ind-' + current).classList.add('active');
+    document.getElementById('step-ind-' + current).classList.remove('done');
+    for (let i = 1; i <= STEPS - 1; i++) {
+      document.getElementById('step-line-' + i).classList.toggle('done', i < current);
+    }
+    const pct = Math.round((current / STEPS) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-bar').setAttribute('aria-valuenow', pct);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Prototyp: zeigt nur den Success-State. KEIN echter Versand, KEIN API-Key im Frontend.
+  // Vor Go-Live: action auf serverseitige Cloudflare Pages Function setzen.
+  document.getElementById('location-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (document.getElementById('hp-website').value !== '') return; // Honeypot
+    if (!this.checkValidity()) { this.reportValidity(); return; }
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Wird eingereicht …';
+    setTimeout(() => {
+      document.getElementById('location-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      document.querySelector('.step-indicator').style.display = 'none';
+      document.querySelector('.progress-bar').style.display = 'none';
+    }, 900);
+  });
+</script>
+{{ end }}

@@ -1,0 +1,30 @@
+{{ define "main" }}
+<style>
+  .error-hero{background:var(--green-deep);margin-top:60px;min-height:calc(100vh - 60px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;color:var(--white)}
+  .error-code{font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:24px}
+  .error-hero h1{font-family:var(--serif);font-size:clamp(40px,7vw,88px);line-height:1.02;letter-spacing:-2px;color:var(--white);margin-bottom:20px}
+  .error-hero h1 em{font-style:italic;color:var(--green-light)}
+  .error-lead{font-size:18px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.65);max-width:480px;margin-bottom:36px}
+  .error-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .error-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:var(--radius);font-family:var(--sans);font-size:15px;font-weight:500;text-decoration:none;transition:transform .15s,background .2s,border-color .2s,color .2s}
+  .error-btn-primary{background:var(--green-accent);color:var(--white)}
+  .error-btn-primary:hover{background:var(--green-mid);transform:translateY(-1px)}
+  .error-btn-ghost{border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85)}
+  .error-btn-ghost:hover{border-color:var(--green-light);color:var(--white)}
+  @media(max-width:520px){
+    .error-actions{flex-direction:column;width:100%;max-width:320px}
+    .error-btn{justify-content:center}
+  }
+</style>
+
+<section class="error-hero">
+  <p class="error-code">Fehler 404</p>
+  <h1>Diese Seite liegt im <em>Rough</em>.</h1>
+  <p class="error-lead">Die gesuchte Seite gibt es nicht (mehr) – vielleicht ein vertippter Link oder ein verschlagener Ball. Finden wir zurück aufs Fairway:</p>
+  <div class="error-actions">
+    <a href="/" class="error-btn error-btn-primary">Zur Startseite</a>
+    <a href="/locations/" class="error-btn error-btn-ghost">Golfplätze finden</a>
+    <a href="/grundlagen/" class="error-btn error-btn-ghost">Grundlagen lernen</a>
+  </div>
+</section>
+{{ end }}

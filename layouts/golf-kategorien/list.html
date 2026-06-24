@@ -1,0 +1,25 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/locations.css">
+
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li><a href="/locations/">Locations</a></li>
+      <li aria-current="page">Kategorien</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Übersicht</p>
+  <h1>Golfplätze nach <em>Kategorie</em></h1>
+  <p class="page-hero-lead">{{ .Description | default "Filtern Sie Golfplätze nach Art der Anlage und nach den Voraussetzungen zum Spielen." }}</p>
+</header>
+
+<main class="locations-wrap">
+  <div class="cat-list">
+    {{ range (where .Site.RegularPages "Type" "golf-kategorien").ByTitle }}
+      {{ $cnt := len (where (where $.Site.RegularPages "Type" "locations") "Params.kategorien" "intersect" (slice .Params.kategorie)) }}
+      <a href="{{ .Permalink }}" class="cat-chip">{{ .Title }} ({{ $cnt }})</a>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

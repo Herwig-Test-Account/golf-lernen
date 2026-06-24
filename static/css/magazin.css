@@ -11,7 +11,6 @@
   .breadcrumb a:hover { color: rgba(255,255,255,0.9); }
   .breadcrumb li:not(:last-child)::after { content: '›'; margin-left: 8px; }
   .page-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-light); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
-  .page-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-light); }
   .page-hero h1 { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 60px); line-height: 1.07; letter-spacing: -1.2px; color: var(--white); margin-bottom: 18px; }
   .page-hero h1 em { font-style: italic; color: var(--green-light); }
   .page-hero-lead { font-size: 17px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.62); max-width: 560px; }
@@ -19,6 +18,7 @@
   /* ── FEATURED POST ── */
   .featured-wrap { padding: 0 80px; margin-top: -1px; background: var(--green-deep); padding-bottom: 0; }
   .featured-post {
+    text-decoration: none;
     background: var(--white);
     border-radius: 16px 16px 0 0;
     overflow: hidden;
@@ -83,7 +83,6 @@
   .section-wrap.alt { background: var(--off-white); }
   .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; gap: 20px; }
   .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-accent); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
-  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-accent); }
   .section-title { font-family: var(--serif); font-size: clamp(22px, 2.5vw, 32px); letter-spacing: -0.5px; color: var(--text-dark); line-height: 1.2; }
   .section-desc { font-size: 14px; color: var(--text-muted); font-weight: 300; max-width: 440px; margin-top: 4px; }
   .see-all { font-size: 13px; font-weight: 500; color: var(--green-accent); text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 4px; transition: gap 0.2s; }

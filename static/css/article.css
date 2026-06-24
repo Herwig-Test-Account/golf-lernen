@@ -11,7 +11,6 @@
   .breadcrumb a:hover { color: rgba(255,255,255,0.9); }
   .breadcrumb li:not(:last-child)::after { content: '›'; margin-left: 8px; }
   .article-tag-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-light); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
-  .article-tag-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-light); }
   .article-hero h1 { font-family: var(--serif); font-size: clamp(32px, 4vw, 56px); line-height: 1.08; letter-spacing: -1.2px; color: var(--white); max-width: 760px; margin-bottom: 20px; }
   .article-hero h1 em { font-style: italic; color: var(--green-light); }
   .article-hero-lead { font-size: 18px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.65); max-width: 640px; margin-bottom: 36px; }
@@ -30,7 +29,6 @@
   /* ── TOC SIDEBAR ── */
   .toc-sidebar { position: sticky; top: 80px; padding: 48px 28px 48px 0; }
   .toc-heading { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-  .toc-heading::before { content: ''; display: block; width: 16px; height: 1px; background: var(--text-muted); }
   .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
   /* Hugo TOC-Struktur: nav#TableOfContents > ul > li > a */
   .toc-list nav#TableOfContents { position: static; width: auto; height: auto; background: none; border: none; padding: 0; backdrop-filter: none; display: block; }
@@ -125,7 +123,6 @@
   /* ── RELATED POSTS ── */
   .related-section { background: var(--off-white); padding: 64px 80px; border-top: 1px solid var(--border-light); }
   .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-accent); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-accent); }
   .related-title { font-family: var(--serif); font-size: clamp(22px, 2.5vw, 32px); letter-spacing: -0.5px; color: var(--text-dark); margin-bottom: 32px; }
   .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s; position: relative; }

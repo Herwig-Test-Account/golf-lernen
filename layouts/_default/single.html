@@ -43,11 +43,6 @@
 
   <!-- ARTICLE BODY -->
   <article class="article-body">
-    {{ with .Params.image }}
-    <div class="article-hero-img">
-      <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
-    </div>
-    {{ end }}
 
     {{ .Content }}
 

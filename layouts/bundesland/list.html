@@ -1,0 +1,25 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/locations.css">
+
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li><a href="/locations/">Locations</a></li>
+      <li aria-current="page">Bundesländer</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Übersicht</p>
+  <h1>Golfplätze nach <em>Bundesland</em></h1>
+  <p class="page-hero-lead">{{ .Description | default "Wählen Sie ein Bundesland, um einsteigerfreundliche Golfplätze in Ihrer Region zu finden." }}</p>
+</header>
+
+<main class="locations-wrap">
+  <div class="bl-chips">
+    {{ range (where .Site.RegularPages "Type" "bundesland").ByTitle }}
+      {{ $cnt := len (where (where $.Site.RegularPages "Type" "locations") "Params.bundesland" .Params.bundesland) }}
+      <a href="{{ .Permalink }}" class="bl-chip">{{ .Title }} ({{ $cnt }})</a>
+    {{ end }}
+  </div>
+</main>
+{{ end }}

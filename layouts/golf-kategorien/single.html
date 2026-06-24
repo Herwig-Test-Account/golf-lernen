@@ -1,0 +1,90 @@
+{{ define "main" }}
+<link rel="stylesheet" href="/css/locations.css">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+      <li><a href="/">Startseite</a></li>
+      <li><a href="/locations/">Locations</a></li>
+      <li aria-current="page">{{ .Title }}</li>
+    </ol>
+  </nav>
+  <p class="page-tag">Golfplätze nach Kategorie</p>
+  <h1>{{ .Title }}</h1>
+  <p class="page-hero-lead">{{ .Params.lead }}</p>
+</header>
+
+{{ $locations := where (where .Site.RegularPages "Type" "locations") "Params.kategorien" "intersect" (slice .Params.kategorie) }}
+
+<!-- RESULTS META -->
+<div class="results-meta">
+  <p class="results-count"><strong>{{ len $locations }}</strong> {{ cond (eq (len $locations) 1) "Golfplatz" "Golfplätze" }}</p>
+</div>
+
+<!-- LOCATIONS GRID -->
+<main class="locations-wrap">
+  <div class="locations-grid" id="locations-grid">
+    {{ range $locations.ByTitle }}
+    {{ $preisklasse := "mittel" }}
+    {{ with .Params.greenfee_ab }}{{ if le . 30 }}{{ $preisklasse = "guenstig" }}{{ else if ge . 51 }}{{ $preisklasse = "gehoben" }}{{ end }}{{ end }}
+    <a href="{{ .Permalink }}" class="location-card"
+       data-bundesland="{{ .Params.bundesland }}"
+       data-preis="{{ $preisklasse }}">
+      <div class="card-thumb">
+        {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ else }}<div class="card-thumb-placeholder">⛳</div>{{ end }}
+        <div class="card-badges">
+          {{ with .Params.kategorien }}<span class="badge badge-cat">{{ index . 0 }}</span>{{ end }}
+          {{ if eq $preisklasse "guenstig" }}<span class="badge badge-price-low">Günstig</span>{{ else if eq $preisklasse "mittel" }}<span class="badge badge-price-mid">Durchschnittlich</span>{{ end }}
+        </div>
+      </div>
+      <div class="card-body">
+        {{ with .Params.bundesland }}<p class="card-state">{{ . }}</p>{{ end }}
+        <h2>{{ .Title }}</h2>
+        <div class="card-rating">
+          <div class="stars" aria-label="Noch keine Bewertung">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="rating-count">0 Bewertungen</span>
+        </div>
+        <div class="card-meta">
+          {{ with .Params.lochzahl }}<span class="card-meta-item"><span class="card-meta-icon">⛳</span> {{ . }} Loch</span>{{ end }}
+        </div>
+        <div class="card-footer">
+          {{ with .Params.greenfee_ab }}<p class="card-price">ab {{ . }}€ <span>pro Erw.</span></p>{{ end }}
+          <span class="card-link-arrow">Details →</span>
+        </div>
+      </div>
+    </a>
+    {{ end }}
+  </div>
+  <p id="locations-empty" style="display:none; text-align:center; color:var(--text-muted); padding:40px 0;">Aktuell sind hier noch keine Golfplätze gelistet.</p>
+
+  <div class="pagination" id="pagination"></div>
+</main>
+
+<script>
+  const PER_PAGE = 12;
+  let currentPage = 1;
+  function getCards(){ return Array.from(document.querySelectorAll('#locations-grid .location-card')); }
+  function render(){
+    const all = getCards();
+    all.forEach(c => c.style.display = 'none');
+    const start = (currentPage - 1) * PER_PAGE;
+    all.slice(start, start + PER_PAGE).forEach(c => c.style.display = '');
+    document.getElementById('locations-empty').style.display = all.length === 0 ? 'block' : 'none';
+    renderPagination(all.length);
+  }
+  function renderPagination(total){
+    const pages = Math.ceil(total / PER_PAGE);
+    const box = document.getElementById('pagination');
+    box.innerHTML = '';
+    if (pages <= 1) return;
+    const mk = (txt, cls, disabled, fn) => { const b=document.createElement('button'); b.className='page-btn '+cls; b.textContent=txt; b.disabled=!!disabled; b.onclick=fn; return b; };
+    box.appendChild(mk('‹','arrow',currentPage===1,()=>{currentPage--;render();window.scrollTo({top:0,behavior:'smooth'});}));
+    for (let i=1;i<=pages;i++){ box.appendChild(mk(i, i===currentPage?'active':'', false, ()=>{currentPage=i;render();window.scrollTo({top:0,behavior:'smooth'});})); }
+    box.appendChild(mk('›','arrow',currentPage===pages,()=>{currentPage++;render();window.scrollTo({top:0,behavior:'smooth'});}));
+  }
+  document.addEventListener('DOMContentLoaded', render);
+</script>
+{{ end }}

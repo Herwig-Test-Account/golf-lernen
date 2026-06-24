@@ -36,6 +36,18 @@
       <option value="gehoben">Gehoben (ab 51 €)</option>
     </select>
   </div>
+  <div class="filter-group">
+    <label class="filter-label" for="filter-kategorie">Kategorie</label>
+    <select class="filter-select" id="filter-kategorie" onchange="applyFilters()">
+      <option value="">Alle Kategorien</option>
+      <option>Öffentliche Anlage</option>
+      <option>Keine ÖGV-Platzreife nötig</option>
+      <option>Keine Platzerlaubnis (PE) nötig</option>
+      <option>Platzerlaubnis (PE) nötig</option>
+      <option>ÖGV-Platzreife nötig</option>
+      <option>Golfhotel für Anfänger</option>
+    </select>
+  </div>
   <button class="filter-reset" onclick="resetFilters()">Filter zurücksetzen ×</button>
 </div>
 
@@ -52,7 +64,8 @@
     {{ with .Params.greenfee_ab }}{{ if le . 30 }}{{ $preisklasse = "guenstig" }}{{ else if ge . 51 }}{{ $preisklasse = "gehoben" }}{{ end }}{{ end }}
     <a href="{{ .Permalink }}" class="location-card"
        data-bundesland="{{ .Params.bundesland }}"
-       data-preis="{{ $preisklasse }}">
+       data-preis="{{ $preisklasse }}"
+       data-kategorien="|{{ delimit .Params.kategorien "|" }}|">
       <div class="card-thumb">
         {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ else }}<div class="card-thumb-placeholder">⛳</div>{{ end }}
         <div class="card-badges">
@@ -107,10 +120,12 @@
   function getFiltered() {
     const bl = document.getElementById('filter-bundesland').value;
     const preis = document.getElementById('filter-preis').value;
+    const kat = document.getElementById('filter-kategorie').value;
     return Array.from(document.querySelectorAll('#locations-grid .location-card')).filter(card => {
       const okBl = !bl || card.getAttribute('data-bundesland') === bl;
       const okPreis = !preis || card.getAttribute('data-preis') === preis;
-      return okBl && okPreis;
+      const okKat = !kat || (card.getAttribute('data-kategorien') || '').includes('|' + kat + '|');
+      return okBl && okPreis && okKat;
     });
   }
 
@@ -153,6 +168,7 @@
   function resetFilters() {
     document.getElementById('filter-bundesland').value = '';
     document.getElementById('filter-preis').value = '';
+    document.getElementById('filter-kategorie').value = '';
     currentPage = 1; render();
   }
   document.addEventListener('DOMContentLoaded', render);

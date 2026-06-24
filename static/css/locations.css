@@ -84,7 +84,6 @@
     color: var(--green-accent); margin-bottom: 20px;
     display: flex; align-items: center; gap: 10px;
   }
-  .details-heading::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-accent); }
 
   .details-grid {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -215,7 +214,6 @@
   /* ── RELATED LOCATIONS ── */
   .related-section { background: var(--off-white); padding: 72px 80px; border-top: 1px solid var(--border-light); }
   .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-accent); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-accent); }
   .related-title { font-family: var(--serif); font-size: clamp(24px, 2.5vw, 36px); letter-spacing: -0.6px; color: var(--text-dark); margin-bottom: 36px; }
   .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
   .related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s; }
@@ -244,7 +242,6 @@
   .breadcrumb a:hover { color: rgba(255,255,255,0.9); }
   .breadcrumb li:not(:last-child)::after { content: '›'; margin-left: 8px; }
   .page-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-light); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
-  .page-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--green-light); }
   .page-hero h1 { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 60px); line-height: 1.07; letter-spacing: -1.2px; color: var(--white); margin-bottom: 18px; }
   .page-hero h1 em { font-style: italic; color: var(--green-light); }
   .page-hero-lead { font-size: 17px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.62); max-width: 560px; }
