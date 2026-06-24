@@ -1,0 +1,20 @@
+---
+title: "Die Golf-Grundlagen"
+description: "Als Golf-Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – verständlich und kompakt erklärt."
+kapitel_liste:
+  - id: "golfplatz"
+    label: "Golfplatz & Platzreife"
+    title: "Golfplatz & Platzreife"
+    desc: "Dieser Abschnitt informiert Sie über Flächen und Elemente auf Golfplätzen und klärt auf, was es mit der Platzreife auf sich hat – und wie Sie am einfachsten mit dem Golfspielen beginnen."
+    nav_desc: "Fairway, Bunker, Par und der Weg zur Platzreife"
+  - id: "ausruestung"
+    label: "Schwung & Ausrüstung"
+    title: "Golfschwung & Ausrüstung"
+    desc: "Den Golfball richtig zu treffen ist die Herausforderung – dafür sind die richtige Technik bei Griff, Stand und Schwung elementar. Genauso wichtig ist das passende Equipment."
+    nav_desc: "Technik, Schläger und die richtige Ausrüstung"
+  - id: "regeln"
+    label: "Regeln & Handicap"
+    title: "Golfregeln & Handicap"
+    desc: "Regeln stellen die Fairness im Sport sicher. Hier finden Sie die wichtigsten Golfregeln, die Golf-Etikette sowie alles zum Handicap-System und zu Wettspielformen."
+    nav_desc: "Regeln, Etikette, Handicap und Wettspielformen"
+---
