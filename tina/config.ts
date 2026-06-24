@@ -24,6 +24,23 @@ export default defineConfig({
   schema: {
     collections: [
       {
+  name: "grundlagen", label: "Grundlagen", path: "content/grundlagen", format: "md",
+  fields: [
+    { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
+    { type: "string", name: "lead", label: "Lead (Hero-Untertitel)" },
+    { type: "string", name: "description", label: "Meta-Beschreibung" },
+    { type: "string", name: "image", label: "Bild-URL" },
+    { type: "string", name: "image_credit", label: "Bild-Credit" },
+    { type: "string", name: "kapitel", label: "Kapitel", options: ["golfplatz","ausruestung","regeln"] },
+    { type: "number", name: "weight", label: "Reihenfolge" },
+    { type: "string", name: "lesezeit", label: "Lesezeit" },
+    { type: "string", name: "stand", label: "Stand (z. B. Nov. 2020)" },
+    { type: "string", name: "tags", label: "Tags", list: true },
+    { type: "boolean", name: "draft", label: "Entwurf" },
+    { type: "rich-text", name: "body", label: "Artikeltext", isBody: true },
+  ],
+},
+      {
   name: "glossar",
   label: "Glossar",
   path: "content/glossar",

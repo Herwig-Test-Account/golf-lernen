@@ -6,6 +6,10 @@ title = "Golf Lernen"
   author = "Herwig"
   description = "Golf für Einsteiger – locker erklärt, Schritt für Schritt."
 
+[markup.goldmark.parser]
+  autoHeadingID = true
+  autoHeadingIDType = "github"
+
 [markup.goldmark.renderer]
   unsafe = true
 
