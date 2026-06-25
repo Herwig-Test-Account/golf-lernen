@@ -1,7 +1,7 @@
 ---
 title: "Reiters Golf & Country Club Bad Tatzmannsdorf"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Burgenland"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_B_Reiters-Golf-Country-Club-Bad-Tatzmannsdorf.jpg"

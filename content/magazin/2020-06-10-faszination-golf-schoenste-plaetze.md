@@ -1,7 +1,7 @@
 ---
 title: "Faszination Golf – die schönsten Plätze Österreichs"
 date: 2020-06-10
-draft: true
+draft: false
 rubrik: "Golf-Mix"
 author: "Hannes Schalko"
 description: "golf-lernen.at hat die schönsten Golfplätze herausgesucht, die auch für Anfänger gut geeignet sind."

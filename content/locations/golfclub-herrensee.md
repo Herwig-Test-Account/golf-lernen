@@ -1,7 +1,7 @@
 ---
 title: "Golfclub Herrensee"
 date: 2021-09-07
-draft: true
+draft: false
 bundesland: "Niederösterreich"
 untertitel: "Golfschnuppern im nördlichen Waldviertel"
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_N_Golfclub-Herrensee.jpg"

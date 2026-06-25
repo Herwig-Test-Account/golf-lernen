@@ -1,7 +1,7 @@
 ---
 title: "Was sind die häufigsten Situationen am Golfplatz?"
 date: 2020-04-26
-draft: true
+draft: false
 rubrik: "Am Platz"
 author: "Hannes Schalko"
 description: "Mit welchen Situationen hat man am Golfplatz häufig zu rechnen? Hier eine kurze Übersicht zur Orientierung für Golf-Einsteiger."

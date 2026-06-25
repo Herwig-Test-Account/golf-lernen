@@ -1,7 +1,7 @@
 ---
 title: "Fragen, Antworten & Tipps rund ums erste Golfturnier"
 date: 2020-10-05
-draft: true
+draft: false
 rubrik: "Am Platz"
 author: "Hannes Schalko"
 description: "Was bringt eine Teilnahme an einem Golf-Turnier und wie läuft es ab? Erfahren Sie alles Wissenswerte und 10 Tipps für Ihr erstes Turnier."

@@ -1,7 +1,7 @@
 ---
 title: "Defereggental Golf Park"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Tirol"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_T_Defereggental-Golf-Park.jpg"

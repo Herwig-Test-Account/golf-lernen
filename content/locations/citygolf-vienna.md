@@ -1,7 +1,7 @@
 ---
 title: "Citygolf Vienna"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Wien"
 untertitel: "Golf Club Wien-Süßenbrunn"
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_W_Citygolf-Vienna-Golf-Club-Wien-S%C3%BC%C3%9Fenbrunn.jpg"

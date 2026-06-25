@@ -1,7 +1,7 @@
 ---
 title: "Was sind die häufigsten Fehler beim Golfen?"
 date: 2020-06-20
-draft: true
+draft: false
 rubrik: "Am Platz"
 author: "Hannes Schalko"
 description: "Die Fehlerquellen im Golf sind vielfältig. Finden Sie hier die Liste der häufigsten Fehler bei Technik und Regeln, die Sie vermeiden sollten."

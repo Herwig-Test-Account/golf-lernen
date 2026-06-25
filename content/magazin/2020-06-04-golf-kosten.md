@@ -1,7 +1,7 @@
 ---
 title: "Wie teuer ist es Golf zu spielen?"
 date: 2020-06-04
-draft: true
+draft: false
 rubrik: "Golf-Tipps"
 author: "Hannes Schalko"
 description: "Finden Sie hier eine Übersicht, mit welchen Kosten Sie bei Golf-Kursen, Ausrüstung und Mitgliedschaften rechnen müssen."

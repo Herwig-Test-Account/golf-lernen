@@ -1,7 +1,7 @@
 ---
 title: "Golf im Alter hat viele Vorteile"
 date: 2023-09-15
-draft: true
+draft: false
 rubrik: "Allgemein"
 author: "Hannes Schalko"
 description: "Soll ich mit 60+ noch Golfspielen lernen? Ja, weil man fürs Golfen nie zu alt ist. Erfahren Sie hier alles über die positiven Aspekte."

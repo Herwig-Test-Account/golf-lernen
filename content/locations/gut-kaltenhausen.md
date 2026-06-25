@@ -1,7 +1,7 @@
 ---
 title: "Golfclub Gut Kaltenhausen"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Oberösterreich"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_O_Golfclub-Salzburg-Gut-Kaltenhausen.jpg"

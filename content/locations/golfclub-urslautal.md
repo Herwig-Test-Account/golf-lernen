@@ -1,7 +1,7 @@
 ---
 title: "Golfclub Urslautal"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Salzburg"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_SB_Golfclub-Urslautal.jpg"

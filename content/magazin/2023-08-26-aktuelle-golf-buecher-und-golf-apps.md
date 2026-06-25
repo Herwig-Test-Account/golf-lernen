@@ -1,7 +1,7 @@
 ---
 title: "Aktuelle Golf-Bücher & Golf-Apps"
 date: 2023-08-26
-draft: true
+draft: false
 rubrik: "Golf-News"
 author: "Hannes Schalko"
 description: "Lesetipps zu aktuell erschienenen Golf-Ratgebern sowie hilfreiche Apps für angehende und erfahrene Golfer."

@@ -1,7 +1,7 @@
 ---
 title: "Top 10 Platzreifekurse in Österreich 2025"
 date: 2025-06-18
-draft: true
+draft: false
 rubrik: "Golf-Tipps"
 author: "Hannes Schalko"
 description: "Finde die besten Platzreifekurse in Österreich 2025 – inklusive Dauer, Preis, Golfclub und Besonderheiten."

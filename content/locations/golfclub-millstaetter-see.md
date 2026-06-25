@@ -1,7 +1,7 @@
 ---
 title: "Golfclub Millstätter See"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Kärnten"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_K_Golfclub-Millst%C3%A4tter-See.jpg"

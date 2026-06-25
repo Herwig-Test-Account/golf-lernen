@@ -1,7 +1,7 @@
 ---
 title: "Wo & wie finde ich eine gute Golf-Ausrüstung?"
 date: 2020-06-30
-draft: true
+draft: false
 rubrik: "Golf-Tipps"
 author: "Hannes Schalko"
 description: "Finden Sie hier die Tipps der golf-lernen.at Redaktion zu Suche und Kauf einer passenden Golf-Ausrüstung."

@@ -1,7 +1,7 @@
 ---
 title: "Golfclub Schloss Feistritz-GreenCard"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Steiermark"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_ST_Golfclub-Schloss-Feistritz-GreenCard.jpg"

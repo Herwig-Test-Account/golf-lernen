@@ -1,7 +1,7 @@
 ---
 title: "GC Traminer Golf Klöch"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Steiermark"
 untertitel: ""
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_ST_GC-Traminer-Golf-Kl%C3%B6ch.jpg"

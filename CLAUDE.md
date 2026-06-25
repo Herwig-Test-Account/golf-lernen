@@ -13,7 +13,7 @@ Kernregeln (Details in SECURITY.md):
   nur das eine Repo). Keine Allzweck-Tokens.
 - Eingaben in Functions immer validieren. Dateinamen aus Nutzereingaben
   gegen Path Traversal absichern (nur a–z, 0–9, Bindestrich).
-- Nichts Ungeprüftes geht live: AI-generierte Inhalte immer `draft: true`.
+- Nichts Ungeprüftes geht live: AI-generierte Inhalte immer `draft: false`.
 - Vor jedem Commit: Steht versehentlich ein Schlüssel im Diff? → STOPP.
 - Bei Unsicherheit über aktuelle Fakten (APIs, Config): nachschlagen
   statt raten. Keine Kartenhäuser.
@@ -40,7 +40,7 @@ Kernregeln (Details in SECURITY.md):
 ---
 title: "Titel des Artikels"
 date: "YYYY-MM-DD"
-draft: true
+draft: false
 tags: ["Tag1", "Tag2"]
 description: "Kurze Beschreibung unter 160 Zeichen für SEO."
 ---

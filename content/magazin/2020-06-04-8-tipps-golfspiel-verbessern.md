@@ -1,7 +1,7 @@
 ---
 title: "8 Tipps, wie Sie Ihr Golfspiel am schnellsten verbessern"
 date: 2020-06-04
-draft: true
+draft: false
 rubrik: "Golf-Tipps"
 author: "Hannes Schalko"
 description: "Sie wollen Ihr Golfspiel verbessern, und das zielgerichtet und effizient? Diese 8 Tipps helfen Ihnen weiter."

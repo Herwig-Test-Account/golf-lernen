@@ -1,7 +1,7 @@
 ---
 title: "GC Thayatal Drosendorf"
 date: 2020-10-11
-draft: true
+draft: false
 bundesland: "Niederösterreich"
 untertitel: "Golfspiel für jedermann"
 image: "https://golf-lernen.at/wp-content/uploads/2020/06/Locations_N_GC-Thayatal-Drosendorf.jpg"

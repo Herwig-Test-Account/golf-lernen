@@ -1,7 +1,7 @@
 ---
 title: "Kunstschläge & Golf-Hoppalas"
 date: 2020-06-01
-draft: true
+draft: false
 rubrik: "Golf-Mix"
 author: "Hannes Schalko"
 description: "Sehen Sie hier Golfschläge zum Staunen und zum Lachen – von Profis und Amateuren gleichermaßen. Gute Unterhaltung."

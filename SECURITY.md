@@ -113,7 +113,7 @@ werden. Sie sind die Sicherheitsgrenze zwischen Browser und externen APIs.
 ## 5. Deployment & Trennung der Umgebungen
 
 - **Nichts Ungeprüftes geht live.** Automatisch (AI-)generierte Inhalte
-  werden immer mit `draft: true` erstellt und erst nach menschlicher Prüfung
+  werden immer mit `draft: false` erstellt und erst nach menschlicher Prüfung
   veröffentlicht.
 - **Test vs. Produktion trennen.** Testumgebungen (Dummy, Staging) sind über
   `robots.txt` und `noindex` für Suchmaschinen und LLM-Crawler gesperrt.
@@ -169,7 +169,7 @@ tatsächlich kommerziell mit Kunden- oder Personendaten live geht.
 2. Liegt ein Secret im Spiel? → Nur als Cloudflare Secret / `.env`, nie im Browser/Repo.
 3. Hat der Token den minimal nötigen Scope?
 4. Werden Eingaben in der Function validiert?
-5. Geht generierter Inhalt als `draft: true`?
+5. Geht generierter Inhalt als `draft: false`?
 6. Ist Test von Produktion getrennt (noindex korrekt)?
 7. Steht im Diff versehentlich ein Schlüssel?
 8. Braucht es ein externes Audit / rechtliche Prüfung, bevor das live geht?
