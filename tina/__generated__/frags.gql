@@ -1,0 +1,34 @@
+fragment GrundlagenParts on Grundlagen {
+  __typename
+  title
+  lead
+  description
+  image
+  image_credit
+  kapitel
+  weight
+  lesezeit
+  stand
+  tags
+  draft
+  body
+}
+
+fragment GlossarParts on Glossar {
+  __typename
+  title
+  term_alt
+  synonyme
+  draft
+  body
+}
+
+fragment PostParts on Post {
+  __typename
+  title
+  date
+  draft
+  description
+  tags
+  body
+}
