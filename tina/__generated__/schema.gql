@@ -58,14 +58,14 @@ type Query {
   grundlagenConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GrundlagenFilter): GrundlagenConnection!
   glossar(relativePath: String): Glossar!
   glossarConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GlossarFilter): GlossarConnection!
-  post(relativePath: String): Post!
-  postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
+  magazin(relativePath: String): Magazin!
+  magazinConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: MagazinFilter): MagazinConnection!
 }
 
 input DocumentFilter {
   grundlagen: GrundlagenFilter
   glossar: GlossarFilter
-  post: PostFilter
+  magazin: MagazinFilter
 }
 
 type DocumentConnectionEdges {
@@ -91,7 +91,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Grundlagen | Glossar | Post | Folder
+union DocumentNode = Grundlagen | Glossar | Magazin | Folder
 
 type Grundlagen implements Node & Document {
   title: String!
@@ -195,7 +195,7 @@ type GlossarConnection implements Connection {
   edges: [GlossarConnectionEdges]
 }
 
-type Post implements Node & Document {
+type Magazin implements Node & Document {
   title: String!
   date: String!
   draft: Boolean
@@ -215,7 +215,7 @@ input DatetimeFilter {
   in: [String]
 }
 
-input PostFilter {
+input MagazinFilter {
   title: StringFilter
   date: DatetimeFilter
   draft: BooleanFilter
@@ -224,15 +224,15 @@ input PostFilter {
   body: RichTextFilter
 }
 
-type PostConnectionEdges {
+type MagazinConnectionEdges {
   cursor: String!
-  node: Post
+  node: Magazin
 }
 
-type PostConnection implements Connection {
+type MagazinConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [PostConnectionEdges]
+  edges: [MagazinConnectionEdges]
 }
 
 type Mutation {
@@ -245,21 +245,21 @@ type Mutation {
   createGrundlagen(relativePath: String!, params: GrundlagenMutation!): Grundlagen!
   updateGlossar(relativePath: String!, params: GlossarMutation!): Glossar!
   createGlossar(relativePath: String!, params: GlossarMutation!): Glossar!
-  updatePost(relativePath: String!, params: PostMutation!): Post!
-  createPost(relativePath: String!, params: PostMutation!): Post!
+  updateMagazin(relativePath: String!, params: MagazinMutation!): Magazin!
+  createMagazin(relativePath: String!, params: MagazinMutation!): Magazin!
 }
 
 input DocumentUpdateMutation {
   grundlagen: GrundlagenMutation
   glossar: GlossarMutation
-  post: PostMutation
+  magazin: MagazinMutation
   relativePath: String
 }
 
 input DocumentMutation {
   grundlagen: GrundlagenMutation
   glossar: GlossarMutation
-  post: PostMutation
+  magazin: MagazinMutation
 }
 
 input GrundlagenMutation {
@@ -285,7 +285,7 @@ input GlossarMutation {
   body: JSON
 }
 
-input PostMutation {
+input MagazinMutation {
   title: String
   date: String
   draft: Boolean

@@ -51,9 +51,9 @@ var config_default = defineConfig({
         ]
       },
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
+        name: "magazin",
+        label: "Magazin",
+        path: "content/magazin",
         format: "md",
         fields: [
           {

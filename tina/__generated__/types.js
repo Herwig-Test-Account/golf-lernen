@@ -32,8 +32,8 @@ export const GlossarPartsFragmentDoc = gql`
   body
 }
     `;
-export const PostPartsFragmentDoc = gql`
-    fragment PostParts on Post {
+export const MagazinPartsFragmentDoc = gql`
+    fragment MagazinParts on Magazin {
   __typename
   title
   date
@@ -157,9 +157,9 @@ export const GlossarConnectionDocument = gql`
   }
 }
     ${GlossarPartsFragmentDoc}`;
-export const PostDocument = gql`
-    query post($relativePath: String!) {
-  post(relativePath: $relativePath) {
+export const MagazinDocument = gql`
+    query magazin($relativePath: String!) {
+  magazin(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -172,13 +172,13 @@ export const PostDocument = gql`
       }
       id
     }
-    ...PostParts
+    ...MagazinParts
   }
 }
-    ${PostPartsFragmentDoc}`;
-export const PostConnectionDocument = gql`
-    query postConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostFilter) {
-  postConnection(
+    ${MagazinPartsFragmentDoc}`;
+export const MagazinConnectionDocument = gql`
+    query magazinConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: MagazinFilter) {
+  magazinConnection(
     before: $before
     after: $after
     first: $first
@@ -208,12 +208,12 @@ export const PostConnectionDocument = gql`
           }
           id
         }
-        ...PostParts
+        ...MagazinParts
       }
     }
   }
 }
-    ${PostPartsFragmentDoc}`;
+    ${MagazinPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     grundlagen(variables, options) {
@@ -228,11 +228,11 @@ export function getSdk(requester) {
     glossarConnection(variables, options) {
       return requester(GlossarConnectionDocument, variables, options);
     },
-    post(variables, options) {
-      return requester(PostDocument, variables, options);
+    magazin(variables, options) {
+      return requester(MagazinDocument, variables, options);
     },
-    postConnection(variables, options) {
-      return requester(PostConnectionDocument, variables, options);
+    magazinConnection(variables, options) {
+      return requester(MagazinConnectionDocument, variables, options);
     }
   };
 }
@@ -256,7 +256,7 @@ const generateRequester = (client) => {
 export const ExperimentalGetTinaClient = () => getSdk(
   generateRequester(
     createClient({
-      url: "http://localhost:4001/graphql",
+      url: "https://content.tinajs.io/2.4/content/24b80e88-e29e-470b-a335-fa03e39683d6/github/main",
       queries
     })
   )

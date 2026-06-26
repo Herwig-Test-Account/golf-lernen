@@ -23,7 +23,7 @@ fragment GlossarParts on Glossar {
   body
 }
 
-fragment PostParts on Post {
+fragment MagazinParts on Magazin {
   __typename
   title
   date

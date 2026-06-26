@@ -86,8 +86,8 @@ export type Query = {
   grundlagenConnection: GrundlagenConnection;
   glossar: Glossar;
   glossarConnection: GlossarConnection;
-  post: Post;
-  postConnection: PostConnection;
+  magazin: Magazin;
+  magazinConnection: MagazinConnection;
 };
 
 
@@ -142,24 +142,24 @@ export type QueryGlossarConnectionArgs = {
 };
 
 
-export type QueryPostArgs = {
+export type QueryMagazinArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-export type QueryPostConnectionArgs = {
+export type QueryMagazinConnectionArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PostFilter>;
+  filter?: InputMaybe<MagazinFilter>;
 };
 
 export type DocumentFilter = {
   grundlagen?: InputMaybe<GrundlagenFilter>;
   glossar?: InputMaybe<GlossarFilter>;
-  post?: InputMaybe<PostFilter>;
+  magazin?: InputMaybe<MagazinFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -199,7 +199,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Grundlagen | Glossar | Post | Folder;
+export type DocumentNode = Grundlagen | Glossar | Magazin | Folder;
 
 export type Grundlagen = Node & Document & {
   __typename?: 'Grundlagen';
@@ -309,8 +309,8 @@ export type GlossarConnection = Connection & {
   edges?: Maybe<Array<Maybe<GlossarConnectionEdges>>>;
 };
 
-export type Post = Node & Document & {
-  __typename?: 'Post';
+export type Magazin = Node & Document & {
+  __typename?: 'Magazin';
   title: Scalars['String']['output'];
   date: Scalars['String']['output'];
   draft?: Maybe<Scalars['Boolean']['output']>;
@@ -330,7 +330,7 @@ export type DatetimeFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type PostFilter = {
+export type MagazinFilter = {
   title?: InputMaybe<StringFilter>;
   date?: InputMaybe<DatetimeFilter>;
   draft?: InputMaybe<BooleanFilter>;
@@ -339,17 +339,17 @@ export type PostFilter = {
   body?: InputMaybe<RichTextFilter>;
 };
 
-export type PostConnectionEdges = {
-  __typename?: 'PostConnectionEdges';
+export type MagazinConnectionEdges = {
+  __typename?: 'MagazinConnectionEdges';
   cursor: Scalars['String']['output'];
-  node?: Maybe<Post>;
+  node?: Maybe<Magazin>;
 };
 
-export type PostConnection = Connection & {
-  __typename?: 'PostConnection';
+export type MagazinConnection = Connection & {
+  __typename?: 'MagazinConnection';
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<PostConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<MagazinConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -363,8 +363,8 @@ export type Mutation = {
   createGrundlagen: Grundlagen;
   updateGlossar: Glossar;
   createGlossar: Glossar;
-  updatePost: Post;
-  createPost: Post;
+  updateMagazin: Magazin;
+  createMagazin: Magazin;
 };
 
 
@@ -425,28 +425,28 @@ export type MutationCreateGlossarArgs = {
 };
 
 
-export type MutationUpdatePostArgs = {
+export type MutationUpdateMagazinArgs = {
   relativePath: Scalars['String']['input'];
-  params: PostMutation;
+  params: MagazinMutation;
 };
 
 
-export type MutationCreatePostArgs = {
+export type MutationCreateMagazinArgs = {
   relativePath: Scalars['String']['input'];
-  params: PostMutation;
+  params: MagazinMutation;
 };
 
 export type DocumentUpdateMutation = {
   grundlagen?: InputMaybe<GrundlagenMutation>;
   glossar?: InputMaybe<GlossarMutation>;
-  post?: InputMaybe<PostMutation>;
+  magazin?: InputMaybe<MagazinMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   grundlagen?: InputMaybe<GrundlagenMutation>;
   glossar?: InputMaybe<GlossarMutation>;
-  post?: InputMaybe<PostMutation>;
+  magazin?: InputMaybe<MagazinMutation>;
 };
 
 export type GrundlagenMutation = {
@@ -472,7 +472,7 @@ export type GlossarMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type PostMutation = {
+export type MagazinMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['String']['input']>;
   draft?: InputMaybe<Scalars['Boolean']['input']>;
@@ -485,7 +485,7 @@ export type GrundlagenPartsFragment = { __typename: 'Grundlagen', title: string,
 
 export type GlossarPartsFragment = { __typename: 'Glossar', title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null };
 
-export type PostPartsFragment = { __typename: 'Post', title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null };
+export type MagazinPartsFragment = { __typename: 'Magazin', title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null };
 
 export type GrundlagenQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -525,24 +525,24 @@ export type GlossarConnectionQueryVariables = Exact<{
 
 export type GlossarConnectionQuery = { __typename?: 'Query', glossarConnection: { __typename?: 'GlossarConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GlossarConnectionEdges', cursor: string, node?: { __typename: 'Glossar', id: string, title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
-export type PostQueryVariables = Exact<{
+export type MagazinQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post: { __typename: 'Post', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type MagazinQuery = { __typename?: 'Query', magazin: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
-export type PostConnectionQueryVariables = Exact<{
+export type MagazinConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
   after?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Float']['input']>;
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PostFilter>;
+  filter?: InputMaybe<MagazinFilter>;
 }>;
 
 
-export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostConnectionEdges', cursor: string, node?: { __typename: 'Post', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type MagazinConnectionQuery = { __typename?: 'Query', magazinConnection: { __typename?: 'MagazinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MagazinConnectionEdges', cursor: string, node?: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const GrundlagenPartsFragmentDoc = gql`
     fragment GrundlagenParts on Grundlagen {
@@ -571,8 +571,8 @@ export const GlossarPartsFragmentDoc = gql`
   body
 }
     `;
-export const PostPartsFragmentDoc = gql`
-    fragment PostParts on Post {
+export const MagazinPartsFragmentDoc = gql`
+    fragment MagazinParts on Magazin {
   __typename
   title
   date
@@ -696,9 +696,9 @@ export const GlossarConnectionDocument = gql`
   }
 }
     ${GlossarPartsFragmentDoc}`;
-export const PostDocument = gql`
-    query post($relativePath: String!) {
-  post(relativePath: $relativePath) {
+export const MagazinDocument = gql`
+    query magazin($relativePath: String!) {
+  magazin(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -711,13 +711,13 @@ export const PostDocument = gql`
       }
       id
     }
-    ...PostParts
+    ...MagazinParts
   }
 }
-    ${PostPartsFragmentDoc}`;
-export const PostConnectionDocument = gql`
-    query postConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostFilter) {
-  postConnection(
+    ${MagazinPartsFragmentDoc}`;
+export const MagazinConnectionDocument = gql`
+    query magazinConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: MagazinFilter) {
+  magazinConnection(
     before: $before
     after: $after
     first: $first
@@ -747,12 +747,12 @@ export const PostConnectionDocument = gql`
           }
           id
         }
-        ...PostParts
+        ...MagazinParts
       }
     }
   }
 }
-    ${PostPartsFragmentDoc}`;
+    ${MagazinPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -768,11 +768,11 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
     glossarConnection(variables?: GlossarConnectionQueryVariables, options?: C): Promise<{data: GlossarConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GlossarConnectionQueryVariables, query: string}> {
         return requester<{data: GlossarConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GlossarConnectionQueryVariables, query: string}, GlossarConnectionQueryVariables>(GlossarConnectionDocument, variables, options);
       },
-    post(variables: PostQueryVariables, options?: C): Promise<{data: PostQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostQueryVariables, query: string}> {
-        return requester<{data: PostQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostQueryVariables, query: string}, PostQueryVariables>(PostDocument, variables, options);
+    magazin(variables: MagazinQueryVariables, options?: C): Promise<{data: MagazinQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MagazinQueryVariables, query: string}> {
+        return requester<{data: MagazinQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MagazinQueryVariables, query: string}, MagazinQueryVariables>(MagazinDocument, variables, options);
       },
-    postConnection(variables?: PostConnectionQueryVariables, options?: C): Promise<{data: PostConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostConnectionQueryVariables, query: string}> {
-        return requester<{data: PostConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PostConnectionQueryVariables, query: string}, PostConnectionQueryVariables>(PostConnectionDocument, variables, options);
+    magazinConnection(variables?: MagazinConnectionQueryVariables, options?: C): Promise<{data: MagazinConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MagazinConnectionQueryVariables, query: string}> {
+        return requester<{data: MagazinConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MagazinConnectionQueryVariables, query: string}, MagazinConnectionQueryVariables>(MagazinConnectionDocument, variables, options);
       }
     };
   }
@@ -821,7 +821,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "http://localhost:4001/graphql",
+        url: "https://content.tinajs.io/2.4/content/24b80e88-e29e-470b-a335-fa03e39683d6/github/main",
         queries,
       })
     )

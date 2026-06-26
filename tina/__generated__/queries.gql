@@ -108,8 +108,8 @@ query glossarConnection($before: String, $after: String, $first: Float, $last: F
   }
 }
 
-query post($relativePath: String!) {
-  post(relativePath: $relativePath) {
+query magazin($relativePath: String!) {
+  magazin(relativePath: $relativePath) {
     ... on Document {
       _sys {
         filename
@@ -122,12 +122,12 @@ query post($relativePath: String!) {
       }
       id
     }
-    ...PostParts
+    ...MagazinParts
   }
 }
 
-query postConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PostFilter) {
-  postConnection(
+query magazinConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: MagazinFilter) {
+  magazinConnection(
     before: $before
     after: $after
     first: $first
@@ -157,7 +157,7 @@ query postConnection($before: String, $after: String, $first: Float, $last: Floa
           }
           id
         }
-        ...PostParts
+        ...MagazinParts
       }
     }
   }
