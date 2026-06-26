@@ -184,3 +184,8 @@
   .chapter-nav-bottom{flex-direction:column}
   .cnb-item.next{align-items:flex-start;text-align:left}
 }
+@media (max-width: 960px) {
+  .hero-nav {
+    padding-bottom: 50px !important;
+  }
+}
