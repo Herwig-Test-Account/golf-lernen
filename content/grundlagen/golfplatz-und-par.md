@@ -23,7 +23,7 @@ In diesen Themenblöcken erfahren Sie mehr über die Infrastruktur von Golfplät
 
 Golfplätze bestehen aus 9 oder 18 Spielbahnen, Löcher genannt, die eine Reihe typischer Flächen und Elemente beinhalten:
 
-![Die Flächen auf dem Golfplatz](https://golf-lernen.at/wp-content/uploads/2020/03/Golfplatz.png)
+![](/img/uploads/Gemini_Generated_Image_p68m93p68m93p68m.png)
 *Die Flächen auf dem Golfplatz © golf-lernen.at*
 
 Am **Abschlag** wird der Golfball aufgelegt bzw. aufgeteet und losgespielt, wobei es (auf größeren Plätzen) unterschiedliche Abschläge für Frauen und Männer sowie Profis und Amateure gibt, die farblich gekennzeichnet sind (Amateure Damen, Profi Damen, Amateure Herren, Profi Herren).
