@@ -1,12 +1,15 @@
 ---
-title: "Fragen, Antworten & Tipps rund ums erste Golfturnier"
-date: 2020-10-05
+title: 'Fragen, Antworten & Tipps rund ums erste Golfturnier'
+date: 2020-10-05T00:00:00.000Z
 draft: false
-rubrik: "Am Platz"
-author: "Hannes Schalko"
-description: "Was bringt eine Teilnahme an einem Golf-Turnier und wie läuft es ab? Erfahren Sie alles Wissenswerte und 10 Tipps für Ihr erstes Turnier."
-tags: ["Golf Turnier", "Handicap verbessern", "Turnier Tipps"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/10/Pixabay_1200x628_tournament.jpg"
+description: Was bringt eine Teilnahme an einem Golf-Turnier und wie läuft es ab? Erfahren Sie alles Wissenswerte und 10 Tipps für Ihr erstes Turnier.
+image: /img/uploads/images/magazin/Pixabay_1200x628_tournament.jpg
+rubrik: Am Platz
+author: Hannes Schalko
+tags:
+  - Golf Turnier
+  - Handicap verbessern
+  - Turnier Tipps
 ---
 
 Das erste Golf-Turnier zu bestreiten ist ein spezielles Ereignis für jeden Golfer und jede Golferin, und etwas Nervosität davor ist ganz normal – wobei das Lampenfieber nach den ersten Schlägen zumeist auch schnell verpufft. Erfahren Sie in diesem Beitrag, was eine Turnier-Teilnahme bringt, welche Vorerfahrung Sie brauchen und wie ein Golf-Turnier abläuft. Zusammen mit den untenstehenden Tipps meistern Sie Ihre erste Turnierrunde bestimmt mit mehr Ruhe und Selbstvertrauen.
@@ -17,9 +20,9 @@ Da einige Golfplätze erst Spieler mit Handicap −45 oder besser zulassen, erwe
 
 ## Welche Voraussetzungen brauche ich für die Teilnahme?
 
-- Zumindest die absolvierte (ÖGV-)Platzreife, also Handicap/Stammvorgabe −54
-- Eine aktive Mitgliedschaft in einem Golfclub (oder Fernmitgliedschaft)
-- Etwas Spielpraxis und Erfahrung sowie „Trittsicherheit" bei Regeln und Etikette
+* Zumindest die absolvierte (ÖGV-)Platzreife, also Handicap/Stammvorgabe −54
+* Eine aktive Mitgliedschaft in einem Golfclub (oder Fernmitgliedschaft)
+* Etwas Spielpraxis und Erfahrung sowie „Trittsicherheit" bei Regeln und Etikette
 
 ## Wie verbessere ich mein Handicap konkret?
 

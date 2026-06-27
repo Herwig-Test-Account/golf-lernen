@@ -369,6 +369,9 @@ export type Magazin = Node & Document & {
   date: Scalars['String']['output'];
   draft?: Maybe<Scalars['Boolean']['output']>;
   description?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  rubrik?: Maybe<Scalars['String']['output']>;
+  author?: Maybe<Scalars['String']['output']>;
   tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
@@ -384,11 +387,21 @@ export type DatetimeFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type MagazinFilter = {
   title?: InputMaybe<StringFilter>;
   date?: InputMaybe<DatetimeFilter>;
   draft?: InputMaybe<BooleanFilter>;
   description?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  rubrik?: InputMaybe<StringFilter>;
+  author?: InputMaybe<StringFilter>;
   tags?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
@@ -712,6 +725,9 @@ export type MagazinMutation = {
   date?: InputMaybe<Scalars['String']['input']>;
   draft?: InputMaybe<Scalars['Boolean']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  rubrik?: InputMaybe<Scalars['String']['input']>;
+  author?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
@@ -761,7 +777,7 @@ export type GrundlagenPartsFragment = { __typename: 'Grundlagen', title: string,
 
 export type GlossarPartsFragment = { __typename: 'Glossar', title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null };
 
-export type MagazinPartsFragment = { __typename: 'Magazin', title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null };
+export type MagazinPartsFragment = { __typename: 'Magazin', title: string, date: string, draft?: boolean | null, description?: string | null, image?: string | null, rubrik?: string | null, author?: string | null, tags?: Array<string | null> | null, body?: any | null };
 
 export type BundeslandPartsFragment = { __typename: 'Bundesland', title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null };
 
@@ -812,7 +828,7 @@ export type MagazinQueryVariables = Exact<{
 }>;
 
 
-export type MagazinQuery = { __typename?: 'Query', magazin: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type MagazinQuery = { __typename?: 'Query', magazin: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, image?: string | null, rubrik?: string | null, author?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type MagazinConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -824,7 +840,7 @@ export type MagazinConnectionQueryVariables = Exact<{
 }>;
 
 
-export type MagazinConnectionQuery = { __typename?: 'Query', magazinConnection: { __typename?: 'MagazinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MagazinConnectionEdges', cursor: string, node?: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type MagazinConnectionQuery = { __typename?: 'Query', magazinConnection: { __typename?: 'MagazinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MagazinConnectionEdges', cursor: string, node?: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, image?: string | null, rubrik?: string | null, author?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type BundeslandQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -917,6 +933,9 @@ export const MagazinPartsFragmentDoc = gql`
   date
   draft
   description
+  image
+  rubrik
+  author
   tags
   body
 }

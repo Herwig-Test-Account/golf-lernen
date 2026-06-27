@@ -29,6 +29,9 @@ fragment MagazinParts on Magazin {
   date
   draft
   description
+  image
+  rubrik
+  author
   tags
   body
 }

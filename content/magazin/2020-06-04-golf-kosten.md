@@ -1,12 +1,14 @@
 ---
-title: "Wie teuer ist es Golf zu spielen?"
-date: 2020-06-04
+title: Wie teuer ist es Golf zu spielen?
+date: 2020-06-04T00:00:00.000Z
 draft: false
-rubrik: "Golf-Tipps"
-author: "Hannes Schalko"
-description: "Finden Sie hier eine Übersicht, mit welchen Kosten Sie bei Golf-Kursen, Ausrüstung und Mitgliedschaften rechnen müssen."
-tags: ["Golf-Kosten", "günstig golfen"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/01/1200x628_kosten_unsplash_josh-appel.jpg"
+description: 'Finden Sie hier eine Übersicht, mit welchen Kosten Sie bei Golf-Kursen, Ausrüstung und Mitgliedschaften rechnen müssen.'
+image: /img/uploads/images/magazin/1200x628_kosten_unsplash_josh-appel.jpg
+rubrik: Golf-Tipps
+author: Hannes Schalko
+tags:
+  - Golf-Kosten
+  - günstig golfen
 ---
 
 Der finanzielle Aufwand für den Einstieg in den Golfsport muss nicht überbordend sein. Finden Sie hier eine Übersicht, womit Sie an Kosten rechnen müssen und welche Spar-Möglichkeiten es gibt, um günstig Golfen zu können.
@@ -25,8 +27,8 @@ Der Umfang der Kurse und auch die Kosten können von Golfclub zu Golfclub variie
 
 Die ÖGV-Platzreife ist – in Kombination mit einer aufrechten Club-Mitgliedschaft – die Voraussetzung, um auf den allermeisten Golfplätzen Österreichs spielen zu dürfen. Sofern man nicht im Heimclub spielt, ist noch ein sogenanntes Greenfee (Platzgebühr) zu entrichten.
 
-- **Club-Mitgliedschaften** kosten im günstigsten Fall **ab 299 € pro Jahr**. Je nach Lage und Größe eines Golfplatzes kann die Jahresmitgliedschaft auch im Bereich 1.000 € pro Jahr liegen. Hinzu kommt noch die ÖGV-Mitgliedschaft von ca. 40 € im Jahr. Über den Golfverband wird Ihre Stammvorgabe (Handicap) verwaltet, und Sie bekommen eine Mitgliedskarte.
-- **Greenfees** kosten, je nach Platzgröße und wie aufwändig Pflege und Instandhaltung sind, pro Golfrunde **20–90 €**.
+* **Club-Mitgliedschaften** kosten im günstigsten Fall **ab 299 € pro Jahr**. Je nach Lage und Größe eines Golfplatzes kann die Jahresmitgliedschaft auch im Bereich 1.000 € pro Jahr liegen. Hinzu kommt noch die ÖGV-Mitgliedschaft von ca. 40 € im Jahr. Über den Golfverband wird Ihre Stammvorgabe (Handicap) verwaltet, und Sie bekommen eine Mitgliedskarte.
+* **Greenfees** kosten, je nach Platzgröße und wie aufwändig Pflege und Instandhaltung sind, pro Golfrunde **20–90 €**.
 
 In Österreich gibt es eine Vielzahl an einsteiger­tauglichen Golfplätzen, die ohne bzw. mit eingeschränkten Vorerfahrungen bespielbar sind und **keine Clubmitgliedschaft** erfordern. Passende Golfclubs in Ihrer Nähe finden Sie unter Locations.
 
@@ -38,7 +40,7 @@ Die von golf-lernen.at empfohlene Basisausrüstung fürs Golfspielen besteht aus
 
 Wie in vielen Lebensbereichen sind die möglichen Ausgaben auch beim Golfen nach oben offen. **Das volle „Golf-Paket"** aus Platzreifekursen, eigener Komplett-Ausrüstung und einem Jahr Clubmitgliedschaft ist für Preisbewusste aber **um ca. 800 €** zu haben:
 
-- Kurse (bis zur Platzreife): ab 300 €
-- Basisausrüstung: 200–500 € (gebraucht bis neu und günstig)
-- Clubmitgliedschaft: ab 299 € pro Jahr
-- Greenfees (Platzgebühren) müssen Sie nur zahlen, wenn Sie nicht im Heimclub spielen.
+* Kurse (bis zur Platzreife): ab 300 €
+* Basisausrüstung: 200–500 € (gebraucht bis neu und günstig)
+* Clubmitgliedschaft: ab 299 € pro Jahr
+* Greenfees (Platzgebühren) müssen Sie nur zahlen, wenn Sie nicht im Heimclub spielen.

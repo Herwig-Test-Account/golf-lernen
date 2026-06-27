@@ -1,12 +1,14 @@
 ---
-title: "Was sind die häufigsten Situationen am Golfplatz?"
-date: 2020-04-26
+title: Was sind die häufigsten Situationen am Golfplatz?
+date: 2020-04-26T00:00:00.000Z
 draft: false
-rubrik: "Am Platz"
-author: "Hannes Schalko"
-description: "Mit welchen Situationen hat man am Golfplatz häufig zu rechnen? Hier eine kurze Übersicht zur Orientierung für Golf-Einsteiger."
-tags: ["golf situationen", "häufige situationen"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/06/negative-space_1200x628_fairway-iron.jpg"
+description: Mit welchen Situationen hat man am Golfplatz häufig zu rechnen? Hier eine kurze Übersicht zur Orientierung für Golf-Einsteiger.
+image: /img/uploads/images/magazin/negative-space_1200x628_fairway-iron.jpg
+rubrik: Am Platz
+author: Hannes Schalko
+tags:
+  - golf situationen
+  - häufige situationen
 ---
 
 Sie fragen sich als Golf-Anfänger, welche Situationen Ihnen häufig am Golfplatz passieren werden? Dieser Beitrag gibt einen kurzen Überblick, womit Sie rechnen müssen.

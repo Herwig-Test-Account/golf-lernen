@@ -1,12 +1,17 @@
 ---
-title: "Kunstschläge & Golf-Hoppalas"
-date: 2020-06-01
+title: Kunstschläge & Golf-Hoppalas
+date: 2020-06-01T00:00:00.000Z
 draft: false
-rubrik: "Golf-Mix"
-author: "Hannes Schalko"
-description: "Sehen Sie hier Golfschläge zum Staunen und zum Lachen – von Profis und Amateuren gleichermaßen. Gute Unterhaltung."
-tags: ["Golf-Hoppalas", "Hole-in-Ones", "Kunstschläge", "perfekte Schläge", "Profi-Hoppalas"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/06/kunstschlaege-und-golf-hoppalas_open-graph.jpg"
+description: Sehen Sie hier Golfschläge zum Staunen und zum Lachen – von Profis und Amateuren gleichermaßen. Gute Unterhaltung.
+image: /img/uploads/images/magazin/GG_hoppala.png
+rubrik: Golf-Mix
+author: Hannes Schalko
+tags:
+  - Golf-Hoppalas
+  - Hole-in-Ones
+  - Kunstschläge
+  - perfekte Schläge
+  - Profi-Hoppalas
 ---
 
 Im Golf liegen Freude und Frust oft sehr nah beieinander. Selbst Profis sind vor Patzern nicht gefeit, und Anfängern passieren mitunter komische und unterhaltsame Erlebnisse auf Golfplatz und Driving Range. Sehen Sie hier eine kleine Auswahl von Videos – beginnend mit einem Zusammenschnitt grandios ausgeführter Schläge von Profi-Golfern der US-PGA-Tour.

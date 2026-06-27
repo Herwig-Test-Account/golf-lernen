@@ -1,12 +1,15 @@
 ---
-title: "8 Tipps, wie Sie Ihr Golfspiel am schnellsten verbessern"
-date: 2020-06-04
+title: '8 Tipps, wie Sie Ihr Golfspiel am schnellsten verbessern'
+date: 2020-06-04T00:00:00.000Z
 draft: false
-rubrik: "Golf-Tipps"
-author: "Hannes Schalko"
-description: "Sie wollen Ihr Golfspiel verbessern, und das zielgerichtet und effizient? Diese 8 Tipps helfen Ihnen weiter."
-tags: ["Golf Training", "Golfspiel verbessern", "Übungstipps"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/06/unsplash_1200x628_improve-putt-1.jpg"
+description: 'Sie wollen Ihr Golfspiel verbessern, und das zielgerichtet und effizient? Diese 8 Tipps helfen Ihnen weiter.'
+image: /img/uploads/images/magazin/unsplash_1200x628_improve-putt-1.jpg
+rubrik: Golf-Tipps
+author: Hannes Schalko
+tags:
+  - Golf Training
+  - Golfspiel verbessern
+  - Übungstipps
 ---
 
 Sie haben die ersten Schritte im Golf bereits gemacht und wollen zielgerichtet besser werden? Wir haben dazu unsere 8 Top-Tipps aufgeschrieben.

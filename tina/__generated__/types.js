@@ -39,6 +39,9 @@ export const MagazinPartsFragmentDoc = gql`
   date
   draft
   description
+  image
+  rubrik
+  author
   tags
   body
 }

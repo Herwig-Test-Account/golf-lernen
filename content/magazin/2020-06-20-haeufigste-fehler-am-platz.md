@@ -1,12 +1,14 @@
 ---
-title: "Was sind die häufigsten Fehler beim Golfen?"
-date: 2020-06-20
+title: Was sind die häufigsten Fehler beim Golfen?
+date: 2020-06-20T00:00:00.000Z
 draft: false
-rubrik: "Am Platz"
-author: "Hannes Schalko"
-description: "Die Fehlerquellen im Golf sind vielfältig. Finden Sie hier die Liste der häufigsten Fehler bei Technik und Regeln, die Sie vermeiden sollten."
-tags: ["Golf Fehler", "häufigste Fehler"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/04/unsplash_1200x628_no-go.jpg"
+description: 'Die Fehlerquellen im Golf sind vielfältig. Finden Sie hier die Liste der häufigsten Fehler bei Technik und Regeln, die Sie vermeiden sollten.'
+image: /img/uploads/images/magazin/unsplash_1200x628_no-go.jpg
+rubrik: Am Platz
+author: Hannes Schalko
+tags:
+  - Golf Fehler
+  - häufigste Fehler
 ---
 
 Die möglichen Fehler im Golfspiel sind schier unendlich – immerhin steckt ein komplexer Bewegungsablauf dahinter, und auch in puncto Regeln und Etikette kann so manches falsch gemacht werden.
@@ -23,9 +25,9 @@ Finden Sie hier eine sehr subjektive Fehler-Aufzählung der golf-lernen.at Redak
 
 Ein gerader Schlag ist das Ideal für die meisten Golfer. Hier ein Exkurs, welche charakteristischen Ball-Flugkurven es im Golf gibt:
 
-- **Hook vs. Slice:** Beim Hook fliegt der Ball auf einer Linkskurve vom Ziel weg. Beim Slice fliegt er auf einer Rechtskurve vom Ziel weg.
-- **Fade vs. Draw:** Beim Fade startet der Ball links – nähert sich aber wieder dem Ziel an (Flugkurve von links nach rechts). Beim Draw startet der Ball rechts – nähert sich aber wieder dem Ziel an (Flugkurve von rechts nach links).
-- **Push vs. Pull:** Beim Push fliegt der Ball gerade, aber zu weit nach links. Beim Pull fliegt der Ball gerade, aber zu weit nach rechts.
+* **Hook vs. Slice:** Beim Hook fliegt der Ball auf einer Linkskurve vom Ziel weg. Beim Slice fliegt er auf einer Rechtskurve vom Ziel weg.
+* **Fade vs. Draw:** Beim Fade startet der Ball links – nähert sich aber wieder dem Ziel an (Flugkurve von links nach rechts). Beim Draw startet der Ball rechts – nähert sich aber wieder dem Ziel an (Flugkurve von rechts nach links).
+* **Push vs. Pull:** Beim Push fliegt der Ball gerade, aber zu weit nach links. Beim Pull fliegt der Ball gerade, aber zu weit nach rechts.
 
 **#4** Den Schwung verkrampft bzw. eckig ausführen, weil man „zu viel" will und überpowert.
 

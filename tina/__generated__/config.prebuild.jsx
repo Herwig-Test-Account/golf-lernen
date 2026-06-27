@@ -83,6 +83,21 @@ var config_default = defineConfig({
             }
           },
           {
+            type: "image",
+            name: "image",
+            label: "Teaserbild"
+          },
+          {
+            type: "string",
+            name: "rubrik",
+            label: "Rubrik"
+          },
+          {
+            type: "string",
+            name: "author",
+            label: "Autor"
+          },
+          {
             type: "string",
             name: "tags",
             label: "Tags",

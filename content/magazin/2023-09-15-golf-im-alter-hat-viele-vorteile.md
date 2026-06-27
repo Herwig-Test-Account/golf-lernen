@@ -1,12 +1,16 @@
 ---
-title: "Golf im Alter hat viele Vorteile"
-date: 2023-09-15
+title: Golf im Alter hat viele Vorteile
+date: 2023-09-15T00:00:00.000Z
 draft: false
-rubrik: "Allgemein"
-author: "Hannes Schalko"
-description: "Soll ich mit 60+ noch Golfspielen lernen? Ja, weil man fürs Golfen nie zu alt ist. Erfahren Sie hier alles über die positiven Aspekte."
-tags: ["Fit bleiben", "Golf im Alter", "Senioren", "Vorteile"]
-image: "https://golf-lernen.at/wp-content/uploads/2023/09/Pexels_1200x628_golf-im-alter.jpg"
+description: 'Soll ich mit 60+ noch Golfspielen lernen? Ja, weil man fürs Golfen nie zu alt ist. Erfahren Sie hier alles über die positiven Aspekte.'
+image: /img/uploads/images/magazin/Pexels_1200x628_golf-im-alter.jpg
+rubrik: Allgemein
+author: Hannes Schalko
+tags:
+  - Fit bleiben
+  - Golf im Alter
+  - Senioren
+  - Vorteile
 ---
 
 Mit 60+ Jahren gehört man speziell beim Golfen noch lange nicht zum „alten Eisen". Golf ist eine Sportart, die Menschen jeden Alters anspricht, und besonders für Senioren bietet das Golfspiel zahlreiche körperliche, geistige und soziale Vorteile. Im Folgenden eine Übersicht und warum es gerade in der Pension lohnt, Golf als neues Hobby zu entdecken.

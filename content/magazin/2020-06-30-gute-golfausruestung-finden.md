@@ -1,12 +1,17 @@
 ---
-title: "Wo & wie finde ich eine gute Golf-Ausrüstung?"
-date: 2020-06-30
+title: Wo & wie finde ich eine gute Golf-Ausrüstung?
+date: 2020-06-30T00:00:00.000Z
 draft: false
-rubrik: "Golf-Tipps"
-author: "Hannes Schalko"
-description: "Finden Sie hier die Tipps der golf-lernen.at Redaktion zu Suche und Kauf einer passenden Golf-Ausrüstung."
-tags: ["Ausrüstungstipps", "Gebrauchte Schläger", "Kauftipps", "wann kaufen", "wo kaufen"]
-image: "https://golf-lernen.at/wp-content/uploads/2020/06/negative-space_1200x628_flohmarkt-schlaeger.jpg"
+description: Finden Sie hier die Tipps der golf-lernen.at Redaktion zu Suche und Kauf einer passenden Golf-Ausrüstung.
+image: /img/uploads/images/magazin/negative-space_1200x628_flohmarkt-schlaeger.jpg
+rubrik: Golf-Tipps
+author: Hannes Schalko
+tags:
+  - Ausrüstungstipps
+  - Gebrauchte Schläger
+  - Kauftipps
+  - wann kaufen
+  - wo kaufen
 ---
 
 Das Wichtigste fürs Golfspielen sind zweifelsohne **passende und moderne Schläger**. Diese „verzeihen" insbesondere bei den Hölzern mehr Fehler, und Sie können allein durch gutes Schlägermaterial Ihr Spiel verbessern.
@@ -19,15 +24,15 @@ Ganz grundsätzlich empfehlen wir Neo-Golfern diese Vorgehensweise:
 
 ## Wo kann ich Schläger kaufen bzw. finden?
 
-- In ProShops, das sind die Ausrüstungs-Shops von Golfclubs.
-- In speziellen Golf-Fachmärkten wie GolfHouse oder all4golf.
-- Größere Stores von Sportartikel-Ketten führen in der Regel auch Golf-Equipment.
-- Suchen Sie nach gebrauchten Schläger-Angeboten auf Plattformen wie Willhaben, Shpock und Co.
+* In ProShops, das sind die Ausrüstungs-Shops von Golfclubs.
+* In speziellen Golf-Fachmärkten wie GolfHouse oder all4golf.
+* Größere Stores von Sportartikel-Ketten führen in der Regel auch Golf-Equipment.
+* Suchen Sie nach gebrauchten Schläger-Angeboten auf Plattformen wie Willhaben, Shpock und Co.
 
 ## Die golf-lernen.at Kauf-Tipps
 
-- Fragen Sie im ProShop Ihres Golfclubs, ob es ein gebrauchtes Schlägerset gibt bzw. eines für Sie zusammengestellt werden kann. So haben Sie gleich etwas Beratung inklusive und bekommen in der Regel ein gutes und günstiges Set.
-- Eine gute Option sind zudem „Auslaufmodelle" bekannter Hersteller, die oft günstiger zu haben sind. Zu den weltweit bekanntesten Schlägerherstellern gehören zum Beispiel TaylorMade, Callaway oder Titleist.
+* Fragen Sie im ProShop Ihres Golfclubs, ob es ein gebrauchtes Schlägerset gibt bzw. eines für Sie zusammengestellt werden kann. So haben Sie gleich etwas Beratung inklusive und bekommen in der Regel ein gutes und günstiges Set.
+* Eine gute Option sind zudem „Auslaufmodelle" bekannter Hersteller, die oft günstiger zu haben sind. Zu den weltweit bekanntesten Schlägerherstellern gehören zum Beispiel TaylorMade, Callaway oder Titleist.
 
 ## Brauche ich ein Schläger-Fitting?
 

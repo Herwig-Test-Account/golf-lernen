@@ -209,6 +209,9 @@ type Magazin implements Node & Document {
   date: String!
   draft: Boolean
   description: String
+  image: String
+  rubrik: String
+  author: String
   tags: [String]
   body: JSON
   id: ID!
@@ -224,11 +227,21 @@ input DatetimeFilter {
   in: [String]
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input MagazinFilter {
   title: StringFilter
   date: DatetimeFilter
   draft: BooleanFilter
   description: StringFilter
+  image: ImageFilter
+  rubrik: StringFilter
+  author: StringFilter
   tags: StringFilter
   body: RichTextFilter
 }
@@ -435,6 +448,9 @@ input MagazinMutation {
   date: String
   draft: Boolean
   description: String
+  image: String
+  rubrik: String
+  author: String
   tags: [String]
   body: JSON
 }
