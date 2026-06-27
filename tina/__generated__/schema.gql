@@ -60,12 +60,21 @@ type Query {
   glossarConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GlossarFilter): GlossarConnection!
   magazin(relativePath: String): Magazin!
   magazinConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: MagazinFilter): MagazinConnection!
+  bundesland(relativePath: String): Bundesland!
+  bundeslandConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: BundeslandFilter): BundeslandConnection!
+  golf_kategorien(relativePath: String): Golf_kategorien!
+  golf_kategorienConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Golf_kategorienFilter): Golf_kategorienConnection!
+  locations(relativePath: String): Locations!
+  locationsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LocationsFilter): LocationsConnection!
 }
 
 input DocumentFilter {
   grundlagen: GrundlagenFilter
   glossar: GlossarFilter
   magazin: MagazinFilter
+  bundesland: BundeslandFilter
+  golf_kategorien: Golf_kategorienFilter
+  locations: LocationsFilter
 }
 
 type DocumentConnectionEdges {
@@ -91,7 +100,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Grundlagen | Glossar | Magazin | Folder
+union DocumentNode = Grundlagen | Glossar | Magazin | Bundesland | Golf_kategorien | Locations | Folder
 
 type Grundlagen implements Node & Document {
   title: String!
@@ -235,6 +244,130 @@ type MagazinConnection implements Connection {
   edges: [MagazinConnectionEdges]
 }
 
+type Bundesland implements Node & Document {
+  title: String!
+  bundesland: String
+  type: String
+  lead: String
+  description: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input BundeslandFilter {
+  title: StringFilter
+  bundesland: StringFilter
+  type: StringFilter
+  lead: StringFilter
+  description: StringFilter
+  body: RichTextFilter
+}
+
+type BundeslandConnectionEdges {
+  cursor: String!
+  node: Bundesland
+}
+
+type BundeslandConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [BundeslandConnectionEdges]
+}
+
+type Golf_kategorien implements Node & Document {
+  title: String!
+  kategorie: String
+  type: String
+  lead: String
+  description: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input Golf_kategorienFilter {
+  title: StringFilter
+  kategorie: StringFilter
+  type: StringFilter
+  lead: StringFilter
+  description: StringFilter
+  body: RichTextFilter
+}
+
+type Golf_kategorienConnectionEdges {
+  cursor: String!
+  node: Golf_kategorien
+}
+
+type Golf_kategorienConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [Golf_kategorienConnectionEdges]
+}
+
+type Locations implements Node & Document {
+  title: String!
+  date: String
+  draft: Boolean
+  bundesland: String
+  untertitel: String
+  image: String
+  kategorien: [String]
+  greenfee_ab: Float
+  lochzahl: String
+  schwierigkeit: String
+  leihausruestung: String
+  uebungsplatz: String
+  driving_range: String
+  restaurant: String
+  hunde: String
+  adresse: String
+  website: String
+  email: String
+  telefon: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input LocationsFilter {
+  title: StringFilter
+  date: DatetimeFilter
+  draft: BooleanFilter
+  bundesland: StringFilter
+  untertitel: StringFilter
+  image: StringFilter
+  kategorien: StringFilter
+  greenfee_ab: NumberFilter
+  lochzahl: StringFilter
+  schwierigkeit: StringFilter
+  leihausruestung: StringFilter
+  uebungsplatz: StringFilter
+  driving_range: StringFilter
+  restaurant: StringFilter
+  hunde: StringFilter
+  adresse: StringFilter
+  website: StringFilter
+  email: StringFilter
+  telefon: StringFilter
+  body: RichTextFilter
+}
+
+type LocationsConnectionEdges {
+  cursor: String!
+  node: Locations
+}
+
+type LocationsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [LocationsConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -247,12 +380,21 @@ type Mutation {
   createGlossar(relativePath: String!, params: GlossarMutation!): Glossar!
   updateMagazin(relativePath: String!, params: MagazinMutation!): Magazin!
   createMagazin(relativePath: String!, params: MagazinMutation!): Magazin!
+  updateBundesland(relativePath: String!, params: BundeslandMutation!): Bundesland!
+  createBundesland(relativePath: String!, params: BundeslandMutation!): Bundesland!
+  updateGolf_kategorien(relativePath: String!, params: Golf_kategorienMutation!): Golf_kategorien!
+  createGolf_kategorien(relativePath: String!, params: Golf_kategorienMutation!): Golf_kategorien!
+  updateLocations(relativePath: String!, params: LocationsMutation!): Locations!
+  createLocations(relativePath: String!, params: LocationsMutation!): Locations!
 }
 
 input DocumentUpdateMutation {
   grundlagen: GrundlagenMutation
   glossar: GlossarMutation
   magazin: MagazinMutation
+  bundesland: BundeslandMutation
+  golf_kategorien: Golf_kategorienMutation
+  locations: LocationsMutation
   relativePath: String
 }
 
@@ -260,6 +402,9 @@ input DocumentMutation {
   grundlagen: GrundlagenMutation
   glossar: GlossarMutation
   magazin: MagazinMutation
+  bundesland: BundeslandMutation
+  golf_kategorien: Golf_kategorienMutation
+  locations: LocationsMutation
 }
 
 input GrundlagenMutation {
@@ -291,6 +436,47 @@ input MagazinMutation {
   draft: Boolean
   description: String
   tags: [String]
+  body: JSON
+}
+
+input BundeslandMutation {
+  title: String
+  bundesland: String
+  type: String
+  lead: String
+  description: String
+  body: JSON
+}
+
+input Golf_kategorienMutation {
+  title: String
+  kategorie: String
+  type: String
+  lead: String
+  description: String
+  body: JSON
+}
+
+input LocationsMutation {
+  title: String
+  date: String
+  draft: Boolean
+  bundesland: String
+  untertitel: String
+  image: String
+  kategorien: [String]
+  greenfee_ab: Float
+  lochzahl: String
+  schwierigkeit: String
+  leihausruestung: String
+  uebungsplatz: String
+  driving_range: String
+  restaurant: String
+  hunde: String
+  adresse: String
+  website: String
+  email: String
+  telefon: String
   body: JSON
 }
 

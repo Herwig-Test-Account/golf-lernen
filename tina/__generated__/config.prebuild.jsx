@@ -95,6 +95,62 @@ var config_default = defineConfig({
             isBody: true
           }
         ]
+      },
+      {
+        name: "bundesland",
+        label: "Bundesl\xE4nder",
+        path: "content/bundesland",
+        format: "md",
+        fields: [
+          { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
+          { type: "string", name: "bundesland", label: "Bundesland (Wert)" },
+          { type: "string", name: "type", label: "Type (nicht \xE4ndern)" },
+          { type: "string", name: "lead", label: "Lead" },
+          { type: "string", name: "description", label: "Meta-Beschreibung" },
+          { type: "rich-text", name: "body", label: "Text", isBody: true }
+        ]
+      },
+      {
+        name: "golf_kategorien",
+        label: "Golf-Kategorien",
+        path: "content/golf-kategorien",
+        format: "md",
+        fields: [
+          { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
+          { type: "string", name: "kategorie", label: "Kategorie (Wert)" },
+          { type: "string", name: "type", label: "Type (nicht \xE4ndern)" },
+          { type: "string", name: "lead", label: "Lead" },
+          { type: "string", name: "description", label: "Meta-Beschreibung" },
+          { type: "rich-text", name: "body", label: "Text", isBody: true }
+        ]
+      },
+      {
+        name: "locations",
+        label: "Locations (Golfpl\xE4tze)",
+        path: "content/locations",
+        format: "md",
+        fields: [
+          { type: "string", name: "title", label: "Name", isTitle: true, required: true },
+          { type: "datetime", name: "date", label: "Datum" },
+          { type: "boolean", name: "draft", label: "Entwurf" },
+          { type: "string", name: "bundesland", label: "Bundesland", options: ["Burgenland", "K\xE4rnten", "Nieder\xF6sterreich", "Ober\xF6sterreich", "Salzburg", "Steiermark", "Tirol", "Vorarlberg", "Wien"] },
+          { type: "string", name: "untertitel", label: "Untertitel" },
+          { type: "string", name: "image", label: "Bild-URL" },
+          { type: "string", name: "kategorien", label: "Kategorien", list: true, options: ["\xD6ffentliche Anlage", "Keine \xD6GV-Platzreife n\xF6tig", "Keine Platzerlaubnis (PE) n\xF6tig", "Platzerlaubnis (PE) n\xF6tig", "\xD6GV-Platzreife n\xF6tig", "Golfhotel f\xFCr Anf\xE4nger"] },
+          { type: "number", name: "greenfee_ab", label: "Greenfee ab (\u20AC)" },
+          { type: "string", name: "lochzahl", label: "Lochzahl" },
+          { type: "string", name: "schwierigkeit", label: "Schwierigkeit" },
+          { type: "string", name: "leihausruestung", label: "Leihausr\xFCstung" },
+          { type: "string", name: "uebungsplatz", label: "\xDCbungsplatz" },
+          { type: "string", name: "driving_range", label: "Driving Range" },
+          { type: "string", name: "restaurant", label: "Restaurant" },
+          { type: "string", name: "hunde", label: "Hunde erlaubt" },
+          { type: "string", name: "adresse", label: "Adresse" },
+          { type: "string", name: "website", label: "Website" },
+          { type: "string", name: "email", label: "E-Mail" },
+          { type: "string", name: "telefon", label: "Telefon" },
+          { type: "rich-text", name: "body", label: "Beschreibung", isBody: true }
+        ]
       }
     ]
   }

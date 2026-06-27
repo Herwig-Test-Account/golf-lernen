@@ -88,6 +88,12 @@ export type Query = {
   glossarConnection: GlossarConnection;
   magazin: Magazin;
   magazinConnection: MagazinConnection;
+  bundesland: Bundesland;
+  bundeslandConnection: BundeslandConnection;
+  golf_kategorien: Golf_Kategorien;
+  golf_kategorienConnection: Golf_KategorienConnection;
+  locations: Locations;
+  locationsConnection: LocationsConnection;
 };
 
 
@@ -156,10 +162,58 @@ export type QueryMagazinConnectionArgs = {
   filter?: InputMaybe<MagazinFilter>;
 };
 
+
+export type QueryBundeslandArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryBundeslandConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<BundeslandFilter>;
+};
+
+
+export type QueryGolf_KategorienArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryGolf_KategorienConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<Golf_KategorienFilter>;
+};
+
+
+export type QueryLocationsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryLocationsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<LocationsFilter>;
+};
+
 export type DocumentFilter = {
   grundlagen?: InputMaybe<GrundlagenFilter>;
   glossar?: InputMaybe<GlossarFilter>;
   magazin?: InputMaybe<MagazinFilter>;
+  bundesland?: InputMaybe<BundeslandFilter>;
+  golf_kategorien?: InputMaybe<Golf_KategorienFilter>;
+  locations?: InputMaybe<LocationsFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -199,7 +253,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Grundlagen | Glossar | Magazin | Folder;
+export type DocumentNode = Grundlagen | Glossar | Magazin | Bundesland | Golf_Kategorien | Locations | Folder;
 
 export type Grundlagen = Node & Document & {
   __typename?: 'Grundlagen';
@@ -352,6 +406,139 @@ export type MagazinConnection = Connection & {
   edges?: Maybe<Array<Maybe<MagazinConnectionEdges>>>;
 };
 
+export type Bundesland = Node & Document & {
+  __typename?: 'Bundesland';
+  title: Scalars['String']['output'];
+  bundesland?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  lead?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type BundeslandFilter = {
+  title?: InputMaybe<StringFilter>;
+  bundesland?: InputMaybe<StringFilter>;
+  type?: InputMaybe<StringFilter>;
+  lead?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type BundeslandConnectionEdges = {
+  __typename?: 'BundeslandConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Bundesland>;
+};
+
+export type BundeslandConnection = Connection & {
+  __typename?: 'BundeslandConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<BundeslandConnectionEdges>>>;
+};
+
+export type Golf_Kategorien = Node & Document & {
+  __typename?: 'Golf_kategorien';
+  title: Scalars['String']['output'];
+  kategorie?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  lead?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type Golf_KategorienFilter = {
+  title?: InputMaybe<StringFilter>;
+  kategorie?: InputMaybe<StringFilter>;
+  type?: InputMaybe<StringFilter>;
+  lead?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type Golf_KategorienConnectionEdges = {
+  __typename?: 'Golf_kategorienConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Golf_Kategorien>;
+};
+
+export type Golf_KategorienConnection = Connection & {
+  __typename?: 'Golf_kategorienConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<Golf_KategorienConnectionEdges>>>;
+};
+
+export type Locations = Node & Document & {
+  __typename?: 'Locations';
+  title: Scalars['String']['output'];
+  date?: Maybe<Scalars['String']['output']>;
+  draft?: Maybe<Scalars['Boolean']['output']>;
+  bundesland?: Maybe<Scalars['String']['output']>;
+  untertitel?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  kategorien?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  greenfee_ab?: Maybe<Scalars['Float']['output']>;
+  lochzahl?: Maybe<Scalars['String']['output']>;
+  schwierigkeit?: Maybe<Scalars['String']['output']>;
+  leihausruestung?: Maybe<Scalars['String']['output']>;
+  uebungsplatz?: Maybe<Scalars['String']['output']>;
+  driving_range?: Maybe<Scalars['String']['output']>;
+  restaurant?: Maybe<Scalars['String']['output']>;
+  hunde?: Maybe<Scalars['String']['output']>;
+  adresse?: Maybe<Scalars['String']['output']>;
+  website?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  telefon?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LocationsFilter = {
+  title?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DatetimeFilter>;
+  draft?: InputMaybe<BooleanFilter>;
+  bundesland?: InputMaybe<StringFilter>;
+  untertitel?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+  kategorien?: InputMaybe<StringFilter>;
+  greenfee_ab?: InputMaybe<NumberFilter>;
+  lochzahl?: InputMaybe<StringFilter>;
+  schwierigkeit?: InputMaybe<StringFilter>;
+  leihausruestung?: InputMaybe<StringFilter>;
+  uebungsplatz?: InputMaybe<StringFilter>;
+  driving_range?: InputMaybe<StringFilter>;
+  restaurant?: InputMaybe<StringFilter>;
+  hunde?: InputMaybe<StringFilter>;
+  adresse?: InputMaybe<StringFilter>;
+  website?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  telefon?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+};
+
+export type LocationsConnectionEdges = {
+  __typename?: 'LocationsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Locations>;
+};
+
+export type LocationsConnection = Connection & {
+  __typename?: 'LocationsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<LocationsConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -365,6 +552,12 @@ export type Mutation = {
   createGlossar: Glossar;
   updateMagazin: Magazin;
   createMagazin: Magazin;
+  updateBundesland: Bundesland;
+  createBundesland: Bundesland;
+  updateGolf_kategorien: Golf_Kategorien;
+  createGolf_kategorien: Golf_Kategorien;
+  updateLocations: Locations;
+  createLocations: Locations;
 };
 
 
@@ -436,10 +629,49 @@ export type MutationCreateMagazinArgs = {
   params: MagazinMutation;
 };
 
+
+export type MutationUpdateBundeslandArgs = {
+  relativePath: Scalars['String']['input'];
+  params: BundeslandMutation;
+};
+
+
+export type MutationCreateBundeslandArgs = {
+  relativePath: Scalars['String']['input'];
+  params: BundeslandMutation;
+};
+
+
+export type MutationUpdateGolf_KategorienArgs = {
+  relativePath: Scalars['String']['input'];
+  params: Golf_KategorienMutation;
+};
+
+
+export type MutationCreateGolf_KategorienArgs = {
+  relativePath: Scalars['String']['input'];
+  params: Golf_KategorienMutation;
+};
+
+
+export type MutationUpdateLocationsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: LocationsMutation;
+};
+
+
+export type MutationCreateLocationsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: LocationsMutation;
+};
+
 export type DocumentUpdateMutation = {
   grundlagen?: InputMaybe<GrundlagenMutation>;
   glossar?: InputMaybe<GlossarMutation>;
   magazin?: InputMaybe<MagazinMutation>;
+  bundesland?: InputMaybe<BundeslandMutation>;
+  golf_kategorien?: InputMaybe<Golf_KategorienMutation>;
+  locations?: InputMaybe<LocationsMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -447,6 +679,9 @@ export type DocumentMutation = {
   grundlagen?: InputMaybe<GrundlagenMutation>;
   glossar?: InputMaybe<GlossarMutation>;
   magazin?: InputMaybe<MagazinMutation>;
+  bundesland?: InputMaybe<BundeslandMutation>;
+  golf_kategorien?: InputMaybe<Golf_KategorienMutation>;
+  locations?: InputMaybe<LocationsMutation>;
 };
 
 export type GrundlagenMutation = {
@@ -481,11 +716,58 @@ export type MagazinMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
+export type BundeslandMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  bundesland?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  lead?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type Golf_KategorienMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  kategorie?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  lead?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type LocationsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
+  bundesland?: InputMaybe<Scalars['String']['input']>;
+  untertitel?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  kategorien?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  greenfee_ab?: InputMaybe<Scalars['Float']['input']>;
+  lochzahl?: InputMaybe<Scalars['String']['input']>;
+  schwierigkeit?: InputMaybe<Scalars['String']['input']>;
+  leihausruestung?: InputMaybe<Scalars['String']['input']>;
+  uebungsplatz?: InputMaybe<Scalars['String']['input']>;
+  driving_range?: InputMaybe<Scalars['String']['input']>;
+  restaurant?: InputMaybe<Scalars['String']['input']>;
+  hunde?: InputMaybe<Scalars['String']['input']>;
+  adresse?: InputMaybe<Scalars['String']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  telefon?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+};
+
 export type GrundlagenPartsFragment = { __typename: 'Grundlagen', title: string, lead?: string | null, description?: string | null, image?: string | null, image_credit?: string | null, kapitel?: string | null, weight?: number | null, lesezeit?: string | null, stand?: string | null, tags?: Array<string | null> | null, draft?: boolean | null, body?: any | null };
 
 export type GlossarPartsFragment = { __typename: 'Glossar', title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null };
 
 export type MagazinPartsFragment = { __typename: 'Magazin', title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null };
+
+export type BundeslandPartsFragment = { __typename: 'Bundesland', title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null };
+
+export type Golf_KategorienPartsFragment = { __typename: 'Golf_kategorien', title: string, kategorie?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null };
+
+export type LocationsPartsFragment = { __typename: 'Locations', title: string, date?: string | null, draft?: boolean | null, bundesland?: string | null, untertitel?: string | null, image?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null };
 
 export type GrundlagenQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -544,6 +826,63 @@ export type MagazinConnectionQueryVariables = Exact<{
 
 export type MagazinConnectionQuery = { __typename?: 'Query', magazinConnection: { __typename?: 'MagazinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MagazinConnectionEdges', cursor: string, node?: { __typename: 'Magazin', id: string, title: string, date: string, draft?: boolean | null, description?: string | null, tags?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
+export type BundeslandQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type BundeslandQuery = { __typename?: 'Query', bundesland: { __typename: 'Bundesland', id: string, title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type BundeslandConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<BundeslandFilter>;
+}>;
+
+
+export type BundeslandConnectionQuery = { __typename?: 'Query', bundeslandConnection: { __typename?: 'BundeslandConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BundeslandConnectionEdges', cursor: string, node?: { __typename: 'Bundesland', id: string, title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type Golf_KategorienQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type Golf_KategorienQuery = { __typename?: 'Query', golf_kategorien: { __typename: 'Golf_kategorien', id: string, title: string, kategorie?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type Golf_KategorienConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<Golf_KategorienFilter>;
+}>;
+
+
+export type Golf_KategorienConnectionQuery = { __typename?: 'Query', golf_kategorienConnection: { __typename?: 'Golf_kategorienConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Golf_kategorienConnectionEdges', cursor: string, node?: { __typename: 'Golf_kategorien', id: string, title: string, kategorie?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type LocationsQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type LocationsQuery = { __typename?: 'Query', locations: { __typename: 'Locations', id: string, title: string, date?: string | null, draft?: boolean | null, bundesland?: string | null, untertitel?: string | null, image?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type LocationsConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<LocationsFilter>;
+}>;
+
+
+export type LocationsConnectionQuery = { __typename?: 'Query', locationsConnection: { __typename?: 'LocationsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LocationsConnectionEdges', cursor: string, node?: { __typename: 'Locations', id: string, title: string, date?: string | null, draft?: boolean | null, bundesland?: string | null, untertitel?: string | null, image?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
 export const GrundlagenPartsFragmentDoc = gql`
     fragment GrundlagenParts on Grundlagen {
   __typename
@@ -579,6 +918,53 @@ export const MagazinPartsFragmentDoc = gql`
   draft
   description
   tags
+  body
+}
+    `;
+export const BundeslandPartsFragmentDoc = gql`
+    fragment BundeslandParts on Bundesland {
+  __typename
+  title
+  bundesland
+  type
+  lead
+  description
+  body
+}
+    `;
+export const Golf_KategorienPartsFragmentDoc = gql`
+    fragment Golf_kategorienParts on Golf_kategorien {
+  __typename
+  title
+  kategorie
+  type
+  lead
+  description
+  body
+}
+    `;
+export const LocationsPartsFragmentDoc = gql`
+    fragment LocationsParts on Locations {
+  __typename
+  title
+  date
+  draft
+  bundesland
+  untertitel
+  image
+  kategorien
+  greenfee_ab
+  lochzahl
+  schwierigkeit
+  leihausruestung
+  uebungsplatz
+  driving_range
+  restaurant
+  hunde
+  adresse
+  website
+  email
+  telefon
   body
 }
     `;
@@ -753,6 +1139,177 @@ export const MagazinConnectionDocument = gql`
   }
 }
     ${MagazinPartsFragmentDoc}`;
+export const BundeslandDocument = gql`
+    query bundesland($relativePath: String!) {
+  bundesland(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...BundeslandParts
+  }
+}
+    ${BundeslandPartsFragmentDoc}`;
+export const BundeslandConnectionDocument = gql`
+    query bundeslandConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BundeslandFilter) {
+  bundeslandConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...BundeslandParts
+      }
+    }
+  }
+}
+    ${BundeslandPartsFragmentDoc}`;
+export const Golf_KategorienDocument = gql`
+    query golf_kategorien($relativePath: String!) {
+  golf_kategorien(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...Golf_kategorienParts
+  }
+}
+    ${Golf_KategorienPartsFragmentDoc}`;
+export const Golf_KategorienConnectionDocument = gql`
+    query golf_kategorienConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: Golf_kategorienFilter) {
+  golf_kategorienConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...Golf_kategorienParts
+      }
+    }
+  }
+}
+    ${Golf_KategorienPartsFragmentDoc}`;
+export const LocationsDocument = gql`
+    query locations($relativePath: String!) {
+  locations(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...LocationsParts
+  }
+}
+    ${LocationsPartsFragmentDoc}`;
+export const LocationsConnectionDocument = gql`
+    query locationsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LocationsFilter) {
+  locationsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...LocationsParts
+      }
+    }
+  }
+}
+    ${LocationsPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -773,6 +1330,24 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     magazinConnection(variables?: MagazinConnectionQueryVariables, options?: C): Promise<{data: MagazinConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MagazinConnectionQueryVariables, query: string}> {
         return requester<{data: MagazinConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: MagazinConnectionQueryVariables, query: string}, MagazinConnectionQueryVariables>(MagazinConnectionDocument, variables, options);
+      },
+    bundesland(variables: BundeslandQueryVariables, options?: C): Promise<{data: BundeslandQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BundeslandQueryVariables, query: string}> {
+        return requester<{data: BundeslandQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BundeslandQueryVariables, query: string}, BundeslandQueryVariables>(BundeslandDocument, variables, options);
+      },
+    bundeslandConnection(variables?: BundeslandConnectionQueryVariables, options?: C): Promise<{data: BundeslandConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BundeslandConnectionQueryVariables, query: string}> {
+        return requester<{data: BundeslandConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: BundeslandConnectionQueryVariables, query: string}, BundeslandConnectionQueryVariables>(BundeslandConnectionDocument, variables, options);
+      },
+    golf_kategorien(variables: Golf_KategorienQueryVariables, options?: C): Promise<{data: Golf_KategorienQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Golf_KategorienQueryVariables, query: string}> {
+        return requester<{data: Golf_KategorienQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Golf_KategorienQueryVariables, query: string}, Golf_KategorienQueryVariables>(Golf_KategorienDocument, variables, options);
+      },
+    golf_kategorienConnection(variables?: Golf_KategorienConnectionQueryVariables, options?: C): Promise<{data: Golf_KategorienConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Golf_KategorienConnectionQueryVariables, query: string}> {
+        return requester<{data: Golf_KategorienConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: Golf_KategorienConnectionQueryVariables, query: string}, Golf_KategorienConnectionQueryVariables>(Golf_KategorienConnectionDocument, variables, options);
+      },
+    locations(variables: LocationsQueryVariables, options?: C): Promise<{data: LocationsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LocationsQueryVariables, query: string}> {
+        return requester<{data: LocationsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LocationsQueryVariables, query: string}, LocationsQueryVariables>(LocationsDocument, variables, options);
+      },
+    locationsConnection(variables?: LocationsConnectionQueryVariables, options?: C): Promise<{data: LocationsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LocationsConnectionQueryVariables, query: string}> {
+        return requester<{data: LocationsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LocationsConnectionQueryVariables, query: string}, LocationsConnectionQueryVariables>(LocationsConnectionDocument, variables, options);
       }
     };
   }

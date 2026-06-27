@@ -43,6 +43,53 @@ export const MagazinPartsFragmentDoc = gql`
   body
 }
     `;
+export const BundeslandPartsFragmentDoc = gql`
+    fragment BundeslandParts on Bundesland {
+  __typename
+  title
+  bundesland
+  type
+  lead
+  description
+  body
+}
+    `;
+export const Golf_KategorienPartsFragmentDoc = gql`
+    fragment Golf_kategorienParts on Golf_kategorien {
+  __typename
+  title
+  kategorie
+  type
+  lead
+  description
+  body
+}
+    `;
+export const LocationsPartsFragmentDoc = gql`
+    fragment LocationsParts on Locations {
+  __typename
+  title
+  date
+  draft
+  bundesland
+  untertitel
+  image
+  kategorien
+  greenfee_ab
+  lochzahl
+  schwierigkeit
+  leihausruestung
+  uebungsplatz
+  driving_range
+  restaurant
+  hunde
+  adresse
+  website
+  email
+  telefon
+  body
+}
+    `;
 export const GrundlagenDocument = gql`
     query grundlagen($relativePath: String!) {
   grundlagen(relativePath: $relativePath) {
@@ -214,6 +261,177 @@ export const MagazinConnectionDocument = gql`
   }
 }
     ${MagazinPartsFragmentDoc}`;
+export const BundeslandDocument = gql`
+    query bundesland($relativePath: String!) {
+  bundesland(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...BundeslandParts
+  }
+}
+    ${BundeslandPartsFragmentDoc}`;
+export const BundeslandConnectionDocument = gql`
+    query bundeslandConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: BundeslandFilter) {
+  bundeslandConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...BundeslandParts
+      }
+    }
+  }
+}
+    ${BundeslandPartsFragmentDoc}`;
+export const Golf_KategorienDocument = gql`
+    query golf_kategorien($relativePath: String!) {
+  golf_kategorien(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...Golf_kategorienParts
+  }
+}
+    ${Golf_KategorienPartsFragmentDoc}`;
+export const Golf_KategorienConnectionDocument = gql`
+    query golf_kategorienConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: Golf_kategorienFilter) {
+  golf_kategorienConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...Golf_kategorienParts
+      }
+    }
+  }
+}
+    ${Golf_KategorienPartsFragmentDoc}`;
+export const LocationsDocument = gql`
+    query locations($relativePath: String!) {
+  locations(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...LocationsParts
+  }
+}
+    ${LocationsPartsFragmentDoc}`;
+export const LocationsConnectionDocument = gql`
+    query locationsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LocationsFilter) {
+  locationsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...LocationsParts
+      }
+    }
+  }
+}
+    ${LocationsPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     grundlagen(variables, options) {
@@ -233,6 +451,24 @@ export function getSdk(requester) {
     },
     magazinConnection(variables, options) {
       return requester(MagazinConnectionDocument, variables, options);
+    },
+    bundesland(variables, options) {
+      return requester(BundeslandDocument, variables, options);
+    },
+    bundeslandConnection(variables, options) {
+      return requester(BundeslandConnectionDocument, variables, options);
+    },
+    golf_kategorien(variables, options) {
+      return requester(Golf_KategorienDocument, variables, options);
+    },
+    golf_kategorienConnection(variables, options) {
+      return requester(Golf_KategorienConnectionDocument, variables, options);
+    },
+    locations(variables, options) {
+      return requester(LocationsDocument, variables, options);
+    },
+    locationsConnection(variables, options) {
+      return requester(LocationsConnectionDocument, variables, options);
     }
   };
 }

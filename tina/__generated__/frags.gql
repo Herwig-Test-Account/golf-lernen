@@ -32,3 +32,47 @@ fragment MagazinParts on Magazin {
   tags
   body
 }
+
+fragment BundeslandParts on Bundesland {
+  __typename
+  title
+  bundesland
+  type
+  lead
+  description
+  body
+}
+
+fragment Golf_kategorienParts on Golf_kategorien {
+  __typename
+  title
+  kategorie
+  type
+  lead
+  description
+  body
+}
+
+fragment LocationsParts on Locations {
+  __typename
+  title
+  date
+  draft
+  bundesland
+  untertitel
+  image
+  kategorien
+  greenfee_ab
+  lochzahl
+  schwierigkeit
+  leihausruestung
+  uebungsplatz
+  driving_range
+  restaurant
+  hunde
+  adresse
+  website
+  email
+  telefon
+  body
+}
