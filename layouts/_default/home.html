@@ -1,30 +1,25 @@
 {{ define "main" }}
+{{ $hp := site.GetPage "settings/homepage" }}
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-left">
-    <p class="hero-tag">Das Einsteigerportal für Österreich</p>
-    <h1 class="hero-title">Golf lernen –<br><em>leicht gemacht.</em></h1>
-    <p class="hero-sub">Von der Platzreife bis zum ersten Turnier: alle Grundlagen verständlich erklärt und passende Golfplätze in ganz Österreich finden.</p>
+    <p class="hero-tag">{{ $hp.Params.hero_tag }}</p>
+    <h1 class="hero-title">{{ $hp.Params.hero_title | markdownify }}</h1>
+    <p class="hero-sub">{{ $hp.Params.hero_sub }}</p>
     <div class="hero-actions">
-      <a href="/grundlagen/" class="btn-primary">Grundlagen entdecken</a>
-      <a href="/locations/" class="btn-secondary">Golfplatz finden</a>
+      <a href="{{ $hp.Params.cta_primary_url }}" class="btn-primary">{{ $hp.Params.cta_primary_text }}</a>
+      <a href="{{ $hp.Params.cta_secondary_url }}" class="btn-secondary">{{ $hp.Params.cta_secondary_text }}</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-quotes">
+      {{ range $hp.Params.quotes }}
       <div class="quote-card">
-        <p>„Golf hilft mir beim Stressabbau und macht den Kopf frei."</p>
-        <cite>Agnes, 47</cite>
+        <p>„{{ .text }}"</p>
+        <cite>{{ .cite }}</cite>
       </div>
-      <div class="quote-card">
-        <p>„Den kleinen Ball richtig zu treffen macht süchtig."</p>
-        <cite>Andreas, 33</cite>
-      </div>
-      <div class="quote-card">
-        <p>„Golf ist wirklich ein Sport für jung und alt. Mein Enkerl geht gern mit mir."</p>
-        <cite>Fritz, 68</cite>
-      </div>
+      {{ end }}
     </div>
   </div>
 </div>
@@ -33,69 +28,44 @@
 
   <!-- GRUNDLAGEN -->
   <section id="grundlagen">
-    <p class="section-label">Erste Schritte im Golfsport</p>
-    <h2 class="section-title">Die Golf-Grundlagen</h2>
-    <p class="section-intro">Als Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – kompakt und verständlich erklärt.</p>
+    <p class="section-label">{{ $hp.Params.grundlagen_label }}</p>
+    <h2 class="section-title">{{ $hp.Params.grundlagen_title }}</h2>
+    <p class="section-intro">{{ $hp.Params.grundlagen_intro }}</p>
     <div class="grundlagen-grid">
-      <a href="/grundlagen/" class="g-card reveal">
-        <div class="g-card-icon">⛳</div>
-        <h3>Golfplatz & Platzreife</h3>
-        <p>Wie Sie sich auf dem Golfplatz zurechtfinden – Fairway, Bunker, Par und die ÖGV-Platzreife erklärt.</p>
+      {{ range $i, $karte := $hp.Params.grundlagen_karten }}
+      <a href="{{ $karte.url }}" class="g-card reveal{{ if gt $i 0 }} reveal-delay-{{ $i }}{{ end }}">
+        <div class="g-card-icon">{{ $karte.icon }}</div>
+        <h3>{{ $karte.titel }}</h3>
+        <p>{{ $karte.text }}</p>
         <span class="card-link">Mehr erfahren →</span>
       </a>
-      <a href="/grundlagen/" class="g-card reveal reveal-delay-1">
-        <div class="g-card-icon">🏌️</div>
-        <h3>Golfschwung & Ausrüstung</h3>
-        <p>Die richtige Technik für Anfänger und wie Sie passende Ausrüstung finden, ohne zu viel auszugeben.</p>
-        <span class="card-link">Mehr erfahren →</span>
-      </a>
-      <a href="/grundlagen/" class="g-card reveal reveal-delay-2">
-        <div class="g-card-icon">📋</div>
-        <h3>Regeln & Handicap</h3>
-        <p>Die wichtigsten Golfregeln, die Golf-Etikette und wie das Handicap-System wirklich funktioniert.</p>
-        <span class="card-link">Mehr erfahren →</span>
-      </a>
-      <a href="/golf-kosten/" class="g-card reveal reveal-delay-3">
-        <div class="g-card-icon">💶</div>
-        <h3>Was kostet Golf?</h3>
-        <p>Ausrüstung, Greenfee und Mitgliedschaft: mit welchen Kosten Sie beim Golfspielen rechnen müssen.</p>
-        <span class="card-link">Mehr erfahren →</span>
-      </a>
+      {{ end }}
     </div>
   </section>
 
   <!-- LOCATIONS -->
   <section id="locations" class="locations-section">
-    <p class="section-label">Golfplätze in Österreich</p>
-    <h2 class="section-title">Golf Locations finden</h2>
-    <p class="section-intro">Golfhotel, Einsteigerplatz oder Übungsmöglichkeit in Ihrer Nähe – hier werden Sie fündig.</p>
+    <p class="section-label">{{ $hp.Params.locations_label }}</p>
+    <h2 class="section-title">{{ $hp.Params.locations_title }}</h2>
+    <p class="section-intro">{{ $hp.Params.locations_intro }}</p>
     <div class="bundeslaender-grid">
-      <a href="/bundesland/burgenland/" class="bl-chip">Burgenland</a>
-      <a href="/bundesland/kaernten/" class="bl-chip">Kärnten</a>
-      <a href="/bundesland/niederoesterreich/" class="bl-chip">Niederösterreich</a>
-      <a href="/bundesland/oberoesterreich/" class="bl-chip">Oberösterreich</a>
-      <a href="/bundesland/steiermark/" class="bl-chip">Steiermark</a>
-      <a href="/bundesland/salzburg/" class="bl-chip">Salzburg</a>
-      <a href="/bundesland/tirol/" class="bl-chip">Tirol</a>
-      <a href="/bundesland/vorarlberg/" class="bl-chip">Vorarlberg</a>
-      <a href="/bundesland/wien/" class="bl-chip">Wien</a>
+      {{ range where .Site.RegularPages "Type" "bundesland" }}
+      <a href="{{ .Permalink }}" class="bl-chip">{{ .Title }}</a>
+      {{ end }}
     </div>
     <p class="cat-heading">Nach Kategorie filtern</p>
     <div class="cat-chips">
-      <a href="/golf-kategorien/golfhotel-fuer-anfaenger/" class="cat-chip">Golfhotel für Anfänger</a>
-      <a href="/golf-kategorien/keine-oegv-platzreife-noetig/" class="cat-chip">Keine ÖGV-Platzreife nötig</a>
-      <a href="/golf-kategorien/keine-platzerlaubnis-pe-noetig/" class="cat-chip">Keine Platzerlaubnis nötig</a>
-      <a href="/golf-kategorien/oeffentliche-anlage/" class="cat-chip">Öffentliche Anlage</a>
-      <a href="/golf-kategorien/oegv-platzreife-noetig/" class="cat-chip">ÖGV-Platzreife nötig</a>
-      <a href="/golf-kategorien/platzerlaubnis-pe-noetig/" class="cat-chip">Platzerlaubnis nötig</a>
+      {{ range where .Site.RegularPages "Type" "golf-kategorien" }}
+      <a href="{{ .Permalink }}" class="cat-chip">{{ .Title }}</a>
+      {{ end }}
     </div>
   </section>
 
-  <!-- MAGAZIN: zeigt echte neueste Artikel, mit Fallback auf Beispiele -->
+  <!-- MAGAZIN -->
   <section id="magazin">
-    <p class="section-label">Tipps & Wissen</p>
-    <h2 class="section-title">Das Golf-Magazin</h2>
-    <p class="section-intro">Hilfreiche Beiträge und aktuelle Themen für angehende Golferinnen und Golfer in Österreich.</p>
+    <p class="section-label">{{ $hp.Params.magazin_label }}</p>
+    <h2 class="section-title">{{ $hp.Params.magazin_title }}</h2>
+    <p class="section-intro">{{ $hp.Params.magazin_intro }}</p>
     <div class="magazin-grid">
       {{ $posts := where .Site.RegularPages "Type" "magazin" }}
       {{ if $posts }}

@@ -8,18 +8,48 @@ export function gql(strings, ...args) {
 export const GrundlagenPartsFragmentDoc = gql`
     fragment GrundlagenParts on Grundlagen {
   __typename
-  title
-  lead
-  description
-  image
-  image_credit
-  kapitel
-  weight
-  lesezeit
-  stand
-  tags
-  draft
-  body
+  ... on GrundlagenArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    image_credit
+    date
+    lesezeit
+    h1
+    lead
+    body
+    tags
+    kapitel
+    weight
+    stand
+    json_ld
+  }
+  ... on GrundlagenUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    kapitel_liste {
+      __typename
+      id
+      label
+      title
+      desc
+      nav_desc
+    }
+    json_ld
+  }
 }
     `;
 export const GlossarPartsFragmentDoc = gql`
@@ -35,15 +65,37 @@ export const GlossarPartsFragmentDoc = gql`
 export const MagazinPartsFragmentDoc = gql`
     fragment MagazinParts on Magazin {
   __typename
-  title
-  date
-  draft
-  description
-  image
-  rubrik
-  author
-  tags
-  body
+  ... on MagazinArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    date
+    lesezeit
+    h1
+    rubrik
+    author
+    body
+    tags
+    json_ld
+  }
+  ... on MagazinUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
     `;
 export const BundeslandPartsFragmentDoc = gql`
@@ -91,6 +143,42 @@ export const LocationsPartsFragmentDoc = gql`
   email
   telefon
   body
+}
+    `;
+export const GlobalPartsFragmentDoc = gql`
+    fragment GlobalParts on Global {
+  __typename
+  ... on GlobalHomepage {
+    title
+    hero_tag
+    hero_title
+    hero_sub
+    cta_primary_text
+    cta_primary_url
+    cta_secondary_text
+    cta_secondary_url
+    quotes {
+      __typename
+      text
+      cite
+    }
+    grundlagen_label
+    grundlagen_title
+    grundlagen_intro
+    grundlagen_karten {
+      __typename
+      icon
+      titel
+      text
+      url
+    }
+    locations_label
+    locations_title
+    locations_intro
+    magazin_label
+    magazin_title
+    magazin_intro
+  }
 }
     `;
 export const GrundlagenDocument = gql`
@@ -435,6 +523,63 @@ export const LocationsConnectionDocument = gql`
   }
 }
     ${LocationsPartsFragmentDoc}`;
+export const GlobalDocument = gql`
+    query global($relativePath: String!) {
+  global(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...GlobalParts
+  }
+}
+    ${GlobalPartsFragmentDoc}`;
+export const GlobalConnectionDocument = gql`
+    query globalConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: GlobalFilter) {
+  globalConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...GlobalParts
+      }
+    }
+  }
+}
+    ${GlobalPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     grundlagen(variables, options) {
@@ -472,6 +617,12 @@ export function getSdk(requester) {
     },
     locationsConnection(variables, options) {
       return requester(LocationsConnectionDocument, variables, options);
+    },
+    global(variables, options) {
+      return requester(GlobalDocument, variables, options);
+    },
+    globalConnection(variables, options) {
+      return requester(GlobalConnectionDocument, variables, options);
     }
   };
 }

@@ -1,17 +1,47 @@
 fragment GrundlagenParts on Grundlagen {
   __typename
-  title
-  lead
-  description
-  image
-  image_credit
-  kapitel
-  weight
-  lesezeit
-  stand
-  tags
-  draft
-  body
+  ... on GrundlagenArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    image_credit
+    date
+    lesezeit
+    h1
+    lead
+    body
+    tags
+    kapitel
+    weight
+    stand
+    json_ld
+  }
+  ... on GrundlagenUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    kapitel_liste {
+      __typename
+      id
+      label
+      title
+      desc
+      nav_desc
+    }
+    json_ld
+  }
 }
 
 fragment GlossarParts on Glossar {
@@ -25,15 +55,37 @@ fragment GlossarParts on Glossar {
 
 fragment MagazinParts on Magazin {
   __typename
-  title
-  date
-  draft
-  description
-  image
-  rubrik
-  author
-  tags
-  body
+  ... on MagazinArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    date
+    lesezeit
+    h1
+    rubrik
+    author
+    body
+    tags
+    json_ld
+  }
+  ... on MagazinUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
 
 fragment BundeslandParts on Bundesland {
@@ -78,4 +130,39 @@ fragment LocationsParts on Locations {
   email
   telefon
   body
+}
+
+fragment GlobalParts on Global {
+  __typename
+  ... on GlobalHomepage {
+    title
+    hero_tag
+    hero_title
+    hero_sub
+    cta_primary_text
+    cta_primary_url
+    cta_secondary_text
+    cta_secondary_url
+    quotes {
+      __typename
+      text
+      cite
+    }
+    grundlagen_label
+    grundlagen_title
+    grundlagen_intro
+    grundlagen_karten {
+      __typename
+      icon
+      titel
+      text
+      url
+    }
+    locations_label
+    locations_title
+    locations_intro
+    magazin_label
+    magazin_title
+    magazin_intro
+  }
 }

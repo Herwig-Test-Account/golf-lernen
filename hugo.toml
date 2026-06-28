@@ -5,6 +5,8 @@ title = "Golf Lernen"
 [params]
   author = "Herwig"
   description = "Golf für Einsteiger – locker erklärt, Schritt für Schritt."
+  footer_tagline = "Das umfassende Info-Portal für Golf-Einsteiger in Österreich. Grundlagen, Locations und Magazin – alles an einem Ort."
+  footer_copyright = "Mit ♥ für Golf-Einsteiger in Österreich"
 
 [markup.goldmark.parser]
   autoHeadingID = true
@@ -20,3 +22,23 @@ title = "Golf Lernen"
   startLevel = 2
   endLevel = 3
   ordered = false
+
+[[menus.main]]
+  name = "Grundlagen"
+  url = "/grundlagen/"
+  weight = 1
+
+[[menus.main]]
+  name = "Locations"
+  url = "/locations/"
+  weight = 2
+
+[[menus.main]]
+  name = "Magazin"
+  url = "/magazin/"
+  weight = 3
+
+[[menus.main]]
+  name = "Glossar"
+  url = "/glossar/"
+  weight = 4

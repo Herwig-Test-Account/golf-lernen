@@ -66,6 +66,8 @@ type Query {
   golf_kategorienConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Golf_kategorienFilter): Golf_kategorienConnection!
   locations(relativePath: String): Locations!
   locationsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LocationsFilter): LocationsConnection!
+  global(relativePath: String): Global!
+  globalConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GlobalFilter): GlobalConnection!
 }
 
 input DocumentFilter {
@@ -75,6 +77,7 @@ input DocumentFilter {
   bundesland: BundeslandFilter
   golf_kategorien: Golf_kategorienFilter
   locations: LocationsFilter
+  global: GlobalFilter
 }
 
 type DocumentConnectionEdges {
@@ -100,24 +103,64 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Grundlagen | Glossar | Magazin | Bundesland | Golf_kategorien | Locations | Folder
+union DocumentNode = GrundlagenArtikel | GrundlagenUebersicht | Glossar | MagazinArtikel | MagazinUebersicht | Bundesland | Golf_kategorien | Locations | GlobalHomepage | Folder
 
-type Grundlagen implements Node & Document {
+type GrundlagenArtikel implements Node & Document {
+  draft: Boolean
   title: String!
-  lead: String
   description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   image: String
   image_credit: String
+  date: String
+  lesezeit: String
+  h1: String
+  lead: String
+  body: JSON
+  tags: [String]
   kapitel: String
   weight: Float
-  lesezeit: String
   stand: String
-  tags: [String]
-  draft: Boolean
-  body: JSON
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+type GrundlagenUebersichtKapitel_liste {
+  id: String
+  label: String
+  title: String
+  desc: String
+  nav_desc: String
+}
+
+type GrundlagenUebersicht implements Node & Document {
+  draft: Boolean
+  title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  kapitel_liste: [GrundlagenUebersichtKapitel_liste]
+  json_ld: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+union Grundlagen = GrundlagenArtikel | GrundlagenUebersicht
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
 }
 
 input StringFilter {
@@ -125,6 +168,27 @@ input StringFilter {
   eq: String
   exists: Boolean
   in: [String]
+}
+
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
 }
 
 input NumberFilter {
@@ -137,30 +201,54 @@ input NumberFilter {
   in: [Float]
 }
 
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
+input GrundlagenArtikelFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  image: ImageFilter
+  image_credit: StringFilter
+  date: DatetimeFilter
+  lesezeit: StringFilter
+  h1: StringFilter
+  lead: StringFilter
+  body: RichTextFilter
+  tags: StringFilter
+  kapitel: StringFilter
+  weight: NumberFilter
+  stand: StringFilter
+  json_ld: StringFilter
 }
 
-input RichTextFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
+input GrundlagenUebersichtKapitel_listeFilter {
+  id: StringFilter
+  label: StringFilter
+  title: StringFilter
+  desc: StringFilter
+  nav_desc: StringFilter
+}
+
+input GrundlagenUebersichtFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  eyebrow: StringFilter
+  h1: StringFilter
+  lead: StringFilter
+  kapitel_liste: GrundlagenUebersichtKapitel_listeFilter
+  json_ld: StringFilter
 }
 
 input GrundlagenFilter {
-  title: StringFilter
-  lead: StringFilter
-  description: StringFilter
-  image: StringFilter
-  image_credit: StringFilter
-  kapitel: StringFilter
-  weight: NumberFilter
-  lesezeit: StringFilter
-  stand: StringFilter
-  tags: StringFilter
-  draft: BooleanFilter
-  body: RichTextFilter
+  artikel: GrundlagenArtikelFilter
+  uebersicht: GrundlagenUebersichtFilter
 }
 
 type GrundlagenConnectionEdges {
@@ -204,46 +292,83 @@ type GlossarConnection implements Connection {
   edges: [GlossarConnectionEdges]
 }
 
-type Magazin implements Node & Document {
-  title: String!
-  date: String!
+type MagazinArtikel implements Node & Document {
   draft: Boolean
+  title: String!
   description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   image: String
+  date: String!
+  lesezeit: String
+  h1: String
   rubrik: String
   author: String
-  tags: [String]
   body: JSON
+  tags: [String]
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
+type MagazinUebersicht implements Node & Document {
+  draft: Boolean
+  title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  json_ld: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
-input ImageFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
+union Magazin = MagazinArtikel | MagazinUebersicht
+
+input MagazinArtikelFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  image: ImageFilter
+  date: DatetimeFilter
+  lesezeit: StringFilter
+  h1: StringFilter
+  rubrik: StringFilter
+  author: StringFilter
+  body: RichTextFilter
+  tags: StringFilter
+  json_ld: StringFilter
+}
+
+input MagazinUebersichtFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  eyebrow: StringFilter
+  h1: StringFilter
+  lead: StringFilter
+  json_ld: StringFilter
 }
 
 input MagazinFilter {
-  title: StringFilter
-  date: DatetimeFilter
-  draft: BooleanFilter
-  description: StringFilter
-  image: ImageFilter
-  rubrik: StringFilter
-  author: StringFilter
-  tags: StringFilter
-  body: RichTextFilter
+  artikel: MagazinArtikelFilter
+  uebersicht: MagazinUebersichtFilter
 }
 
 type MagazinConnectionEdges {
@@ -381,6 +506,94 @@ type LocationsConnection implements Connection {
   edges: [LocationsConnectionEdges]
 }
 
+type GlobalHomepageQuotes {
+  text: String
+  cite: String
+}
+
+type GlobalHomepageGrundlagen_karten {
+  icon: String
+  titel: String
+  text: String
+  url: String
+}
+
+type GlobalHomepage implements Node & Document {
+  title: String!
+  hero_tag: String
+  hero_title: String
+  hero_sub: String
+  cta_primary_text: String
+  cta_primary_url: String
+  cta_secondary_text: String
+  cta_secondary_url: String
+  quotes: [GlobalHomepageQuotes]
+  grundlagen_label: String
+  grundlagen_title: String
+  grundlagen_intro: String
+  grundlagen_karten: [GlobalHomepageGrundlagen_karten]
+  locations_label: String
+  locations_title: String
+  locations_intro: String
+  magazin_label: String
+  magazin_title: String
+  magazin_intro: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+union Global = GlobalHomepage
+
+input GlobalHomepageQuotesFilter {
+  text: StringFilter
+  cite: StringFilter
+}
+
+input GlobalHomepageGrundlagen_kartenFilter {
+  icon: StringFilter
+  titel: StringFilter
+  text: StringFilter
+  url: StringFilter
+}
+
+input GlobalHomepageFilter {
+  title: StringFilter
+  hero_tag: StringFilter
+  hero_title: StringFilter
+  hero_sub: StringFilter
+  cta_primary_text: StringFilter
+  cta_primary_url: StringFilter
+  cta_secondary_text: StringFilter
+  cta_secondary_url: StringFilter
+  quotes: GlobalHomepageQuotesFilter
+  grundlagen_label: StringFilter
+  grundlagen_title: StringFilter
+  grundlagen_intro: StringFilter
+  grundlagen_karten: GlobalHomepageGrundlagen_kartenFilter
+  locations_label: StringFilter
+  locations_title: StringFilter
+  locations_intro: StringFilter
+  magazin_label: StringFilter
+  magazin_title: StringFilter
+  magazin_intro: StringFilter
+}
+
+input GlobalFilter {
+  homepage: GlobalHomepageFilter
+}
+
+type GlobalConnectionEdges {
+  cursor: String!
+  node: Global
+}
+
+type GlobalConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [GlobalConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -399,6 +612,8 @@ type Mutation {
   createGolf_kategorien(relativePath: String!, params: Golf_kategorienMutation!): Golf_kategorien!
   updateLocations(relativePath: String!, params: LocationsMutation!): Locations!
   createLocations(relativePath: String!, params: LocationsMutation!): Locations!
+  updateGlobal(relativePath: String!, params: GlobalMutation!): Global!
+  createGlobal(relativePath: String!, params: GlobalMutation!): Global!
 }
 
 input DocumentUpdateMutation {
@@ -408,6 +623,7 @@ input DocumentUpdateMutation {
   bundesland: BundeslandMutation
   golf_kategorien: Golf_kategorienMutation
   locations: LocationsMutation
+  global: GlobalMutation
   relativePath: String
 }
 
@@ -418,21 +634,57 @@ input DocumentMutation {
   bundesland: BundeslandMutation
   golf_kategorien: Golf_kategorienMutation
   locations: LocationsMutation
+  global: GlobalMutation
+}
+
+input GrundlagenArtikelMutation {
+  draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  image: String
+  image_credit: String
+  date: String
+  lesezeit: String
+  h1: String
+  lead: String
+  body: JSON
+  tags: [String]
+  kapitel: String
+  weight: Float
+  stand: String
+  json_ld: String
+}
+
+input GrundlagenUebersichtKapitel_listeMutation {
+  id: String
+  label: String
+  title: String
+  desc: String
+  nav_desc: String
+}
+
+input GrundlagenUebersichtMutation {
+  draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  kapitel_liste: [GrundlagenUebersichtKapitel_listeMutation]
+  json_ld: String
 }
 
 input GrundlagenMutation {
-  title: String
-  lead: String
-  description: String
-  image: String
-  image_credit: String
-  kapitel: String
-  weight: Float
-  lesezeit: String
-  stand: String
-  tags: [String]
-  draft: Boolean
-  body: JSON
+  artikel: GrundlagenArtikelMutation
+  uebersicht: GrundlagenUebersichtMutation
 }
 
 input GlossarMutation {
@@ -443,16 +695,42 @@ input GlossarMutation {
   body: JSON
 }
 
-input MagazinMutation {
-  title: String
-  date: String
+input MagazinArtikelMutation {
   draft: Boolean
+  title: String
   description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   image: String
+  date: String
+  lesezeit: String
+  h1: String
   rubrik: String
   author: String
-  tags: [String]
   body: JSON
+  tags: [String]
+  json_ld: String
+}
+
+input MagazinUebersichtMutation {
+  draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  json_ld: String
+}
+
+input MagazinMutation {
+  artikel: MagazinArtikelMutation
+  uebersicht: MagazinUebersichtMutation
 }
 
 input BundeslandMutation {
@@ -494,6 +772,44 @@ input LocationsMutation {
   email: String
   telefon: String
   body: JSON
+}
+
+input GlobalHomepageQuotesMutation {
+  text: String
+  cite: String
+}
+
+input GlobalHomepageGrundlagen_kartenMutation {
+  icon: String
+  titel: String
+  text: String
+  url: String
+}
+
+input GlobalHomepageMutation {
+  title: String
+  hero_tag: String
+  hero_title: String
+  hero_sub: String
+  cta_primary_text: String
+  cta_primary_url: String
+  cta_secondary_text: String
+  cta_secondary_url: String
+  quotes: [GlobalHomepageQuotesMutation]
+  grundlagen_label: String
+  grundlagen_title: String
+  grundlagen_intro: String
+  grundlagen_karten: [GlobalHomepageGrundlagen_kartenMutation]
+  locations_label: String
+  locations_title: String
+  locations_intro: String
+  magazin_label: String
+  magazin_title: String
+  magazin_intro: String
+}
+
+input GlobalMutation {
+  homepage: GlobalHomepageMutation
 }
 
 schema {

@@ -13,7 +13,7 @@
         <line x1="44" y1="33" x2="200" y2="33" stroke="#8fbf5c" stroke-width="1.2" stroke-linecap="square"/>
       </svg>
     </a>
-    <p>Das umfassende Info-Portal für Golf-Einsteiger in Österreich. Grundlagen, Locations und Magazin – alles an einem Ort.</p>
+    <p>{{ .Site.Params.footer_tagline }}</p>
   </div>
   <div class="footer-col">
     <h4>Inhalte</h4>
@@ -34,6 +34,6 @@
   </div>
   <div class="footer-bottom">
     <span>© {{ .Site.Title }} {{ now.Year }}</span>
-    <span>Mit ♥ für Golf-Einsteiger in Österreich</span>
+    <span>{{ .Site.Params.footer_copyright }}</span>
   </div>
 </footer>
