@@ -1,21 +1,21 @@
-﻿---
-_template: artikel
+---
+draft: false
 title: Die wichtigsten Golfregeln verstehen
-lead: 'Kompakt & anschaulich aufbereitet: welche Golfregeln Sie als Einsteiger:in kennen und beachten müssen – inkl. der 20 Regeländerungen von 2019.'
 description: 'Kompakt & anschaulich aufbereitet, welche Golfregeln Sie beachten müssen.'
-image: /img/grundlagen/GG_wichtigste_golf-regeln.png
+image: /img/uploads/images/gundlagen/GG_wichtigste_golf-regeln.png
 image_credit: © golf-lernen.at
-kapitel: regeln
-weight: 60
 lesezeit: ~15 Min. Lesezeit
-stand: Mai 2025
+lead: 'Kompakt & anschaulich aufbereitet: welche Golfregeln Sie als Einsteiger:in kennen und beachten müssen – inkl. der 20 Regeländerungen von 2019.'
 tags:
   - Golfregeln
   - Etikette
   - Droppen
   - Penalty Area
   - Regeln 2019
-draft: false
+kapitel: regeln
+weight: 60
+stand: Mai 2025
+_template: artikel
 ---
 
 Es gibt 24 internationale Golfregeln, die vom R\&A (Royal and Ancient Golf Club of St Andrews) und der USGA (United States Golf Association) verwaltet und herausgegeben werden.

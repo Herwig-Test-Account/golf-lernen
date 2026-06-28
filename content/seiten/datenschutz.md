@@ -1,4 +1,5 @@
----
+﻿---
+url: "/datenschutz/"
 title: "Datenschutzerklärung"
 type: "prose"
 meta: "Entwurf · noch nicht rechtsverbindlich · Stand der Überarbeitung: laufend"

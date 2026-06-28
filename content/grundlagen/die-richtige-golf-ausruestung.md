@@ -1,21 +1,21 @@
-﻿---
-_template: artikel
+---
+draft: false
 title: Die Checkliste für Ihre Golf-Ausrüstung
-lead: 'Eine Übersicht, was Sie als Golf-Anfänger oder erfahrene:r Golfer:in an Ausrüstung wirklich brauchen – inklusive Kostenüberblick.'
 description: 'Übersicht, was Sie als Golf-Anfänger oder erfahrener Golfer an Ausrüstung brauchen – inkl. Kosten.'
-image: /img/grundlagen/GG_golfausruestung.png
+image: /img/uploads/images/gundlagen/GG_golfausruestung.png
 image_credit: ''
-kapitel: ausruestung
-weight: 50
 lesezeit: ~6 Min. Lesezeit
-stand: Nov. 2020
+lead: 'Eine Übersicht, was Sie als Golf-Anfänger oder erfahrene:r Golfer:in an Ausrüstung wirklich brauchen – inklusive Kostenüberblick.'
 tags:
   - Ausrüstung
   - Golfbag
   - Schläger
   - Kosten
   - Checkliste
-draft: false
+kapitel: ausruestung
+weight: 50
+stand: Nov. 2020
+_template: artikel
 ---
 
 Die „richtige" Ausrüstung zu haben, ist für viele Sportarten wichtig – und gerade beim Golf gibt es eine Fülle an Equipment zur Auswahl, die einem schnell die Qual der Wahl bescheren kann. Finden Sie hier eine Checkliste an Dingen, die Sie als Golf-Anfänger:in bzw. Golf-Erfahrene:r brauchen.

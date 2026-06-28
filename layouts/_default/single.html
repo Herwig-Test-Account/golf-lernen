@@ -6,10 +6,10 @@
   <ul class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li><a href="/magazin/">Magazin</a></li>
-    <li>{{ .Title }}</li>
+    <li>{{ with .Params.h1 }}{{ . }}{{ else }}{{ .Title }}{{ end }}</li>
   </ul>
   {{ with .Params.rubrik }}<p class="article-tag-label">{{ . }}</p>{{ end }}
-  <h1>{{ .Title }}</h1>
+  <h1>{{ with .Params.h1 }}{{ . }}{{ else }}{{ .Title }}{{ end }}</h1>
   {{ with .Description }}<p class="article-hero-lead">{{ . }}</p>{{ end }}
   <div class="article-meta">
     {{ with .Params.author }}
@@ -20,7 +20,7 @@
     <span class="meta-dot"></span>
     {{ end }}
     <span>{{ .Date.Format "2. January 2006" }}</span>
-    {{ with .ReadingTime }}<span class="meta-dot"></span><span>{{ . }} Min. Lesezeit</span>{{ end }}
+    {{ if .Params.lesezeit }}<span class="meta-dot"></span><span>{{ .Params.lesezeit }}</span>{{ else if .ReadingTime }}<span class="meta-dot"></span><span>{{ .ReadingTime }} Min. Lesezeit</span>{{ end }}
   </div>
 </header>
 
@@ -35,10 +35,6 @@
       <div class="toc-divider"></div>
       {{ end }}
     {{ end }}
-    <div class="toc-cta">
-      <p>Bereit für den ersten Schwung?</p>
-      <a href="/platzreife/">Platzreifekurs finden →</a>
-    </div>
   </aside>
 
   <!-- ARTICLE BODY -->

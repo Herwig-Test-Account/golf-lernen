@@ -1,14 +1,11 @@
-﻿---
-_template: artikel
+---
+draft: false
 title: Golfschwung und Technik erklärt
-lead: Eine Video-Zusammenstellung zu Golfschwung und Golftechnik – und welche verschiedenen Golfschläge Sie beherrschen sollten.
 description: Video-Zusammenstellung zu Golfschwung und Golftechnik und welche Golfschläge Sie beherrschen sollten.
-image: /img/grundlagen/GG_golfschwung_und_technik.png
+image: /img/uploads/images/gundlagen/GG_golfschwung_und_technik-1.png
 image_credit: © Pixabay
-kapitel: ausruestung
-weight: 30
 lesezeit: ~5 Min. Lesezeit
-stand: Nov. 2020
+lead: Eine Video-Zusammenstellung zu Golfschwung und Golftechnik – und welche verschiedenen Golfschläge Sie beherrschen sollten.
 tags:
   - Golfschwung
   - Technik
@@ -16,7 +13,10 @@ tags:
   - Chip
   - Pitch
   - Putt
-draft: false
+kapitel: ausruestung
+weight: 30
+stand: Nov. 2020
+_template: artikel
 ---
 
 Das A und O beim Golfspiel ist ein dynamischer Golfschwung – und dass Sie den Golfball treffen und Richtung Loch vorwärtsbringen.

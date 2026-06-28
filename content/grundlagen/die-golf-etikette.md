@@ -1,20 +1,20 @@
-﻿---
-_template: artikel
+---
+draft: false
 title: Die Golf-Etikette kennenlernen
-lead: 'Die Prinzipien der Golf-Etikette – anhand praktischer Beispiele erklärt. Neugierig, was Sie am Platz beachten müssen?'
 description: Die Prinzipien der Golf-Etikette anhand praktischer Beispiele erklärt.
-image: /img/grundlagen/GG_golf-etikette.png
+image: /img/uploads/images/gundlagen/GG_golf-etikette.png
 image_credit: ''
-kapitel: regeln
-weight: 70
 lesezeit: ~6 Min. Lesezeit
-stand: Nov. 2020
+lead: 'Die Prinzipien der Golf-Etikette – anhand praktischer Beispiele erklärt. Neugierig, was Sie am Platz beachten müssen?'
 tags:
   - Etikette
   - Verhalten
   - Kleiderordnung
   - Spirit of the Game
-draft: false
+kapitel: regeln
+weight: 70
+stand: Nov. 2020
+_template: artikel
 ---
 
 Die sogenannte Golf-Etikette dient im Wesentlichen dazu, Spielspaß und Sicherheit aller Golferinnen und Golfer sicherzustellen.

@@ -1,4 +1,5 @@
----
+﻿---
+url: "/impressum/"
 title: "Impressum"
 type: "prose"
 meta: "Angaben gemäß § 5 ECG und § 25 MedienG · Zuletzt aktualisiert: Oktober 2020"

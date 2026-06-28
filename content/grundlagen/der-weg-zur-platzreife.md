@@ -1,21 +1,21 @@
-﻿---
-_template: artikel
+---
+draft: false
 title: Der Weg zur Platzreife erklärt
-lead: 'So geht der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co im Überblick.'
 description: 'Der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co.'
-image: /img/grundlagen/GG_weg_zur_platzreife.png
+image: /img/uploads/images/gundlagen/GG_weg_zur_platzreife.png
 image_credit: © Pixabay
-kapitel: golfplatz
-weight: 20
 lesezeit: ~8 Min. Lesezeit
-stand: Juni 2025
+lead: 'So geht der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co im Überblick.'
 tags:
   - Platzreife
   - Turnier-Lizenz
   - Anfängerkurs
   - ÖGV
   - Einstieg
-draft: false
+kapitel: golfplatz
+weight: 20
+stand: Juni 2025
+_template: artikel
 ---
 
 Golflehrer und Golflehrerinnen vermitteln in aufeinander aufbauenden Kursen die praktische Basis fürs Golfspielen und klären über Regeln & Etikette auf. Ziel ist, dass auf Österreichs Golfplätzen gefahrenfrei und zügig gespielt wird. Die meisten der landesweit über 160 Golfclubs bieten verschiedene Kurse bis zur Platzreife & Turnier-Lizenz an, auf die wir in diesem Beitrag näher eingehen.

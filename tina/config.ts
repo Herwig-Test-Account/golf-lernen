@@ -344,9 +344,8 @@ export default defineConfig({
       {
         name: "legal",
         label: "Legal & Seiten",
-        path: "content",
+        path: "content/seiten",
         format: "md",
-        match: { include: ["impressum", "datenschutz", "kontakt"] },
         fields: [
           { type: "boolean", name: "draft", label: "Entwurf" },
           { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
