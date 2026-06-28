@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Aktuelle Golf-Bücher & Golf-Apps
 date: 2023-08-26T00:00:00.000Z
 draft: false

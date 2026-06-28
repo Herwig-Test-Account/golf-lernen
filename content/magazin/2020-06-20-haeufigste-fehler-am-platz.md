@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Was sind die häufigsten Fehler beim Golfen?
 date: 2020-06-20T00:00:00.000Z
 draft: false

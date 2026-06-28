@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Top 10 Platzreifekurse in Österreich 2025
 date: 2025-06-18T00:00:00.000Z
 draft: false

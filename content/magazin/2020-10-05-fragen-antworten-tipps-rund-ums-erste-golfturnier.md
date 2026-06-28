@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: 'Fragen, Antworten & Tipps rund ums erste Golfturnier'
 date: 2020-10-05T00:00:00.000Z
 draft: false

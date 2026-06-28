@@ -1,9 +1,12 @@
----
-title: '8 Tipps, wie Sie Ihr Golfspiel am schnellsten verbessern'
-date: 2020-06-04T00:00:00.000Z
+﻿---
+_template: artikel
 draft: false
+title: '8 Tipps, wie Sie Ihr Golfspiel am schnellsten verbessern'
 description: 'Sie wollen Ihr Golfspiel verbessern, und das zielgerichtet und effizient? Diese 8 Tipps helfen Ihnen weiter.'
 image: /img/uploads/images/magazin/unsplash_1200x628_improve-putt-1.jpg
+date: 2020-06-04T00:00:00.000Z
+lesezeit: ~5 Min. Lesezeit
+h1: '8 Tipps, wie Sie Ihr Golfspiel am schnellsten verbessern'
 rubrik: Golf-Tipps
 author: Hannes Schalko
 tags:

@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Golf im Alter hat viele Vorteile
 date: 2023-09-15T00:00:00.000Z
 draft: false

@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Was sind die häufigsten Situationen am Golfplatz?
 date: 2020-04-26T00:00:00.000Z
 draft: false
