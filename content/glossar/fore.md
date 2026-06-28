@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Fore!"
 term_alt: "EN: Fore!"
 synonyme: "fore warnung ausruf"

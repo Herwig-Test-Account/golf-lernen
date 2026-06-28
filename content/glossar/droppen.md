@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Droppen"
 term_alt: "EN: Drop"
 synonyme: "droppen ball fallen lassen erleichterung"

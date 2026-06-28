@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Eagle"
 synonyme: "eagle zwei unter par"
 draft: false

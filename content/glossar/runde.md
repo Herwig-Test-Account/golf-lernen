@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Runde"
 term_alt: "EN: Round"
 synonyme: "runde golfrunde 18 loch"

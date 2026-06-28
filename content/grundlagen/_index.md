@@ -1,4 +1,5 @@
----
+﻿---
+_template: uebersicht
 title: "Die Golf-Grundlagen"
 description: "Als Golf-Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – verständlich und kompakt erklärt."
 kapitel_liste:

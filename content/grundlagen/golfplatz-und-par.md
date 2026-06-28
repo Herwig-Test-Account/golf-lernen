@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Der Golfplatz und Grundbegriffe erklärt
 lead: 'Finden Sie kompakt & anschaulich aufbereitet, welche Flächen Golfplätze haben – und lernen Sie Grundbegriffe wie Par, Birdie & Co kennen.'
 description: 'Welche Flächen Golfplätze haben und Grundbegriffe wie Par, Birdie & Co – kompakt und anschaulich erklärt.'

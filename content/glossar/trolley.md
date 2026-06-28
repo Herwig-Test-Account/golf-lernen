@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Trolley"
 term_alt: "EN: Golf Trolley / Push Cart"
 synonyme: "trolley bag wagen"

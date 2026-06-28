@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <!-- NOINDEX: Testumgebung - blockiert Suchmaschinen und LLM-Crawler (siehe SECURITY.md) -->
+  <!-- NOINDEX: Testumgebung – vor Launch entfernen -->
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="GPTBot" content="noindex">
   <meta name="ClaudeBot" content="noindex">
   <meta name="CCBot" content="noindex">
   <meta name="PerplexityBot" content="noindex">
-
+  {{/* robots aus Frontmatter – Kommentar vor Launch entfernen + noindex-Block oben löschen: */}}
+  {{/* {{ with .Params.robots }}<meta name="robots" content="{{ . }}">{{ end }} */}}
+  {{ with .Params.canonical }}<link rel="canonical" href="{{ . }}">{{ end }}
+  {{ with .Params.hreflang }}<link rel="alternate" hreflang="{{ . }}" href="{{ $.Permalink }}">{{ end }}
   {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
-
+  {{ with .Params.json_ld }}<script type="application/ld+json">{{ . | safeJS }}</script>{{ end }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+</head>
 </head>
 <body>
   {{ partial "header.html" . }}

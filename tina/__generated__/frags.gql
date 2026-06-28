@@ -46,11 +46,32 @@ fragment GrundlagenParts on Grundlagen {
 
 fragment GlossarParts on Glossar {
   __typename
-  title
-  term_alt
-  synonyme
-  draft
-  body
+  ... on GlossarEintrag {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    term_alt
+    synonyme
+    body
+    json_ld
+  }
+  ... on GlossarUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
 
 fragment MagazinParts on Magazin {
@@ -90,52 +111,90 @@ fragment MagazinParts on Magazin {
 
 fragment BundeslandParts on Bundesland {
   __typename
+  draft
   title
+  description
+  slug
+  canonical
+  robots
+  hreflang
   bundesland
   type
   lead
-  description
   body
+  json_ld
 }
 
 fragment Golf_kategorienParts on Golf_kategorien {
   __typename
+  draft
   title
+  description
+  slug
+  canonical
+  robots
+  hreflang
   kategorie
   type
   lead
-  description
   body
+  json_ld
 }
 
 fragment LocationsParts on Locations {
   __typename
-  title
-  date
-  draft
-  bundesland
-  untertitel
-  image
-  kategorien
-  greenfee_ab
-  lochzahl
-  schwierigkeit
-  leihausruestung
-  uebungsplatz
-  driving_range
-  restaurant
-  hunde
-  adresse
-  website
-  email
-  telefon
-  body
+  ... on LocationsArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    date
+    bundesland
+    untertitel
+    kategorien
+    greenfee_ab
+    lochzahl
+    schwierigkeit
+    leihausruestung
+    uebungsplatz
+    driving_range
+    restaurant
+    hunde
+    adresse
+    website
+    email
+    telefon
+    body
+    tags
+    json_ld
+  }
+  ... on LocationsUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
 
 fragment GlobalParts on Global {
   __typename
   ... on GlobalHomepage {
     title
+    description
+    canonical
+    robots
+    hreflang
     hero_tag
     hero_title
     hero_sub
@@ -164,5 +223,21 @@ fragment GlobalParts on Global {
     magazin_label
     magazin_title
     magazin_intro
+    json_ld
   }
+}
+
+fragment LegalParts on Legal {
+  __typename
+  draft
+  title
+  description
+  slug
+  canonical
+  robots
+  hreflang
+  type
+  meta
+  body
+  json_ld
 }

@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Reiters Golf & Country Club Bad Tatzmannsdorf"
 date: 2020-10-11
 draft: false

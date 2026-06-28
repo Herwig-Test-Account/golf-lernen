@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Stroke Play"
 term_alt: "EN: Stroke Play / Medal Play"
 synonyme: "stroke play zaehlen schlaege"

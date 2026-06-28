@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Albatros"
 term_alt: "EN: Double Eagle"
 synonyme: "albatros"

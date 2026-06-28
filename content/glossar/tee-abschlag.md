@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Tee-Abschlag"
 term_alt: "EN: Teeing Area / Tee Box"
 synonyme: "tee abschlagpunkt marker"

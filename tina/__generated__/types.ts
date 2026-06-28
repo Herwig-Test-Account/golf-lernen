@@ -96,6 +96,8 @@ export type Query = {
   locationsConnection: LocationsConnection;
   global: Global;
   globalConnection: GlobalConnection;
+  legal: Legal;
+  legalConnection: LegalConnection;
 };
 
 
@@ -224,6 +226,21 @@ export type QueryGlobalConnectionArgs = {
   filter?: InputMaybe<GlobalFilter>;
 };
 
+
+export type QueryLegalArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryLegalConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<LegalFilter>;
+};
+
 export type DocumentFilter = {
   grundlagen?: InputMaybe<GrundlagenFilter>;
   glossar?: InputMaybe<GlossarFilter>;
@@ -232,6 +249,7 @@ export type DocumentFilter = {
   golf_kategorien?: InputMaybe<Golf_KategorienFilter>;
   locations?: InputMaybe<LocationsFilter>;
   global?: InputMaybe<GlobalFilter>;
+  legal?: InputMaybe<LegalFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -271,7 +289,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = GrundlagenArtikel | GrundlagenUebersicht | Glossar | MagazinArtikel | MagazinUebersicht | Bundesland | Golf_Kategorien | Locations | GlobalHomepage | Folder;
+export type DocumentNode = GrundlagenArtikel | GrundlagenUebersicht | GlossarEintrag | GlossarUebersicht | MagazinArtikel | MagazinUebersicht | Bundesland | Golf_Kategorien | LocationsArtikel | LocationsUebersicht | GlobalHomepage | Legal | Folder;
 
 export type GrundlagenArtikel = Node & Document & {
   __typename?: 'GrundlagenArtikel';
@@ -435,24 +453,75 @@ export type GrundlagenConnection = Connection & {
   edges?: Maybe<Array<Maybe<GrundlagenConnectionEdges>>>;
 };
 
-export type Glossar = Node & Document & {
-  __typename?: 'Glossar';
+export type GlossarEintrag = Node & Document & {
+  __typename?: 'GlossarEintrag';
+  draft?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
   term_alt?: Maybe<Scalars['String']['output']>;
   synonyme?: Maybe<Scalars['String']['output']>;
-  draft?: Maybe<Scalars['Boolean']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
-export type GlossarFilter = {
+export type GlossarUebersicht = Node & Document & {
+  __typename?: 'GlossarUebersicht';
+  draft?: Maybe<Scalars['Boolean']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  h1?: Maybe<Scalars['String']['output']>;
+  lead?: Maybe<Scalars['String']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type Glossar = GlossarEintrag | GlossarUebersicht;
+
+export type GlossarEintragFilter = {
+  draft?: InputMaybe<BooleanFilter>;
   title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
   term_alt?: InputMaybe<StringFilter>;
   synonyme?: InputMaybe<StringFilter>;
-  draft?: InputMaybe<BooleanFilter>;
   body?: InputMaybe<RichTextFilter>;
+  json_ld?: InputMaybe<StringFilter>;
+};
+
+export type GlossarUebersichtFilter = {
+  draft?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
+  eyebrow?: InputMaybe<StringFilter>;
+  h1?: InputMaybe<StringFilter>;
+  lead?: InputMaybe<StringFilter>;
+  json_ld?: InputMaybe<StringFilter>;
+};
+
+export type GlossarFilter = {
+  eintrag?: InputMaybe<GlossarEintragFilter>;
+  uebersicht?: InputMaybe<GlossarUebersichtFilter>;
 };
 
 export type GlossarConnectionEdges = {
@@ -564,24 +633,36 @@ export type MagazinConnection = Connection & {
 
 export type Bundesland = Node & Document & {
   __typename?: 'Bundesland';
+  draft?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
   bundesland?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
   lead?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
 export type BundeslandFilter = {
+  draft?: InputMaybe<BooleanFilter>;
   title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
   bundesland?: InputMaybe<StringFilter>;
   type?: InputMaybe<StringFilter>;
   lead?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
+  json_ld?: InputMaybe<StringFilter>;
 };
 
 export type BundeslandConnectionEdges = {
@@ -599,24 +680,36 @@ export type BundeslandConnection = Connection & {
 
 export type Golf_Kategorien = Node & Document & {
   __typename?: 'Golf_kategorien';
+  draft?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
   kategorie?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
   lead?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
 export type Golf_KategorienFilter = {
+  draft?: InputMaybe<BooleanFilter>;
   title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
   kategorie?: InputMaybe<StringFilter>;
   type?: InputMaybe<StringFilter>;
   lead?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
+  json_ld?: InputMaybe<StringFilter>;
 };
 
 export type Golf_KategorienConnectionEdges = {
@@ -632,14 +725,19 @@ export type Golf_KategorienConnection = Connection & {
   edges?: Maybe<Array<Maybe<Golf_KategorienConnectionEdges>>>;
 };
 
-export type Locations = Node & Document & {
-  __typename?: 'Locations';
-  title: Scalars['String']['output'];
-  date?: Maybe<Scalars['String']['output']>;
+export type LocationsArtikel = Node & Document & {
+  __typename?: 'LocationsArtikel';
   draft?: Maybe<Scalars['Boolean']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  date?: Maybe<Scalars['String']['output']>;
   bundesland?: Maybe<Scalars['String']['output']>;
   untertitel?: Maybe<Scalars['String']['output']>;
-  image?: Maybe<Scalars['String']['output']>;
   kategorien?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   greenfee_ab?: Maybe<Scalars['Float']['output']>;
   lochzahl?: Maybe<Scalars['String']['output']>;
@@ -654,18 +752,45 @@ export type Locations = Node & Document & {
   email?: Maybe<Scalars['String']['output']>;
   telefon?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  json_ld?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
-export type LocationsFilter = {
-  title?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
+export type LocationsUebersicht = Node & Document & {
+  __typename?: 'LocationsUebersicht';
+  draft?: Maybe<Scalars['Boolean']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
+  eyebrow?: Maybe<Scalars['String']['output']>;
+  h1?: Maybe<Scalars['String']['output']>;
+  lead?: Maybe<Scalars['String']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type Locations = LocationsArtikel | LocationsUebersicht;
+
+export type LocationsArtikelFilter = {
   draft?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
+  image?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DatetimeFilter>;
   bundesland?: InputMaybe<StringFilter>;
   untertitel?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
   kategorien?: InputMaybe<StringFilter>;
   greenfee_ab?: InputMaybe<NumberFilter>;
   lochzahl?: InputMaybe<StringFilter>;
@@ -680,6 +805,27 @@ export type LocationsFilter = {
   email?: InputMaybe<StringFilter>;
   telefon?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
+  tags?: InputMaybe<StringFilter>;
+  json_ld?: InputMaybe<StringFilter>;
+};
+
+export type LocationsUebersichtFilter = {
+  draft?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
+  eyebrow?: InputMaybe<StringFilter>;
+  h1?: InputMaybe<StringFilter>;
+  lead?: InputMaybe<StringFilter>;
+  json_ld?: InputMaybe<StringFilter>;
+};
+
+export type LocationsFilter = {
+  artikel?: InputMaybe<LocationsArtikelFilter>;
+  uebersicht?: InputMaybe<LocationsUebersichtFilter>;
 };
 
 export type LocationsConnectionEdges = {
@@ -712,6 +858,10 @@ export type GlobalHomepageGrundlagen_Karten = {
 export type GlobalHomepage = Node & Document & {
   __typename?: 'GlobalHomepage';
   title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
   hero_tag?: Maybe<Scalars['String']['output']>;
   hero_title?: Maybe<Scalars['String']['output']>;
   hero_sub?: Maybe<Scalars['String']['output']>;
@@ -730,6 +880,7 @@ export type GlobalHomepage = Node & Document & {
   magazin_label?: Maybe<Scalars['String']['output']>;
   magazin_title?: Maybe<Scalars['String']['output']>;
   magazin_intro?: Maybe<Scalars['String']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -751,6 +902,10 @@ export type GlobalHomepageGrundlagen_KartenFilter = {
 
 export type GlobalHomepageFilter = {
   title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
   hero_tag?: InputMaybe<StringFilter>;
   hero_title?: InputMaybe<StringFilter>;
   hero_sub?: InputMaybe<StringFilter>;
@@ -769,6 +924,7 @@ export type GlobalHomepageFilter = {
   magazin_label?: InputMaybe<StringFilter>;
   magazin_title?: InputMaybe<StringFilter>;
   magazin_intro?: InputMaybe<StringFilter>;
+  json_ld?: InputMaybe<StringFilter>;
 };
 
 export type GlobalFilter = {
@@ -786,6 +942,51 @@ export type GlobalConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<GlobalConnectionEdges>>>;
+};
+
+export type Legal = Node & Document & {
+  __typename?: 'Legal';
+  draft?: Maybe<Scalars['Boolean']['output']>;
+  title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  robots?: Maybe<Scalars['String']['output']>;
+  hreflang?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  meta?: Maybe<Scalars['String']['output']>;
+  body?: Maybe<Scalars['JSON']['output']>;
+  json_ld?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type LegalFilter = {
+  draft?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  robots?: InputMaybe<StringFilter>;
+  hreflang?: InputMaybe<StringFilter>;
+  type?: InputMaybe<StringFilter>;
+  meta?: InputMaybe<StringFilter>;
+  body?: InputMaybe<RichTextFilter>;
+  json_ld?: InputMaybe<StringFilter>;
+};
+
+export type LegalConnectionEdges = {
+  __typename?: 'LegalConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Legal>;
+};
+
+export type LegalConnection = Connection & {
+  __typename?: 'LegalConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<LegalConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -809,6 +1010,8 @@ export type Mutation = {
   createLocations: Locations;
   updateGlobal: Global;
   createGlobal: Global;
+  updateLegal: Legal;
+  createLegal: Legal;
 };
 
 
@@ -928,6 +1131,18 @@ export type MutationCreateGlobalArgs = {
   params: GlobalMutation;
 };
 
+
+export type MutationUpdateLegalArgs = {
+  relativePath: Scalars['String']['input'];
+  params: LegalMutation;
+};
+
+
+export type MutationCreateLegalArgs = {
+  relativePath: Scalars['String']['input'];
+  params: LegalMutation;
+};
+
 export type DocumentUpdateMutation = {
   grundlagen?: InputMaybe<GrundlagenMutation>;
   glossar?: InputMaybe<GlossarMutation>;
@@ -936,6 +1151,7 @@ export type DocumentUpdateMutation = {
   golf_kategorien?: InputMaybe<Golf_KategorienMutation>;
   locations?: InputMaybe<LocationsMutation>;
   global?: InputMaybe<GlobalMutation>;
+  legal?: InputMaybe<LegalMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -947,6 +1163,7 @@ export type DocumentMutation = {
   golf_kategorien?: InputMaybe<Golf_KategorienMutation>;
   locations?: InputMaybe<LocationsMutation>;
   global?: InputMaybe<GlobalMutation>;
+  legal?: InputMaybe<LegalMutation>;
 };
 
 export type GrundlagenArtikelMutation = {
@@ -999,12 +1216,37 @@ export type GrundlagenMutation = {
   uebersicht?: InputMaybe<GrundlagenUebersichtMutation>;
 };
 
-export type GlossarMutation = {
+export type GlossarEintragMutation = {
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
   term_alt?: InputMaybe<Scalars['String']['input']>;
   synonyme?: InputMaybe<Scalars['String']['input']>;
-  draft?: InputMaybe<Scalars['Boolean']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type GlossarUebersichtMutation = {
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  h1?: InputMaybe<Scalars['String']['input']>;
+  lead?: InputMaybe<Scalars['String']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type GlossarMutation = {
+  eintrag?: InputMaybe<GlossarEintragMutation>;
+  uebersicht?: InputMaybe<GlossarUebersichtMutation>;
 };
 
 export type MagazinArtikelMutation = {
@@ -1046,30 +1288,47 @@ export type MagazinMutation = {
 };
 
 export type BundeslandMutation = {
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
   bundesland?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
   lead?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Golf_KategorienMutation = {
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
   kategorie?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
   lead?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type LocationsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['String']['input']>;
+export type LocationsArtikelMutation = {
   draft?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
   bundesland?: InputMaybe<Scalars['String']['input']>;
   untertitel?: InputMaybe<Scalars['String']['input']>;
-  image?: InputMaybe<Scalars['String']['input']>;
   kategorien?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   greenfee_ab?: InputMaybe<Scalars['Float']['input']>;
   lochzahl?: InputMaybe<Scalars['String']['input']>;
@@ -1084,6 +1343,27 @@ export type LocationsMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
   telefon?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LocationsUebersichtMutation = {
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
+  eyebrow?: InputMaybe<Scalars['String']['input']>;
+  h1?: InputMaybe<Scalars['String']['input']>;
+  lead?: InputMaybe<Scalars['String']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type LocationsMutation = {
+  artikel?: InputMaybe<LocationsArtikelMutation>;
+  uebersicht?: InputMaybe<LocationsUebersichtMutation>;
 };
 
 export type GlobalHomepageQuotesMutation = {
@@ -1100,6 +1380,10 @@ export type GlobalHomepageGrundlagen_KartenMutation = {
 
 export type GlobalHomepageMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
   hero_tag?: InputMaybe<Scalars['String']['input']>;
   hero_title?: InputMaybe<Scalars['String']['input']>;
   hero_sub?: InputMaybe<Scalars['String']['input']>;
@@ -1118,10 +1402,25 @@ export type GlobalHomepageMutation = {
   magazin_label?: InputMaybe<Scalars['String']['input']>;
   magazin_title?: InputMaybe<Scalars['String']['input']>;
   magazin_intro?: InputMaybe<Scalars['String']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type GlobalMutation = {
   homepage?: InputMaybe<GlobalHomepageMutation>;
+};
+
+export type LegalMutation = {
+  draft?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  robots?: InputMaybe<Scalars['String']['input']>;
+  hreflang?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  meta?: InputMaybe<Scalars['String']['input']>;
+  body?: InputMaybe<Scalars['JSON']['input']>;
+  json_ld?: InputMaybe<Scalars['String']['input']>;
 };
 
 type GrundlagenParts_GrundlagenArtikel_Fragment = { __typename: 'GrundlagenArtikel', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, image_credit?: string | null, date?: string | null, lesezeit?: string | null, h1?: string | null, lead?: string | null, body?: any | null, tags?: Array<string | null> | null, kapitel?: string | null, weight?: number | null, stand?: string | null, json_ld?: string | null };
@@ -1130,7 +1429,11 @@ type GrundlagenParts_GrundlagenUebersicht_Fragment = { __typename: 'GrundlagenUe
 
 export type GrundlagenPartsFragment = GrundlagenParts_GrundlagenArtikel_Fragment | GrundlagenParts_GrundlagenUebersicht_Fragment;
 
-export type GlossarPartsFragment = { __typename: 'Glossar', title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null };
+type GlossarParts_GlossarEintrag_Fragment = { __typename: 'GlossarEintrag', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, term_alt?: string | null, synonyme?: string | null, body?: any | null, json_ld?: string | null };
+
+type GlossarParts_GlossarUebersicht_Fragment = { __typename: 'GlossarUebersicht', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null };
+
+export type GlossarPartsFragment = GlossarParts_GlossarEintrag_Fragment | GlossarParts_GlossarUebersicht_Fragment;
 
 type MagazinParts_MagazinArtikel_Fragment = { __typename: 'MagazinArtikel', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null };
 
@@ -1138,13 +1441,19 @@ type MagazinParts_MagazinUebersicht_Fragment = { __typename: 'MagazinUebersicht'
 
 export type MagazinPartsFragment = MagazinParts_MagazinArtikel_Fragment | MagazinParts_MagazinUebersicht_Fragment;
 
-export type BundeslandPartsFragment = { __typename: 'Bundesland', title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null };
+export type BundeslandPartsFragment = { __typename: 'Bundesland', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, bundesland?: string | null, type?: string | null, lead?: string | null, body?: any | null, json_ld?: string | null };
 
-export type Golf_KategorienPartsFragment = { __typename: 'Golf_kategorien', title: string, kategorie?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null };
+export type Golf_KategorienPartsFragment = { __typename: 'Golf_kategorien', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, kategorie?: string | null, type?: string | null, lead?: string | null, body?: any | null, json_ld?: string | null };
 
-export type LocationsPartsFragment = { __typename: 'Locations', title: string, date?: string | null, draft?: boolean | null, bundesland?: string | null, untertitel?: string | null, image?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null };
+type LocationsParts_LocationsArtikel_Fragment = { __typename: 'LocationsArtikel', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date?: string | null, bundesland?: string | null, untertitel?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null };
 
-export type GlobalPartsFragment = { __typename: 'GlobalHomepage', title: string, hero_tag?: string | null, hero_title?: string | null, hero_sub?: string | null, cta_primary_text?: string | null, cta_primary_url?: string | null, cta_secondary_text?: string | null, cta_secondary_url?: string | null, grundlagen_label?: string | null, grundlagen_title?: string | null, grundlagen_intro?: string | null, locations_label?: string | null, locations_title?: string | null, locations_intro?: string | null, magazin_label?: string | null, magazin_title?: string | null, magazin_intro?: string | null, quotes?: Array<{ __typename: 'GlobalHomepageQuotes', text?: string | null, cite?: string | null } | null> | null, grundlagen_karten?: Array<{ __typename: 'GlobalHomepageGrundlagen_karten', icon?: string | null, titel?: string | null, text?: string | null, url?: string | null } | null> | null };
+type LocationsParts_LocationsUebersicht_Fragment = { __typename: 'LocationsUebersicht', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null };
+
+export type LocationsPartsFragment = LocationsParts_LocationsArtikel_Fragment | LocationsParts_LocationsUebersicht_Fragment;
+
+export type GlobalPartsFragment = { __typename: 'GlobalHomepage', title: string, description?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, hero_tag?: string | null, hero_title?: string | null, hero_sub?: string | null, cta_primary_text?: string | null, cta_primary_url?: string | null, cta_secondary_text?: string | null, cta_secondary_url?: string | null, grundlagen_label?: string | null, grundlagen_title?: string | null, grundlagen_intro?: string | null, locations_label?: string | null, locations_title?: string | null, locations_intro?: string | null, magazin_label?: string | null, magazin_title?: string | null, magazin_intro?: string | null, json_ld?: string | null, quotes?: Array<{ __typename: 'GlobalHomepageQuotes', text?: string | null, cite?: string | null } | null> | null, grundlagen_karten?: Array<{ __typename: 'GlobalHomepageGrundlagen_karten', icon?: string | null, titel?: string | null, text?: string | null, url?: string | null } | null> | null };
+
+export type LegalPartsFragment = { __typename: 'Legal', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, type?: string | null, meta?: string | null, body?: any | null, json_ld?: string | null };
 
 export type GrundlagenQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1170,7 +1479,7 @@ export type GlossarQueryVariables = Exact<{
 }>;
 
 
-export type GlossarQuery = { __typename?: 'Query', glossar: { __typename: 'Glossar', id: string, title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type GlossarQuery = { __typename?: 'Query', glossar: { __typename: 'GlossarEintrag', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, term_alt?: string | null, synonyme?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'GlossarUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type GlossarConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1182,7 +1491,7 @@ export type GlossarConnectionQueryVariables = Exact<{
 }>;
 
 
-export type GlossarConnectionQuery = { __typename?: 'Query', glossarConnection: { __typename?: 'GlossarConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GlossarConnectionEdges', cursor: string, node?: { __typename: 'Glossar', id: string, title: string, term_alt?: string | null, synonyme?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type GlossarConnectionQuery = { __typename?: 'Query', glossarConnection: { __typename?: 'GlossarConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GlossarConnectionEdges', cursor: string, node?: { __typename: 'GlossarEintrag', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, term_alt?: string | null, synonyme?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'GlossarUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type MagazinQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1208,7 +1517,7 @@ export type BundeslandQueryVariables = Exact<{
 }>;
 
 
-export type BundeslandQuery = { __typename?: 'Query', bundesland: { __typename: 'Bundesland', id: string, title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type BundeslandQuery = { __typename?: 'Query', bundesland: { __typename: 'Bundesland', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, bundesland?: string | null, type?: string | null, lead?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type BundeslandConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1220,14 +1529,14 @@ export type BundeslandConnectionQueryVariables = Exact<{
 }>;
 
 
-export type BundeslandConnectionQuery = { __typename?: 'Query', bundeslandConnection: { __typename?: 'BundeslandConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BundeslandConnectionEdges', cursor: string, node?: { __typename: 'Bundesland', id: string, title: string, bundesland?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type BundeslandConnectionQuery = { __typename?: 'Query', bundeslandConnection: { __typename?: 'BundeslandConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'BundeslandConnectionEdges', cursor: string, node?: { __typename: 'Bundesland', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, bundesland?: string | null, type?: string | null, lead?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type Golf_KategorienQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type Golf_KategorienQuery = { __typename?: 'Query', golf_kategorien: { __typename: 'Golf_kategorien', id: string, title: string, kategorie?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type Golf_KategorienQuery = { __typename?: 'Query', golf_kategorien: { __typename: 'Golf_kategorien', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, kategorie?: string | null, type?: string | null, lead?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type Golf_KategorienConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1239,14 +1548,14 @@ export type Golf_KategorienConnectionQueryVariables = Exact<{
 }>;
 
 
-export type Golf_KategorienConnectionQuery = { __typename?: 'Query', golf_kategorienConnection: { __typename?: 'Golf_kategorienConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Golf_kategorienConnectionEdges', cursor: string, node?: { __typename: 'Golf_kategorien', id: string, title: string, kategorie?: string | null, type?: string | null, lead?: string | null, description?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type Golf_KategorienConnectionQuery = { __typename?: 'Query', golf_kategorienConnection: { __typename?: 'Golf_kategorienConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Golf_kategorienConnectionEdges', cursor: string, node?: { __typename: 'Golf_kategorien', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, kategorie?: string | null, type?: string | null, lead?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type LocationsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type LocationsQuery = { __typename?: 'Query', locations: { __typename: 'Locations', id: string, title: string, date?: string | null, draft?: boolean | null, bundesland?: string | null, untertitel?: string | null, image?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type LocationsQuery = { __typename?: 'Query', locations: { __typename: 'LocationsArtikel', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date?: string | null, bundesland?: string | null, untertitel?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LocationsUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type LocationsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1258,14 +1567,14 @@ export type LocationsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type LocationsConnectionQuery = { __typename?: 'Query', locationsConnection: { __typename?: 'LocationsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LocationsConnectionEdges', cursor: string, node?: { __typename: 'Locations', id: string, title: string, date?: string | null, draft?: boolean | null, bundesland?: string | null, untertitel?: string | null, image?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type LocationsConnectionQuery = { __typename?: 'Query', locationsConnection: { __typename?: 'LocationsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LocationsConnectionEdges', cursor: string, node?: { __typename: 'LocationsArtikel', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date?: string | null, bundesland?: string | null, untertitel?: string | null, kategorien?: Array<string | null> | null, greenfee_ab?: number | null, lochzahl?: string | null, schwierigkeit?: string | null, leihausruestung?: string | null, uebungsplatz?: string | null, driving_range?: string | null, restaurant?: string | null, hunde?: string | null, adresse?: string | null, website?: string | null, email?: string | null, telefon?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'LocationsUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type GlobalQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type GlobalQuery = { __typename?: 'Query', global: { __typename: 'GlobalHomepage', id: string, title: string, hero_tag?: string | null, hero_title?: string | null, hero_sub?: string | null, cta_primary_text?: string | null, cta_primary_url?: string | null, cta_secondary_text?: string | null, cta_secondary_url?: string | null, grundlagen_label?: string | null, grundlagen_title?: string | null, grundlagen_intro?: string | null, locations_label?: string | null, locations_title?: string | null, locations_intro?: string | null, magazin_label?: string | null, magazin_title?: string | null, magazin_intro?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, quotes?: Array<{ __typename: 'GlobalHomepageQuotes', text?: string | null, cite?: string | null } | null> | null, grundlagen_karten?: Array<{ __typename: 'GlobalHomepageGrundlagen_karten', icon?: string | null, titel?: string | null, text?: string | null, url?: string | null } | null> | null } };
+export type GlobalQuery = { __typename?: 'Query', global: { __typename: 'GlobalHomepage', id: string, title: string, description?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, hero_tag?: string | null, hero_title?: string | null, hero_sub?: string | null, cta_primary_text?: string | null, cta_primary_url?: string | null, cta_secondary_text?: string | null, cta_secondary_url?: string | null, grundlagen_label?: string | null, grundlagen_title?: string | null, grundlagen_intro?: string | null, locations_label?: string | null, locations_title?: string | null, locations_intro?: string | null, magazin_label?: string | null, magazin_title?: string | null, magazin_intro?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, quotes?: Array<{ __typename: 'GlobalHomepageQuotes', text?: string | null, cite?: string | null } | null> | null, grundlagen_karten?: Array<{ __typename: 'GlobalHomepageGrundlagen_karten', icon?: string | null, titel?: string | null, text?: string | null, url?: string | null } | null> | null } };
 
 export type GlobalConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1277,7 +1586,26 @@ export type GlobalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type GlobalConnectionQuery = { __typename?: 'Query', globalConnection: { __typename?: 'GlobalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GlobalConnectionEdges', cursor: string, node?: { __typename: 'GlobalHomepage', id: string, title: string, hero_tag?: string | null, hero_title?: string | null, hero_sub?: string | null, cta_primary_text?: string | null, cta_primary_url?: string | null, cta_secondary_text?: string | null, cta_secondary_url?: string | null, grundlagen_label?: string | null, grundlagen_title?: string | null, grundlagen_intro?: string | null, locations_label?: string | null, locations_title?: string | null, locations_intro?: string | null, magazin_label?: string | null, magazin_title?: string | null, magazin_intro?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, quotes?: Array<{ __typename: 'GlobalHomepageQuotes', text?: string | null, cite?: string | null } | null> | null, grundlagen_karten?: Array<{ __typename: 'GlobalHomepageGrundlagen_karten', icon?: string | null, titel?: string | null, text?: string | null, url?: string | null } | null> | null } | null } | null> | null } };
+export type GlobalConnectionQuery = { __typename?: 'Query', globalConnection: { __typename?: 'GlobalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'GlobalConnectionEdges', cursor: string, node?: { __typename: 'GlobalHomepage', id: string, title: string, description?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, hero_tag?: string | null, hero_title?: string | null, hero_sub?: string | null, cta_primary_text?: string | null, cta_primary_url?: string | null, cta_secondary_text?: string | null, cta_secondary_url?: string | null, grundlagen_label?: string | null, grundlagen_title?: string | null, grundlagen_intro?: string | null, locations_label?: string | null, locations_title?: string | null, locations_intro?: string | null, magazin_label?: string | null, magazin_title?: string | null, magazin_intro?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, quotes?: Array<{ __typename: 'GlobalHomepageQuotes', text?: string | null, cite?: string | null } | null> | null, grundlagen_karten?: Array<{ __typename: 'GlobalHomepageGrundlagen_karten', icon?: string | null, titel?: string | null, text?: string | null, url?: string | null } | null> | null } | null } | null> | null } };
+
+export type LegalQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type LegalQuery = { __typename?: 'Query', legal: { __typename: 'Legal', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, type?: string | null, meta?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type LegalConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<LegalFilter>;
+}>;
+
+
+export type LegalConnectionQuery = { __typename?: 'Query', legalConnection: { __typename?: 'LegalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'LegalConnectionEdges', cursor: string, node?: { __typename: 'Legal', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, type?: string | null, meta?: string | null, body?: any | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const GrundlagenPartsFragmentDoc = gql`
     fragment GrundlagenParts on Grundlagen {
@@ -1329,11 +1657,32 @@ export const GrundlagenPartsFragmentDoc = gql`
 export const GlossarPartsFragmentDoc = gql`
     fragment GlossarParts on Glossar {
   __typename
-  title
-  term_alt
-  synonyme
-  draft
-  body
+  ... on GlossarEintrag {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    term_alt
+    synonyme
+    body
+    json_ld
+  }
+  ... on GlossarUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
     `;
 export const MagazinPartsFragmentDoc = gql`
@@ -1375,48 +1724,82 @@ export const MagazinPartsFragmentDoc = gql`
 export const BundeslandPartsFragmentDoc = gql`
     fragment BundeslandParts on Bundesland {
   __typename
+  draft
   title
+  description
+  slug
+  canonical
+  robots
+  hreflang
   bundesland
   type
   lead
-  description
   body
+  json_ld
 }
     `;
 export const Golf_KategorienPartsFragmentDoc = gql`
     fragment Golf_kategorienParts on Golf_kategorien {
   __typename
+  draft
   title
+  description
+  slug
+  canonical
+  robots
+  hreflang
   kategorie
   type
   lead
-  description
   body
+  json_ld
 }
     `;
 export const LocationsPartsFragmentDoc = gql`
     fragment LocationsParts on Locations {
   __typename
-  title
-  date
-  draft
-  bundesland
-  untertitel
-  image
-  kategorien
-  greenfee_ab
-  lochzahl
-  schwierigkeit
-  leihausruestung
-  uebungsplatz
-  driving_range
-  restaurant
-  hunde
-  adresse
-  website
-  email
-  telefon
-  body
+  ... on LocationsArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    date
+    bundesland
+    untertitel
+    kategorien
+    greenfee_ab
+    lochzahl
+    schwierigkeit
+    leihausruestung
+    uebungsplatz
+    driving_range
+    restaurant
+    hunde
+    adresse
+    website
+    email
+    telefon
+    body
+    tags
+    json_ld
+  }
+  ... on LocationsUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
     `;
 export const GlobalPartsFragmentDoc = gql`
@@ -1424,6 +1807,10 @@ export const GlobalPartsFragmentDoc = gql`
   __typename
   ... on GlobalHomepage {
     title
+    description
+    canonical
+    robots
+    hreflang
     hero_tag
     hero_title
     hero_sub
@@ -1452,7 +1839,24 @@ export const GlobalPartsFragmentDoc = gql`
     magazin_label
     magazin_title
     magazin_intro
+    json_ld
   }
+}
+    `;
+export const LegalPartsFragmentDoc = gql`
+    fragment LegalParts on Legal {
+  __typename
+  draft
+  title
+  description
+  slug
+  canonical
+  robots
+  hreflang
+  type
+  meta
+  body
+  json_ld
 }
     `;
 export const GrundlagenDocument = gql`
@@ -1854,6 +2258,63 @@ export const GlobalConnectionDocument = gql`
   }
 }
     ${GlobalPartsFragmentDoc}`;
+export const LegalDocument = gql`
+    query legal($relativePath: String!) {
+  legal(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...LegalParts
+  }
+}
+    ${LegalPartsFragmentDoc}`;
+export const LegalConnectionDocument = gql`
+    query legalConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LegalFilter) {
+  legalConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...LegalParts
+      }
+    }
+  }
+}
+    ${LegalPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -1898,6 +2359,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     globalConnection(variables?: GlobalConnectionQueryVariables, options?: C): Promise<{data: GlobalConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GlobalConnectionQueryVariables, query: string}> {
         return requester<{data: GlobalConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: GlobalConnectionQueryVariables, query: string}, GlobalConnectionQueryVariables>(GlobalConnectionDocument, variables, options);
+      },
+    legal(variables: LegalQueryVariables, options?: C): Promise<{data: LegalQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LegalQueryVariables, query: string}> {
+        return requester<{data: LegalQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LegalQueryVariables, query: string}, LegalQueryVariables>(LegalDocument, variables, options);
+      },
+    legalConnection(variables?: LegalConnectionQueryVariables, options?: C): Promise<{data: LegalConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LegalConnectionQueryVariables, query: string}> {
+        return requester<{data: LegalConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: LegalConnectionQueryVariables, query: string}, LegalConnectionQueryVariables>(LegalConnectionDocument, variables, options);
       }
     };
   }

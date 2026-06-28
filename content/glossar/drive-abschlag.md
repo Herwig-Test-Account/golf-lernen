@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Drive → Abschlag"
 synonyme: "drive abschlag tee shot"
 draft: false

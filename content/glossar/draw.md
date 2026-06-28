@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Draw"
 term_alt: "Gegenteil: Fade"
 synonyme: "draw flugkurve"

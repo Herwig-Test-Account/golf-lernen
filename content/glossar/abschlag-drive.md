@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Abschlag / Drive"
 term_alt: "EN: Drive / Tee Shot"
 synonyme: "abschlag drive"

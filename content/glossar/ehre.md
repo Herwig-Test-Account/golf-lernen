@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Ehre"
 term_alt: "EN: Honor"
 synonyme: "ehre abschlag reihenfolge"

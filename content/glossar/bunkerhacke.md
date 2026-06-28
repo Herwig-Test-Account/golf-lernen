@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Bunkerhacke"
 term_alt: "EN: Bunker Rake"
 synonyme: "bunkerhacke rake rechen"

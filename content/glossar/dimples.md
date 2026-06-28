@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Dimples"
 term_alt: "EN: Dimples"
 synonyme: "dimples noppen ball"

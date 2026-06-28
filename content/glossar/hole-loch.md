@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Hole / Loch"
 term_alt: "EN: Hole"
 synonyme: "hole loch bahn"

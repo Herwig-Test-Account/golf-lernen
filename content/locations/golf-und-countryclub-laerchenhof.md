@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Golf und Countryclub Lärchenhof"
 date: 2020-10-11
 draft: falsee

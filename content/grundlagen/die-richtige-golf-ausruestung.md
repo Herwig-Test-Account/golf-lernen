@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Die Checkliste für Ihre Golf-Ausrüstung
 lead: 'Eine Übersicht, was Sie als Golf-Anfänger oder erfahrene:r Golfer:in an Ausrüstung wirklich brauchen – inklusive Kostenüberblick.'
 description: 'Übersicht, was Sie als Golf-Anfänger oder erfahrener Golfer an Ausrüstung brauchen – inkl. Kosten.'

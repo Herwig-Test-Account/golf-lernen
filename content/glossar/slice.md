@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Slice"
 term_alt: "Gegenteil: Hook"
 synonyme: "slice fehler rechts kurve"

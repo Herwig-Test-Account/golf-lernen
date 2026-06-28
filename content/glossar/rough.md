@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Rough"
 term_alt: "EN: Rough"
 synonyme: "rough gras neben fairway"

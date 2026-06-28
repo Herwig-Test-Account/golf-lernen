@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Eisen"
 term_alt: "EN: Iron"
 synonyme: "eisen schlaeger iron"

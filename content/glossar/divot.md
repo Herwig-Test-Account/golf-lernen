@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Divot"
 term_alt: "EN: Divot"
 synonyme: "divot grasstueck fairway"

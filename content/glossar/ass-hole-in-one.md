@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Ass (Hole in One)"
 term_alt: "EN: Ace / Hole in One"
 synonyme: "ass hole in one"

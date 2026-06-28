@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Bunker"
 term_alt: "EN: Bunker / Sand Trap"
 synonyme: "bunker sand"

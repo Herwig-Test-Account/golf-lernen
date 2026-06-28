@@ -55,11 +55,32 @@ export const GrundlagenPartsFragmentDoc = gql`
 export const GlossarPartsFragmentDoc = gql`
     fragment GlossarParts on Glossar {
   __typename
-  title
-  term_alt
-  synonyme
-  draft
-  body
+  ... on GlossarEintrag {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    term_alt
+    synonyme
+    body
+    json_ld
+  }
+  ... on GlossarUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
     `;
 export const MagazinPartsFragmentDoc = gql`
@@ -101,48 +122,82 @@ export const MagazinPartsFragmentDoc = gql`
 export const BundeslandPartsFragmentDoc = gql`
     fragment BundeslandParts on Bundesland {
   __typename
+  draft
   title
+  description
+  slug
+  canonical
+  robots
+  hreflang
   bundesland
   type
   lead
-  description
   body
+  json_ld
 }
     `;
 export const Golf_KategorienPartsFragmentDoc = gql`
     fragment Golf_kategorienParts on Golf_kategorien {
   __typename
+  draft
   title
+  description
+  slug
+  canonical
+  robots
+  hreflang
   kategorie
   type
   lead
-  description
   body
+  json_ld
 }
     `;
 export const LocationsPartsFragmentDoc = gql`
     fragment LocationsParts on Locations {
   __typename
-  title
-  date
-  draft
-  bundesland
-  untertitel
-  image
-  kategorien
-  greenfee_ab
-  lochzahl
-  schwierigkeit
-  leihausruestung
-  uebungsplatz
-  driving_range
-  restaurant
-  hunde
-  adresse
-  website
-  email
-  telefon
-  body
+  ... on LocationsArtikel {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    image
+    date
+    bundesland
+    untertitel
+    kategorien
+    greenfee_ab
+    lochzahl
+    schwierigkeit
+    leihausruestung
+    uebungsplatz
+    driving_range
+    restaurant
+    hunde
+    adresse
+    website
+    email
+    telefon
+    body
+    tags
+    json_ld
+  }
+  ... on LocationsUebersicht {
+    draft
+    title
+    description
+    slug
+    canonical
+    robots
+    hreflang
+    eyebrow
+    h1
+    lead
+    json_ld
+  }
 }
     `;
 export const GlobalPartsFragmentDoc = gql`
@@ -150,6 +205,10 @@ export const GlobalPartsFragmentDoc = gql`
   __typename
   ... on GlobalHomepage {
     title
+    description
+    canonical
+    robots
+    hreflang
     hero_tag
     hero_title
     hero_sub
@@ -178,7 +237,24 @@ export const GlobalPartsFragmentDoc = gql`
     magazin_label
     magazin_title
     magazin_intro
+    json_ld
   }
+}
+    `;
+export const LegalPartsFragmentDoc = gql`
+    fragment LegalParts on Legal {
+  __typename
+  draft
+  title
+  description
+  slug
+  canonical
+  robots
+  hreflang
+  type
+  meta
+  body
+  json_ld
 }
     `;
 export const GrundlagenDocument = gql`
@@ -580,6 +656,63 @@ export const GlobalConnectionDocument = gql`
   }
 }
     ${GlobalPartsFragmentDoc}`;
+export const LegalDocument = gql`
+    query legal($relativePath: String!) {
+  legal(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...LegalParts
+  }
+}
+    ${LegalPartsFragmentDoc}`;
+export const LegalConnectionDocument = gql`
+    query legalConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: LegalFilter) {
+  legalConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...LegalParts
+      }
+    }
+  }
+}
+    ${LegalPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     grundlagen(variables, options) {
@@ -623,6 +756,12 @@ export function getSdk(requester) {
     },
     globalConnection(variables, options) {
       return requester(GlobalConnectionDocument, variables, options);
+    },
+    legal(variables, options) {
+      return requester(LegalDocument, variables, options);
+    },
+    legalConnection(variables, options) {
+      return requester(LegalConnectionDocument, variables, options);
     }
   };
 }

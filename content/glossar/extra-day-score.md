@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Extra Day Score (EDS)"
 term_alt: "EN: Supplementary Score"
 synonyme: "extra day score eds vorgabe handicap"

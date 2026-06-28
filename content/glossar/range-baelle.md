@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Range-Bälle"
 term_alt: "EN: Range Balls"
 synonyme: "range baelle uebungsbaelle"

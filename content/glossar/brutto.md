@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Brutto"
 term_alt: "EN: Gross Score"
 synonyme: "brutto score"

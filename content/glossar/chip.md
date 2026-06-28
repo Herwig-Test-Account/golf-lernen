@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Chip"
 term_alt: "EN: Chip Shot"
 synonyme: "chip annaeherung"

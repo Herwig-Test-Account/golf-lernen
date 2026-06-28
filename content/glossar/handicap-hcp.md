@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Handicap (HCP)"
 term_alt: "EN: Handicap / Playing Handicap"
 synonyme: "handicap hcp vorgabe spielvorgabe spielstaerke"

@@ -68,6 +68,8 @@ type Query {
   locationsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LocationsFilter): LocationsConnection!
   global(relativePath: String): Global!
   globalConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: GlobalFilter): GlobalConnection!
+  legal(relativePath: String): Legal!
+  legalConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: LegalFilter): LegalConnection!
 }
 
 input DocumentFilter {
@@ -78,6 +80,7 @@ input DocumentFilter {
   golf_kategorien: Golf_kategorienFilter
   locations: LocationsFilter
   global: GlobalFilter
+  legal: LegalFilter
 }
 
 type DocumentConnectionEdges {
@@ -103,7 +106,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = GrundlagenArtikel | GrundlagenUebersicht | Glossar | MagazinArtikel | MagazinUebersicht | Bundesland | Golf_kategorien | Locations | GlobalHomepage | Folder
+union DocumentNode = GrundlagenArtikel | GrundlagenUebersicht | GlossarEintrag | GlossarUebersicht | MagazinArtikel | MagazinUebersicht | Bundesland | Golf_kategorien | LocationsArtikel | LocationsUebersicht | GlobalHomepage | Legal | Folder
 
 type GrundlagenArtikel implements Node & Document {
   draft: Boolean
@@ -262,23 +265,73 @@ type GrundlagenConnection implements Connection {
   edges: [GrundlagenConnectionEdges]
 }
 
-type Glossar implements Node & Document {
+type GlossarEintrag implements Node & Document {
+  draft: Boolean
   title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   term_alt: String
   synonyme: String
-  draft: Boolean
   body: JSON
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input GlossarFilter {
+type GlossarUebersicht implements Node & Document {
+  draft: Boolean
+  title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  json_ld: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+union Glossar = GlossarEintrag | GlossarUebersicht
+
+input GlossarEintragFilter {
+  draft: BooleanFilter
   title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
   term_alt: StringFilter
   synonyme: StringFilter
-  draft: BooleanFilter
   body: RichTextFilter
+  json_ld: StringFilter
+}
+
+input GlossarUebersichtFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  eyebrow: StringFilter
+  h1: StringFilter
+  lead: StringFilter
+  json_ld: StringFilter
+}
+
+input GlossarFilter {
+  eintrag: GlossarEintragFilter
+  uebersicht: GlossarUebersichtFilter
 }
 
 type GlossarConnectionEdges {
@@ -383,24 +436,36 @@ type MagazinConnection implements Connection {
 }
 
 type Bundesland implements Node & Document {
+  draft: Boolean
   title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   bundesland: String
   type: String
   lead: String
-  description: String
   body: JSON
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
 input BundeslandFilter {
+  draft: BooleanFilter
   title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
   bundesland: StringFilter
   type: StringFilter
   lead: StringFilter
-  description: StringFilter
   body: RichTextFilter
+  json_ld: StringFilter
 }
 
 type BundeslandConnectionEdges {
@@ -415,24 +480,36 @@ type BundeslandConnection implements Connection {
 }
 
 type Golf_kategorien implements Node & Document {
+  draft: Boolean
   title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   kategorie: String
   type: String
   lead: String
-  description: String
   body: JSON
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
 input Golf_kategorienFilter {
+  draft: BooleanFilter
   title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
   kategorie: StringFilter
   type: StringFilter
   lead: StringFilter
-  description: StringFilter
   body: RichTextFilter
+  json_ld: StringFilter
 }
 
 type Golf_kategorienConnectionEdges {
@@ -446,13 +523,18 @@ type Golf_kategorienConnection implements Connection {
   edges: [Golf_kategorienConnectionEdges]
 }
 
-type Locations implements Node & Document {
-  title: String!
-  date: String
+type LocationsArtikel implements Node & Document {
   draft: Boolean
+  title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  image: String
+  date: String
   bundesland: String
   untertitel: String
-  image: String
   kategorien: [String]
   greenfee_ab: Float
   lochzahl: String
@@ -467,18 +549,44 @@ type Locations implements Node & Document {
   email: String
   telefon: String
   body: JSON
+  tags: [String]
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input LocationsFilter {
-  title: StringFilter
-  date: DatetimeFilter
+type LocationsUebersicht implements Node & Document {
+  draft: Boolean
+  title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  json_ld: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+union Locations = LocationsArtikel | LocationsUebersicht
+
+input LocationsArtikelFilter {
   draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  image: StringFilter
+  date: DatetimeFilter
   bundesland: StringFilter
   untertitel: StringFilter
-  image: StringFilter
   kategorien: StringFilter
   greenfee_ab: NumberFilter
   lochzahl: StringFilter
@@ -493,6 +601,27 @@ input LocationsFilter {
   email: StringFilter
   telefon: StringFilter
   body: RichTextFilter
+  tags: StringFilter
+  json_ld: StringFilter
+}
+
+input LocationsUebersichtFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  eyebrow: StringFilter
+  h1: StringFilter
+  lead: StringFilter
+  json_ld: StringFilter
+}
+
+input LocationsFilter {
+  artikel: LocationsArtikelFilter
+  uebersicht: LocationsUebersichtFilter
 }
 
 type LocationsConnectionEdges {
@@ -520,6 +649,10 @@ type GlobalHomepageGrundlagen_karten {
 
 type GlobalHomepage implements Node & Document {
   title: String!
+  description: String
+  canonical: String
+  robots: String
+  hreflang: String
   hero_tag: String
   hero_title: String
   hero_sub: String
@@ -538,6 +671,7 @@ type GlobalHomepage implements Node & Document {
   magazin_label: String
   magazin_title: String
   magazin_intro: String
+  json_ld: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -559,6 +693,10 @@ input GlobalHomepageGrundlagen_kartenFilter {
 
 input GlobalHomepageFilter {
   title: StringFilter
+  description: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
   hero_tag: StringFilter
   hero_title: StringFilter
   hero_sub: StringFilter
@@ -577,6 +715,7 @@ input GlobalHomepageFilter {
   magazin_label: StringFilter
   magazin_title: StringFilter
   magazin_intro: StringFilter
+  json_ld: StringFilter
 }
 
 input GlobalFilter {
@@ -592,6 +731,48 @@ type GlobalConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [GlobalConnectionEdges]
+}
+
+type Legal implements Node & Document {
+  draft: Boolean
+  title: String!
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  type: String
+  meta: String
+  body: JSON
+  json_ld: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input LegalFilter {
+  draft: BooleanFilter
+  title: StringFilter
+  description: StringFilter
+  slug: StringFilter
+  canonical: StringFilter
+  robots: StringFilter
+  hreflang: StringFilter
+  type: StringFilter
+  meta: StringFilter
+  body: RichTextFilter
+  json_ld: StringFilter
+}
+
+type LegalConnectionEdges {
+  cursor: String!
+  node: Legal
+}
+
+type LegalConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [LegalConnectionEdges]
 }
 
 type Mutation {
@@ -614,6 +795,8 @@ type Mutation {
   createLocations(relativePath: String!, params: LocationsMutation!): Locations!
   updateGlobal(relativePath: String!, params: GlobalMutation!): Global!
   createGlobal(relativePath: String!, params: GlobalMutation!): Global!
+  updateLegal(relativePath: String!, params: LegalMutation!): Legal!
+  createLegal(relativePath: String!, params: LegalMutation!): Legal!
 }
 
 input DocumentUpdateMutation {
@@ -624,6 +807,7 @@ input DocumentUpdateMutation {
   golf_kategorien: Golf_kategorienMutation
   locations: LocationsMutation
   global: GlobalMutation
+  legal: LegalMutation
   relativePath: String
 }
 
@@ -635,6 +819,7 @@ input DocumentMutation {
   golf_kategorien: Golf_kategorienMutation
   locations: LocationsMutation
   global: GlobalMutation
+  legal: LegalMutation
 }
 
 input GrundlagenArtikelMutation {
@@ -687,12 +872,37 @@ input GrundlagenMutation {
   uebersicht: GrundlagenUebersichtMutation
 }
 
-input GlossarMutation {
+input GlossarEintragMutation {
+  draft: Boolean
   title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   term_alt: String
   synonyme: String
-  draft: Boolean
   body: JSON
+  json_ld: String
+}
+
+input GlossarUebersichtMutation {
+  draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  json_ld: String
+}
+
+input GlossarMutation {
+  eintrag: GlossarEintragMutation
+  uebersicht: GlossarUebersichtMutation
 }
 
 input MagazinArtikelMutation {
@@ -734,30 +944,47 @@ input MagazinMutation {
 }
 
 input BundeslandMutation {
+  draft: Boolean
   title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   bundesland: String
   type: String
   lead: String
-  description: String
   body: JSON
+  json_ld: String
 }
 
 input Golf_kategorienMutation {
+  draft: Boolean
   title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
   kategorie: String
   type: String
   lead: String
-  description: String
   body: JSON
+  json_ld: String
 }
 
-input LocationsMutation {
-  title: String
-  date: String
+input LocationsArtikelMutation {
   draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  image: String
+  date: String
   bundesland: String
   untertitel: String
-  image: String
   kategorien: [String]
   greenfee_ab: Float
   lochzahl: String
@@ -772,6 +999,27 @@ input LocationsMutation {
   email: String
   telefon: String
   body: JSON
+  tags: [String]
+  json_ld: String
+}
+
+input LocationsUebersichtMutation {
+  draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  eyebrow: String
+  h1: String
+  lead: String
+  json_ld: String
+}
+
+input LocationsMutation {
+  artikel: LocationsArtikelMutation
+  uebersicht: LocationsUebersichtMutation
 }
 
 input GlobalHomepageQuotesMutation {
@@ -788,6 +1036,10 @@ input GlobalHomepageGrundlagen_kartenMutation {
 
 input GlobalHomepageMutation {
   title: String
+  description: String
+  canonical: String
+  robots: String
+  hreflang: String
   hero_tag: String
   hero_title: String
   hero_sub: String
@@ -806,10 +1058,25 @@ input GlobalHomepageMutation {
   magazin_label: String
   magazin_title: String
   magazin_intro: String
+  json_ld: String
 }
 
 input GlobalMutation {
   homepage: GlobalHomepageMutation
+}
+
+input LegalMutation {
+  draft: Boolean
+  title: String
+  description: String
+  slug: String
+  canonical: String
+  robots: String
+  hreflang: String
+  type: String
+  meta: String
+  body: JSON
+  json_ld: String
 }
 
 schema {

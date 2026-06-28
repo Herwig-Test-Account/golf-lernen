@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Regelwerk"
 term_alt: "EN: Rules of Golf"
 synonyme: "regelwerk regeln ra usga"

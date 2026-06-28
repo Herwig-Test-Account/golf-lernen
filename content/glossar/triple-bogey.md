@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Triple-Bogey"
 synonyme: "triple bogey drei ueber par"
 draft: false

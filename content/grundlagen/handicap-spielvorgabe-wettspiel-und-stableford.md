@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: 'Handicap, Spielvorgabe und Wettspielformen'
 lead: 'Alles zum Handicap-System, zum Ausfüllen von Scorekarten, zu Zählweisen wie Stableford und zu den Wettspielformen im Golf.'
 description: 'Alles zum Handicap, zum Ausfüllen von Scorekarten, zu Zählweisen (z.B. Stableford) und zu Wettspielformen im Golf.'

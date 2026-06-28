@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Golfclub Poysdorf"
 date: 2020-10-11
 draft: false

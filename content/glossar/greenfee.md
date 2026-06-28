@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Greenfee"
 term_alt: "EN: Green Fee"
 synonyme: "greenfee gebuehr platz"

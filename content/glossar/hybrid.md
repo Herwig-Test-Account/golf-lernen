@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Hybrid"
 term_alt: "EN: Hybrid / Rescue Club"
 synonyme: "hybrid schlaeger rescue"

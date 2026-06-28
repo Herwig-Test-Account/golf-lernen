@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Aufteen / Tee"
 term_alt: "EN: Tee"
 synonyme: "aufteen tee"

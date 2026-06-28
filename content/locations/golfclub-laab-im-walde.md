@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Golfclub Laab im Walde"
 date: 2020-10-11
 draft: falsee

@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Ballmarker"
 term_alt: "EN: Ball Marker"
 synonyme: "ballmarker marker"

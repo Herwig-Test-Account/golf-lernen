@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Golf Club Donau Freizeitland Linz Feldkirchen"
 date: 2020-10-11
 draft: false

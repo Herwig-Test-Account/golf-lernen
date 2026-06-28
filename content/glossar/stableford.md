@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Stableford"
 term_alt: "EN: Stableford Scoring"
 synonyme: "stableford wertung punkte"

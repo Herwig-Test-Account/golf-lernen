@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Reiters Golf 72 Stegersbach"
 date: 2020-10-11
 draft: false

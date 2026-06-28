@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Driving Range"
 term_alt: "EN: Practice Range"
 synonyme: "driving range uebungsplatz"

@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Scratch"
 term_alt: "EN: Scratch Golfer"
 synonyme: "scratch handicap null"

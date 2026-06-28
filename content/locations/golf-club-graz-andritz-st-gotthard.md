@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Golf Club Graz-Andritz St. Gotthard"
 date: 2020-10-11
 draft: false

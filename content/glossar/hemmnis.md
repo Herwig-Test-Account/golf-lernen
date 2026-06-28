@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Hemmnis"
 term_alt: "EN: Obstruction"
 synonyme: "hemmnis hindernis obstruktion"

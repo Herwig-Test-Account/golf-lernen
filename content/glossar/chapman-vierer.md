@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Chapman Vierer"
 term_alt: "EN: Chapman / American Foursomes"
 synonyme: "chapman vierer teamspiel"

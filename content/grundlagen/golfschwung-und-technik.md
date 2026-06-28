@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Golfschwung und Technik erklärt
 lead: Eine Video-Zusammenstellung zu Golfschwung und Golftechnik – und welche verschiedenen Golfschläge Sie beherrschen sollten.
 description: Video-Zusammenstellung zu Golfschwung und Golftechnik und welche Golfschläge Sie beherrschen sollten.

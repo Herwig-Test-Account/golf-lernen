@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Aus"
 term_alt: "EN: Out of Bounds (OB)"
 synonyme: "aus out of bounds"

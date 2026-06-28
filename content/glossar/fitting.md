@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Fitting"
 term_alt: "EN: Club Fitting"
 synonyme: "fitting schlaeger anpassung"

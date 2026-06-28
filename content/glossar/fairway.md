@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Fairway"
 term_alt: "EN: Fairway"
 synonyme: "fairway gras spielbahn"

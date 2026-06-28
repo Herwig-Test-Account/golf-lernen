@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Platzreife (ÖGV)"
 term_alt: "EN: Golf Certificate"
 synonyme: "platzreife oegv anfaenger kurs"

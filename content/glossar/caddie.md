@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Caddie"
 term_alt: "EN: Caddie / Caddy"
 synonyme: "caddie caddy"

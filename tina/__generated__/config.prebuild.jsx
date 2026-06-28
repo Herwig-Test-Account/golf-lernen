@@ -17,6 +17,7 @@ var config_default = defineConfig({
   },
   schema: {
     collections: [
+      // ─── GRUNDLAGEN ───────────────────────────────────────────────────────────
       {
         name: "grundlagen",
         label: "Grundlagen",
@@ -80,19 +81,50 @@ var config_default = defineConfig({
           }
         ]
       },
+      // ─── GLOSSAR ─────────────────────────────────────────────────────────────
       {
         name: "glossar",
         label: "Glossar",
         path: "content/glossar",
         format: "md",
-        fields: [
-          { type: "string", name: "title", label: "Begriff", isTitle: true, required: true },
-          { type: "string", name: "term_alt", label: 'Zusatz (z. B. "EN: Foursome")' },
-          { type: "string", name: "synonyme", label: "Such-Synonyme (Leerzeichen-getrennt)" },
-          { type: "boolean", name: "draft", label: "Entwurf (nicht \xF6ffentlich)" },
-          { type: "rich-text", name: "body", label: "Definition", isBody: true }
+        templates: [
+          {
+            name: "eintrag",
+            label: "Glossar-Eintrag",
+            fields: [
+              { type: "boolean", name: "draft", label: "Entwurf (nicht \xF6ffentlich)" },
+              { type: "string", name: "title", label: "Begriff", isTitle: true, required: true },
+              { type: "string", name: "description", label: "Meta-Description" },
+              { type: "string", name: "slug", label: "URL (Slug)" },
+              { type: "string", name: "canonical", label: "Canonical-URL" },
+              { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+              { type: "string", name: "hreflang", label: "hreflang-Tag" },
+              { type: "string", name: "term_alt", label: "Zusatz (z. B. EN: Foursome)" },
+              { type: "string", name: "synonyme", label: "Such-Synonyme (Leerzeichen-getrennt)" },
+              { type: "rich-text", name: "body", label: "Definition", isBody: true },
+              { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
+            ]
+          },
+          {
+            name: "uebersicht",
+            label: "Glossar-\xDCbersicht",
+            fields: [
+              { type: "boolean", name: "draft", label: "Entwurf" },
+              { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
+              { type: "string", name: "description", label: "Meta-Description" },
+              { type: "string", name: "slug", label: "URL (Slug)" },
+              { type: "string", name: "canonical", label: "Canonical-URL" },
+              { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+              { type: "string", name: "hreflang", label: "hreflang-Tag" },
+              { type: "string", name: "eyebrow", label: "Eyebrow-Text" },
+              { type: "string", name: "h1", label: "Titel (H1)" },
+              { type: "string", name: "lead", label: "Lead-Text (unter H1)" },
+              { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
+            ]
+          }
         ]
       },
+      // ─── MAGAZIN ─────────────────────────────────────────────────────────────
       {
         name: "magazin",
         label: "Magazin",
@@ -140,62 +172,108 @@ var config_default = defineConfig({
           }
         ]
       },
+      // ─── BUNDESLAND ──────────────────────────────────────────────────────────
       {
         name: "bundesland",
         label: "Bundesl\xE4nder",
         path: "content/bundesland",
         format: "md",
         fields: [
-          { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
+          { type: "boolean", name: "draft", label: "Entwurf" },
+          { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
+          { type: "string", name: "description", label: "Meta-Description" },
+          { type: "string", name: "slug", label: "URL (Slug)" },
+          { type: "string", name: "canonical", label: "Canonical-URL" },
+          { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+          { type: "string", name: "hreflang", label: "hreflang-Tag" },
           { type: "string", name: "bundesland", label: "Bundesland (Wert)" },
           { type: "string", name: "type", label: "Type (nicht \xE4ndern)" },
           { type: "string", name: "lead", label: "Lead" },
-          { type: "string", name: "description", label: "Meta-Beschreibung" },
-          { type: "rich-text", name: "body", label: "Text", isBody: true }
+          { type: "rich-text", name: "body", label: "Text", isBody: true },
+          { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
         ]
       },
+      // ─── GOLF-KATEGORIEN ─────────────────────────────────────────────────────
       {
         name: "golf_kategorien",
         label: "Golf-Kategorien",
         path: "content/golf-kategorien",
         format: "md",
         fields: [
-          { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
+          { type: "boolean", name: "draft", label: "Entwurf" },
+          { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
+          { type: "string", name: "description", label: "Meta-Description" },
+          { type: "string", name: "slug", label: "URL (Slug)" },
+          { type: "string", name: "canonical", label: "Canonical-URL" },
+          { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+          { type: "string", name: "hreflang", label: "hreflang-Tag" },
           { type: "string", name: "kategorie", label: "Kategorie (Wert)" },
           { type: "string", name: "type", label: "Type (nicht \xE4ndern)" },
           { type: "string", name: "lead", label: "Lead" },
-          { type: "string", name: "description", label: "Meta-Beschreibung" },
-          { type: "rich-text", name: "body", label: "Text", isBody: true }
+          { type: "rich-text", name: "body", label: "Text", isBody: true },
+          { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
         ]
       },
+      // ─── LOCATIONS ───────────────────────────────────────────────────────────
       {
         name: "locations",
         label: "Locations (Golfpl\xE4tze)",
         path: "content/locations",
         format: "md",
-        fields: [
-          { type: "string", name: "title", label: "Name", isTitle: true, required: true },
-          { type: "datetime", name: "date", label: "Datum" },
-          { type: "boolean", name: "draft", label: "Entwurf" },
-          { type: "string", name: "bundesland", label: "Bundesland", options: ["Burgenland", "K\xE4rnten", "Nieder\xF6sterreich", "Ober\xF6sterreich", "Salzburg", "Steiermark", "Tirol", "Vorarlberg", "Wien"] },
-          { type: "string", name: "untertitel", label: "Untertitel" },
-          { type: "string", name: "image", label: "Bild-URL" },
-          { type: "string", name: "kategorien", label: "Kategorien", list: true, options: ["\xD6ffentliche Anlage", "Keine \xD6GV-Platzreife n\xF6tig", "Keine Platzerlaubnis (PE) n\xF6tig", "Platzerlaubnis (PE) n\xF6tig", "\xD6GV-Platzreife n\xF6tig", "Golfhotel f\xFCr Anf\xE4nger"] },
-          { type: "number", name: "greenfee_ab", label: "Greenfee ab (\u20AC)" },
-          { type: "string", name: "lochzahl", label: "Lochzahl" },
-          { type: "string", name: "schwierigkeit", label: "Schwierigkeit" },
-          { type: "string", name: "leihausruestung", label: "Leihausr\xFCstung" },
-          { type: "string", name: "uebungsplatz", label: "\xDCbungsplatz" },
-          { type: "string", name: "driving_range", label: "Driving Range" },
-          { type: "string", name: "restaurant", label: "Restaurant" },
-          { type: "string", name: "hunde", label: "Hunde erlaubt" },
-          { type: "string", name: "adresse", label: "Adresse" },
-          { type: "string", name: "website", label: "Website" },
-          { type: "string", name: "email", label: "E-Mail" },
-          { type: "string", name: "telefon", label: "Telefon" },
-          { type: "rich-text", name: "body", label: "Beschreibung", isBody: true }
+        templates: [
+          {
+            name: "artikel",
+            label: "Location-Eintrag",
+            fields: [
+              { type: "boolean", name: "draft", label: "Entwurf" },
+              { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
+              { type: "string", name: "description", label: "Meta-Description" },
+              { type: "string", name: "slug", label: "URL (Slug)" },
+              { type: "string", name: "canonical", label: "Canonical-URL" },
+              { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+              { type: "string", name: "hreflang", label: "hreflang-Tag" },
+              { type: "string", name: "image", label: "Bild-URL" },
+              { type: "datetime", name: "date", label: "Datum" },
+              { type: "string", name: "bundesland", label: "Bundesland", options: ["Burgenland", "K\xE4rnten", "Nieder\xF6sterreich", "Ober\xF6sterreich", "Salzburg", "Steiermark", "Tirol", "Vorarlberg", "Wien"] },
+              { type: "string", name: "untertitel", label: "Untertitel" },
+              { type: "string", name: "kategorien", label: "Kategorien", list: true, options: ["\xD6ffentliche Anlage", "Keine \xD6GV-Platzreife n\xF6tig", "Keine Platzerlaubnis (PE) n\xF6tig", "Platzerlaubnis (PE) n\xF6tig", "\xD6GV-Platzreife n\xF6tig", "Golfhotel f\xFCr Anf\xE4nger"] },
+              { type: "number", name: "greenfee_ab", label: "Greenfee ab (\u20AC)" },
+              { type: "string", name: "lochzahl", label: "Lochzahl" },
+              { type: "string", name: "schwierigkeit", label: "Schwierigkeit" },
+              { type: "string", name: "leihausruestung", label: "Leihausr\xFCstung" },
+              { type: "string", name: "uebungsplatz", label: "\xDCbungsplatz" },
+              { type: "string", name: "driving_range", label: "Driving Range" },
+              { type: "string", name: "restaurant", label: "Restaurant" },
+              { type: "string", name: "hunde", label: "Hunde erlaubt" },
+              { type: "string", name: "adresse", label: "Adresse" },
+              { type: "string", name: "website", label: "Website" },
+              { type: "string", name: "email", label: "E-Mail" },
+              { type: "string", name: "telefon", label: "Telefon" },
+              { type: "rich-text", name: "body", label: "Beschreibung", isBody: true },
+              { type: "string", name: "tags", label: "Tags", list: true },
+              { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
+            ]
+          },
+          {
+            name: "uebersicht",
+            label: "Locations-\xDCbersicht",
+            fields: [
+              { type: "boolean", name: "draft", label: "Entwurf" },
+              { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
+              { type: "string", name: "description", label: "Meta-Description" },
+              { type: "string", name: "slug", label: "URL (Slug)" },
+              { type: "string", name: "canonical", label: "Canonical-URL" },
+              { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+              { type: "string", name: "hreflang", label: "hreflang-Tag" },
+              { type: "string", name: "eyebrow", label: "Eyebrow-Text" },
+              { type: "string", name: "h1", label: "Titel (H1)" },
+              { type: "string", name: "lead", label: "Lead-Text (unter H1)" },
+              { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
+            ]
+          }
         ]
       },
+      // ─── GLOBALE EINSTELLUNGEN ────────────────────────────────────────────────
       {
         name: "global",
         label: "Globale Einstellungen",
@@ -207,6 +285,10 @@ var config_default = defineConfig({
             label: "Homepage",
             fields: [
               { type: "string", name: "title", label: "Seitentitel (intern)", isTitle: true, required: true },
+              { type: "string", name: "description", label: "Meta-Description" },
+              { type: "string", name: "canonical", label: "Canonical-URL" },
+              { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+              { type: "string", name: "hreflang", label: "hreflang-Tag" },
               { type: "string", name: "hero_tag", label: "Hero Eyebrow-Text" },
               { type: "string", name: "hero_title", label: "Hero Titel (H1)" },
               { type: "string", name: "hero_sub", label: "Hero Subtext" },
@@ -244,9 +326,31 @@ var config_default = defineConfig({
               { type: "string", name: "locations_intro", label: "Locations \u2013 Intro" },
               { type: "string", name: "magazin_label", label: "Magazin \u2013 Label" },
               { type: "string", name: "magazin_title", label: "Magazin \u2013 H2" },
-              { type: "string", name: "magazin_intro", label: "Magazin \u2013 Intro" }
+              { type: "string", name: "magazin_intro", label: "Magazin \u2013 Intro" },
+              { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
             ]
           }
+        ]
+      },
+      // ─── LEGAL & SEITEN ──────────────────────────────────────────────────────
+      {
+        name: "legal",
+        label: "Legal & Seiten",
+        path: "content",
+        format: "md",
+        match: { include: ["impressum", "datenschutz", "kontakt"] },
+        fields: [
+          { type: "boolean", name: "draft", label: "Entwurf" },
+          { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
+          { type: "string", name: "description", label: "Meta-Description" },
+          { type: "string", name: "slug", label: "URL (Slug)" },
+          { type: "string", name: "canonical", label: "Canonical-URL" },
+          { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },
+          { type: "string", name: "hreflang", label: "hreflang-Tag" },
+          { type: "string", name: "type", label: "Type (nicht \xE4ndern)" },
+          { type: "string", name: "meta", label: "Meta-Zeile (z. B. Stand-Datum)" },
+          { type: "rich-text", name: "body", label: "Inhalt", isBody: true },
+          { type: "string", name: "json_ld", label: "Rich Snippets (JSON-LD)", ui: { component: "textarea" } }
         ]
       }
     ]

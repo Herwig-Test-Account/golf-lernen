@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Ball ansprechen"
 term_alt: "EN: Address the Ball"
 synonyme: "ball ansprechen adresse"

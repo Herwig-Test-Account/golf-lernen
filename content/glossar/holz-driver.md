@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Holz / Driver"
 term_alt: "EN: Wood / Driver"
 synonyme: "holz driver schlaeger wood"

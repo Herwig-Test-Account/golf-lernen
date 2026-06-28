@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Hook"
 term_alt: "Gegenteil: Slice"
 synonyme: "hook fehler flugkurve links"

@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "OPEN GOLF St. Johann Alpendorf"
 date: 2020-10-11
 draft: false

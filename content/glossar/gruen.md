@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Grün"
 term_alt: "EN: Green / Putting Green"
 synonyme: "gruen putting green"

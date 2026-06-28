@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Putter"
 term_alt: "EN: Putter"
 synonyme: "putter schlaeger gruen"

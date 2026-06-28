@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Slope Rating"
 term_alt: "EN: Slope Rating"
 synonyme: "slope rating schwierigkeit"

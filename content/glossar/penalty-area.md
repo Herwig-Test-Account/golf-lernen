@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Penalty Area"
 term_alt: "EN: Penalty Area (früher: Wasserhindernis)"
 synonyme: "penalty area wasserhindernis"

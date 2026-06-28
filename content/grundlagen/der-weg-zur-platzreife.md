@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Der Weg zur Platzreife erklärt
 lead: 'So geht der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co im Überblick.'
 description: 'Der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co.'

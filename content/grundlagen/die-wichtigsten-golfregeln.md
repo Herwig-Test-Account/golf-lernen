@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Die wichtigsten Golfregeln verstehen
 lead: 'Kompakt & anschaulich aufbereitet: welche Golfregeln Sie als Einsteiger:in kennen und beachten müssen – inkl. der 20 Regeländerungen von 2019.'
 description: 'Kompakt & anschaulich aufbereitet, welche Golfregeln Sie beachten müssen.'

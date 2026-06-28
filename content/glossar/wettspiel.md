@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Wettspiel"
 term_alt: "EN: Competition"
 synonyme: "wettspiel turnier stroke match"

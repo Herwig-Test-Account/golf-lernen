@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Doppel-Bogey"
 synonyme: "doppel bogey"
 draft: false

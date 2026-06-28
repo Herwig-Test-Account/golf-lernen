@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Birdie"
 synonyme: "birdie"
 draft: false

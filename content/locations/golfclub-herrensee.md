@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Golfclub Herrensee"
 date: 2021-09-07
 draft: false

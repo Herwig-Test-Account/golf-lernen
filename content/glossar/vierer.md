@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Vierer"
 term_alt: "EN: Foursome"
 synonyme: "vierer foursome"

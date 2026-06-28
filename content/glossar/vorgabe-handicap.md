@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Vorgabe → Handicap"
 synonyme: "vorgabe handicap spielstaerke"
 draft: false

@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: Die Golf-Etikette kennenlernen
 lead: 'Die Prinzipien der Golf-Etikette – anhand praktischer Beispiele erklärt. Neugierig, was Sie am Platz beachten müssen?'
 description: Die Prinzipien der Golf-Etikette anhand praktischer Beispiele erklärt.

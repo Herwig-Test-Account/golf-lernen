@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Grün lesen"
 term_alt: "EN: Reading the Green"
 synonyme: "gruen lesen neigung linie"

@@ -1,4 +1,5 @@
----
+﻿---
+_template: artikel
 title: "Grazer Golfclub Thalersee"
 date: 2020-10-11
 draft: false

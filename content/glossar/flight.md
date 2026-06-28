@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Flight"
 term_alt: "EN: Group"
 synonyme: "flight gruppe spieler"

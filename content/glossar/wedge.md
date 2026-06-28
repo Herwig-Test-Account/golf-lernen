@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Wedge"
 term_alt: "EN: Wedge"
 synonyme: "wedge schlaeger loft"

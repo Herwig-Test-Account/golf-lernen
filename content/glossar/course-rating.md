@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Course Rating"
 term_alt: "EN: Course Rating"
 synonyme: "course rating schwierigkeit"

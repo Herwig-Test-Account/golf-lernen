@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Par"
 term_alt: "EN: Par"
 synonyme: "par richtwert schlaege"

@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Putt / Putten"
 term_alt: "EN: Putt"
 synonyme: "putt putten gruen"

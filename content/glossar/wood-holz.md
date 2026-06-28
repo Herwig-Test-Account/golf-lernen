@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Wood → Holz"
 synonyme: "wood holz schlaeger"
 draft: false

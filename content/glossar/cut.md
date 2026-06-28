@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Cut"
 term_alt: "EN: Cut"
 synonyme: "cut turnier halbzeit"

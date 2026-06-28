@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Pitch"
 term_alt: "EN: Pitch Shot"
 synonyme: "pitch annaeherung schlag"

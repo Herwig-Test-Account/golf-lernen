@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Bogey"
 synonyme: "bogey"
 draft: false

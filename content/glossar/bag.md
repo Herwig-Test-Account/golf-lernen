@@ -1,4 +1,5 @@
----
+﻿---
+_template: eintrag
 title: "Bag"
 term_alt: "EN: Golf Bag"
 synonyme: "bag golf bag"
