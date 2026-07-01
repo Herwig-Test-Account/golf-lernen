@@ -2,7 +2,7 @@
 title: 'Golfschwung, Handicap &amp; Co: Grundlagen kompakt erklärt » golf-lernen.at'
 description: 'Als Golf-Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – verständlich und kompakt erklärt.'
 eyebrow: Erste Schritte im Golfsport
-h1: Die Golf-Grundlagen
+h1: Die Golf-*Grundlagen*
 lead: 'Als Golf-Einsteiger finden Sie hier alles rundum Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette verständlich erklärt.'
 kapitel_liste:
   - id: golfplatz

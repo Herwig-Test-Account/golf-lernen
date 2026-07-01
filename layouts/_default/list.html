@@ -13,7 +13,7 @@
     </ol>
   </nav>
   <p class="page-tag">Tipps, Wissen & Inspiration</p>
-  <h1>Das Golf-<em>Magazin</em></h1>
+  <h1>{{ with .Params.h1 }}{{ . | markdownify }}{{ else }}Das Golf-<em>Magazin</em>{{ end }}</h1>
   <p class="page-hero-lead">Hilfreiche Beiträge und aktuelle Themen für angehende Golferinnen und Golfer in Österreich.</p>
 </header>
 

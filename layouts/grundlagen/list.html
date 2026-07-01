@@ -9,7 +9,7 @@
   <div class="hero-grid">
     <div class="hero-text">
       <p class="page-tag">Erste Schritte im Golfsport</p>
-      <h1>Die Golf-<em>Grundlagen</em></h1>
+      <h1>{{ with .Params.h1 }}{{ . | markdownify }}{{ else }}Die Golf-<em>Grundlagen</em>{{ end }}</h1>
       <p>{{ .Description | default "Als Golf-Einsteiger finden Sie hier alles rund um Golfschwung & Ausrüstung, Platzreife, Handicap sowie Regeln & Etikette – verständlich und kompakt erklärt." }}</p>
     </div>
     <nav class="hero-nav" aria-label="Kapitelübersicht">

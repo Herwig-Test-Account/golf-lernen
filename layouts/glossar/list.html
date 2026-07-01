@@ -20,7 +20,7 @@
     </ol>
   </nav>
   <p class="page-tag">Golf-Wörterbuch</p>
-  <h1>Golf-Begriffe <em>einfach erklärt</em></h1>
+  <h1>{{ with .Params.h1 }}{{ . | markdownify }}{{ else }}Golf-Begriffe <em>einfach erklärt</em>{{ end }}</h1>
   <p class="page-hero-lead">{{ .Description | default "Stöbern Sie in unserem umfangreichen Golf-Glossar und lernen Sie die wichtigsten Begriffe und Spezialausdrücke des Golf-Jargons kennen." }}</p>
   <div class="hero-example">
     <span class="hero-example-icon">💬</span>

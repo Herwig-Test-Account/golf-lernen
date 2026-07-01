@@ -3,7 +3,7 @@ build:
   render: never
 title: "Das umfassende Info-Portal für Golf Anfänger \U0001F3CC️ » golf-lernen.at"
 hero_tag: Das Einsteigerportal für Österreich
-hero_title: Golf lernen – leicht gemacht.
+hero_title: Golf lernen – *leicht gemacht.*
 hero_sub: Finden Sie die Golf-Grundlagen kompakt erklärt und entdecken Sie die Faszination Golf.
 cta_primary_text: Grundlagen entdecken
 cta_primary_url: /grundlagen/

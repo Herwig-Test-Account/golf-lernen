@@ -11,7 +11,7 @@
     </ol>
   </nav>
   <p class="page-tag">Golfplätze in Österreich</p>
-  <h1>Golf <em>Locations</em> finden</h1>
+  <h1>{{ with .Params.h1 }}{{ . | markdownify }}{{ else }}Golf <em>Locations</em> finden{{ end }}</h1>
   <p class="page-hero-lead">Golfhotel, Einsteigerplatz oder Übungsmöglichkeit in Ihrer Nähe – filtern Sie nach Bundesland, Preis und Kategorie.</p>
 </header>
 

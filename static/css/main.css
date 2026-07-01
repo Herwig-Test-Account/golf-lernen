@@ -156,7 +156,7 @@
     margin-bottom: 24px;
   }
   .hero-title em {
-    font-style: normal;
+    font-style: italic;
     color: var(--green-accent);
   }
   .hero-sub {
