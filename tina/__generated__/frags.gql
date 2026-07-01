@@ -80,6 +80,7 @@ fragment MagazinParts on Magazin {
     draft
     title
     description
+    teaser
     slug
     canonical
     robots

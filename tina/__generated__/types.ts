@@ -542,6 +542,7 @@ export type MagazinArtikel = Node & Document & {
   draft?: Maybe<Scalars['Boolean']['output']>;
   title: Scalars['String']['output'];
   description?: Maybe<Scalars['String']['output']>;
+  teaser?: Maybe<Scalars['String']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   canonical?: Maybe<Scalars['String']['output']>;
   robots?: Maybe<Scalars['String']['output']>;
@@ -584,6 +585,7 @@ export type MagazinArtikelFilter = {
   draft?: InputMaybe<BooleanFilter>;
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
+  teaser?: InputMaybe<StringFilter>;
   slug?: InputMaybe<StringFilter>;
   canonical?: InputMaybe<StringFilter>;
   robots?: InputMaybe<StringFilter>;
@@ -1253,6 +1255,7 @@ export type MagazinArtikelMutation = {
   draft?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  teaser?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   canonical?: InputMaybe<Scalars['String']['input']>;
   robots?: InputMaybe<Scalars['String']['input']>;
@@ -1435,7 +1438,7 @@ type GlossarParts_GlossarUebersicht_Fragment = { __typename: 'GlossarUebersicht'
 
 export type GlossarPartsFragment = GlossarParts_GlossarEintrag_Fragment | GlossarParts_GlossarUebersicht_Fragment;
 
-type MagazinParts_MagazinArtikel_Fragment = { __typename: 'MagazinArtikel', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null };
+type MagazinParts_MagazinArtikel_Fragment = { __typename: 'MagazinArtikel', draft?: boolean | null, title: string, description?: string | null, teaser?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null };
 
 type MagazinParts_MagazinUebersicht_Fragment = { __typename: 'MagazinUebersicht', draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null };
 
@@ -1498,7 +1501,7 @@ export type MagazinQueryVariables = Exact<{
 }>;
 
 
-export type MagazinQuery = { __typename?: 'Query', magazin: { __typename: 'MagazinArtikel', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'MagazinUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type MagazinQuery = { __typename?: 'Query', magazin: { __typename: 'MagazinArtikel', id: string, draft?: boolean | null, title: string, description?: string | null, teaser?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'MagazinUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type MagazinConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1510,7 +1513,7 @@ export type MagazinConnectionQueryVariables = Exact<{
 }>;
 
 
-export type MagazinConnectionQuery = { __typename?: 'Query', magazinConnection: { __typename?: 'MagazinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MagazinConnectionEdges', cursor: string, node?: { __typename: 'MagazinArtikel', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'MagazinUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type MagazinConnectionQuery = { __typename?: 'Query', magazinConnection: { __typename?: 'MagazinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MagazinConnectionEdges', cursor: string, node?: { __typename: 'MagazinArtikel', id: string, draft?: boolean | null, title: string, description?: string | null, teaser?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, image?: string | null, date: string, lesezeit?: string | null, h1?: string | null, rubrik?: string | null, author?: string | null, body?: any | null, tags?: Array<string | null> | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'MagazinUebersicht', id: string, draft?: boolean | null, title: string, description?: string | null, slug?: string | null, canonical?: string | null, robots?: string | null, hreflang?: string | null, eyebrow?: string | null, h1?: string | null, lead?: string | null, json_ld?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type BundeslandQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1692,6 +1695,7 @@ export const MagazinPartsFragmentDoc = gql`
     draft
     title
     description
+    teaser
     slug
     canonical
     robots

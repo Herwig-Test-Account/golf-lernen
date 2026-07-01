@@ -349,6 +349,7 @@ type MagazinArtikel implements Node & Document {
   draft: Boolean
   title: String!
   description: String
+  teaser: String
   slug: String
   canonical: String
   robots: String
@@ -390,6 +391,7 @@ input MagazinArtikelFilter {
   draft: BooleanFilter
   title: StringFilter
   description: StringFilter
+  teaser: StringFilter
   slug: StringFilter
   canonical: StringFilter
   robots: StringFilter
@@ -909,6 +911,7 @@ input MagazinArtikelMutation {
   draft: Boolean
   title: String
   description: String
+  teaser: String
   slug: String
   canonical: String
   robots: String

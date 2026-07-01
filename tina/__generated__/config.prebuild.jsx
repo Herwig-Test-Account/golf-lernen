@@ -138,6 +138,7 @@ var config_default = defineConfig({
               { type: "boolean", name: "draft", label: "Entwurf" },
               { type: "string", name: "title", label: "Meta-Title", isTitle: true, required: true },
               { type: "string", name: "description", label: "Meta-Description", ui: { component: "textarea" } },
+              { type: "string", name: "teaser", label: "Teaser (sichtbarer Kartentext)", ui: { component: "textarea" } },
               { type: "string", name: "slug", label: "URL (Slug)" },
               { type: "string", name: "canonical", label: "Canonical-URL" },
               { type: "string", name: "robots", label: "Robots", options: ["index, follow", "noindex, follow"] },

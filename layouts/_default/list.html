@@ -1,4 +1,4 @@
-{{ define "main" }}
+﻿{{ define "main" }}
 <link rel="stylesheet" href="/css/magazin.css">
 
 {{ $posts := where .Site.RegularPages "Type" "magazin" }}
@@ -31,7 +31,7 @@
         <span class="art-date">{{ .Date.Format "2. January 2006" }}</span>
       </div>
       <h2>{{ .Title }}</h2>
-      <p>{{ .Description }}</p>
+      <p>{{ .Params.teaser | default .Description }}</p>
       <span class="btn-primary">Mehr erfahren →</span>
     </div>
   </a>
@@ -71,7 +71,7 @@
           <span class="art-date">{{ .Date.Format "2. Jan. 2006" }}</span>
         </div>
         <h3>{{ .Title }}</h3>
-        <p>{{ .Description }}</p>
+        <p>{{ .Params.teaser | default .Description }}</p>
         <span class="art-card-link">Mehr erfahren →</span>
       </div>
     </a>

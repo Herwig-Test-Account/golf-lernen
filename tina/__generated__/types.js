@@ -90,6 +90,7 @@ export const MagazinPartsFragmentDoc = gql`
     draft
     title
     description
+    teaser
     slug
     canonical
     robots
