@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: Der Golfplatz und Grundbegriffe erklärt
 description: 'Welche Flächen Golfplätze haben und Grundbegriffe wie Par, Birdie & Co – kompakt und anschaulich erklärt.'
-image: /img/uploads/images/gundlagen/GG_golfplatz_und_par.png
+image: /img/uploads/images/grundlagen/GG_golfplatz_und_par.png
 image_credit: ''
 lesezeit: ~7 Min. Lesezeit
 lead: 'Finden Sie kompakt & anschaulich aufbereitet, welche Flächen Golfplätze haben – und lernen Sie Grundbegriffe wie Par, Birdie & Co kennen.'

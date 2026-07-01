@@ -3,7 +3,7 @@ _template: artikel
 title: Alle Golfschläger im Überblick
 lead: 'Finden Sie kompakt & anschaulich erklärt, welche Golfschläger es gibt – und für welche Einsatzbereiche am Platz sie konzipiert sind.'
 description: 'Finden Sie kompakt & anschaulich erklärt, welche Golfschläger es gibt und für welche Einsatzbereiche sie konzipiert sind.'
-image: /img/uploads/images/gundlagen/GG_golfschlaeger_überblick.png
+image: /img/uploads/images/grundlagen/GG_golfschlaeger_überblick.png
 image_credit: © golf-lernen.at
 kapitel: ausruestung
 weight: 40

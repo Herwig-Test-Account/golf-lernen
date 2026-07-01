@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: Die wichtigsten Golfregeln verstehen
 description: 'Kompakt & anschaulich aufbereitet, welche Golfregeln Sie beachten müssen.'
-image: /img/uploads/images/gundlagen/GG_wichtigste_golf-regeln.png
+image: /img/uploads/images/grundlagen/GG_wichtigste_golf-regeln.png
 image_credit: © golf-lernen.at
 lesezeit: ~15 Min. Lesezeit
 lead: 'Kompakt & anschaulich aufbereitet: welche Golfregeln Sie als Einsteiger:in kennen und beachten müssen – inkl. der 20 Regeländerungen von 2019.'

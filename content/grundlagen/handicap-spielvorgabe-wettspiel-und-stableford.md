@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: 'Handicap, Spielvorgabe und Wettspielformen'
 description: 'Alles zum Handicap, zum Ausfüllen von Scorekarten, zu Zählweisen (z.B. Stableford) und zu Wettspielformen im Golf.'
-image: /img/uploads/images/gundlagen/GG_handicap_spielvorgabe.png
+image: /img/uploads/images/grundlagen/GG_handicap_spielvorgabe.png
 image_credit: © golf-lernen.at
 lesezeit: ~12 Min. Lesezeit
 lead: 'Alles zum Handicap-System, zum Ausfüllen von Scorekarten, zu Zählweisen wie Stableford und zu den Wettspielformen im Golf.'

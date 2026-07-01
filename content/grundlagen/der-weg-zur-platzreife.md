@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: Der Weg zur Platzreife erklärt
 description: 'Der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co.'
-image: /img/uploads/images/gundlagen/GG_weg_zur_platzreife.png
+image: /img/uploads/images/grundlagen/GG_weg_zur_platzreife.png
 image_credit: © Pixabay
 lesezeit: ~8 Min. Lesezeit
 lead: 'So geht der Einstieg ins Golfspiel: Was Sie können & wissen müssen und alle Infos zu Platzreife, Turnier-Lizenz und Co im Überblick.'

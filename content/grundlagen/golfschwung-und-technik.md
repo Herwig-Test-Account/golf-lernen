@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: Golfschwung und Technik erklärt
 description: Video-Zusammenstellung zu Golfschwung und Golftechnik und welche Golfschläge Sie beherrschen sollten.
-image: /img/uploads/images/gundlagen/GG_golfschwung_und_technik-1.png
+image: /img/uploads/images/grundlagen/GG_golfschwung_und_technik-1.png
 image_credit: © Pixabay
 lesezeit: ~5 Min. Lesezeit
 lead: Eine Video-Zusammenstellung zu Golfschwung und Golftechnik – und welche verschiedenen Golfschläge Sie beherrschen sollten.

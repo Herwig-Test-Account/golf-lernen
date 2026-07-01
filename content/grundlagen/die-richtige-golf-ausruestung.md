@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: Die Checkliste für Ihre Golf-Ausrüstung
 description: 'Übersicht, was Sie als Golf-Anfänger oder erfahrener Golfer an Ausrüstung brauchen – inkl. Kosten.'
-image: /img/uploads/images/gundlagen/GG_golfausruestung.png
+image: /img/uploads/images/grundlagen/GG_golfausruestung.png
 image_credit: ''
 lesezeit: ~6 Min. Lesezeit
 lead: 'Eine Übersicht, was Sie als Golf-Anfänger oder erfahrene:r Golfer:in an Ausrüstung wirklich brauchen – inklusive Kostenüberblick.'

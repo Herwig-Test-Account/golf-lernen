@@ -1,8 +1,8 @@
----
+﻿---
 draft: false
 title: Die Golf-Etikette kennenlernen
 description: Die Prinzipien der Golf-Etikette anhand praktischer Beispiele erklärt.
-image: /img/uploads/images/gundlagen/GG_golf-etikette.png
+image: /img/uploads/images/grundlagen/GG_golf-etikette.png
 image_credit: ''
 lesezeit: ~6 Min. Lesezeit
 lead: 'Die Prinzipien der Golf-Etikette – anhand praktischer Beispiele erklärt. Neugierig, was Sie am Platz beachten müssen?'
