@@ -114,7 +114,6 @@
 
   /* RESPONSIVE */
   @media (max-width: 960px) {
-    .nav-links { display: none; }
     .page-hero { padding: 80px 24px 48px; }
     .featured-wrap { padding: 0 24px; }
     .featured-post { grid-template-columns: 1fr; }

@@ -21,8 +21,7 @@
   <div class="form-col">
 
     <div class="reason-tabs" role="group" aria-label="Anliegen wählen">
-      <button class="reason-tab active" onclick="setReason(this,'Allgemeine Frage')">Allgemeine Frage</button>
-      <button class="reason-tab" onclick="setReason(this,'Location eintragen')">Location eintragen</button>
+      <button class="reason-tab active" onclick="setReason(this,'Allgemeine Frage')">Allgemeine Frage</button>      
       <button class="reason-tab" onclick="setReason(this,'Inhaltliches Feedback')">Inhaltliches Feedback</button>
       <button class="reason-tab" onclick="setReason(this,'Kooperation & Werbung')">Kooperation & Werbung</button>
     </div>
@@ -63,11 +62,6 @@
         <input type="email" id="email" name="email" class="form-input" placeholder="max@beispiel.at" autocomplete="email" required>
       </div>
 
-      <div class="form-field" id="field-location" style="display:none">
-        <label class="form-label" for="location-name">Name des Golfplatzes / Hotels</label>
-        <input type="text" id="location-name" name="location_name" class="form-input" placeholder="z.B. Golfclub Muster, 1234 Musterort">
-      </div>
-
       <div class="form-field">
         <label class="form-label" for="betreff">Betreff</label>
         <input type="text" id="betreff" name="betreff" class="form-input" placeholder="Kurze Zusammenfassung Ihrer Anfrage">
@@ -104,13 +98,6 @@
       <div class="sidebar-card-body">
         <div class="reason-list">
           <div class="reason-item">
-            <div class="reason-icon">📍</div>
-            <div>
-              <h3>Location eintragen</h3>
-              <p>Ihr Lieblingsgolfplatz oder Hotel ist noch nicht gelistet? Schicken Sie uns die Details.</p>
-            </div>
-          </div>
-          <div class="reason-item">
             <div class="reason-icon">✏️</div>
             <div>
               <h3>Inhaltliches Feedback</h3>
@@ -136,7 +123,6 @@
     document.querySelectorAll('.reason-tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('reason-hidden').value = label;
-    document.getElementById('field-location').style.display = label === 'Location eintragen' ? 'flex' : 'none';
   }
 
   // Prototyp: zeigt nur den Success-State. KEIN echter Versand, KEIN API-Key im Frontend.

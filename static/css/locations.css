@@ -434,7 +434,7 @@
     .form-row { grid-template-columns: 1fr; }
     .details-grid { grid-template-columns: 1fr; }
     .related-section { padding: 48px 24px; }
-    .page-hero { padding: 80px 24px 48px; }
+    .page-hero:has(+ .filter-bar) { padding: 80px 24px 48px; }
     .filter-bar { padding: 16px 24px; gap: 10px; top: 60px; }
     .filter-divider { display: none; }
     .results-meta { padding: 20px 24px 0; }

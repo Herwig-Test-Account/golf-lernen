@@ -571,6 +571,7 @@
     nav { padding: 0 24px; }
     .nav-toggle { display: flex; }
     .nav-links {
+      z-index: 200;
       display: flex;
       position: absolute;
       top: 60px; left: 0; right: 0;
@@ -588,6 +589,7 @@
       transition: max-height 0.3s ease, opacity 0.25s, visibility 0.25s;
     }
     .nav-links.open { max-height: 360px; opacity: 1; visibility: visible; }
+    body:has(.nav-links.open) .filter-bar { visibility: hidden; }
     .nav-links li { width: 100%; }
     .nav-links a {
       display: block;
